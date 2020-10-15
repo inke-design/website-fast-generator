@@ -1,20 +1,56 @@
-var gulp = require("gulp"),
-	sass = require("gulp-sass");
+const gulp = require("gulp");
+const sass = require("gulp-sass");
+const babel = require("gulp-babel");
+const { watch, series, task } = require("gulp");
+const spawn = require("child_process").spawn;
+const path = require("path");
 
-
-function compile() {
-	return (
-		gulp
-			.src("scss/**/*.scss")
-			.pipe(sass())
-			.on("error", sass.logError)
-			.pipe(gulp.dest("css"))
-	);
+function compileSass() {
+  return gulp
+    .src("scss/**/*.scss")
+    .pipe(sass())
+    .on("error", sass.logError)
+    .pipe(gulp.dest("dist/css"));
 }
 
-function watch() {
-	gulp.watch("scss/**/*.scss", compile);
+function compileEs() {
+  return gulp
+    .src("libs/**/*.js")
+    .pipe(
+      babel({
+        presets: [["@babel/preset-env", { modules: false }]],
+      })
+    )
+    .pipe(gulp.dest("dist/libs"));
 }
 
-exports.watch = watch;
-exports.compile = compile;
+function copy() {
+  return gulp
+    .src(
+      [
+        "css**/*.*",
+        "demo/**/*.*",
+        "fonts**/*.*",
+        "img**/*.*",
+        "js**/*.*",
+        "libs/**/*.css",
+        "libs/**/*.svg",
+        "libs/**/*.png",
+        "libs/**/*.jpg",
+        "libs/**/*.gif",
+        "editor.html",
+      ],
+      { base: "." }
+    )
+    .pipe(gulp.dest("dist"));
+}
+
+function watchSass() {
+  gulp.watch("scss/**/*.scss", compileSass);
+}
+
+task("clean", function () {
+  return spawn("rm", ["-rf", path.join(__dirname, "dist")]);
+});
+
+task("default", series("clean", copy, compileEs, compileSass));

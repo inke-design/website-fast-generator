@@ -13,6 +13,9 @@
   "dependencies": {
     "jquery": "^3.0"
   },
+  "scripts": {
+    "build": "gulp"
+  },
   "keywords": [
     "vvvebjs",
     "drag-drop",
@@ -27,7 +30,11 @@
     "builder"
   ],
   "devDependencies": {
-    "gulp": "github:gulpjs/gulp",
+    "@babel/core": "^7.12.0",
+    "@babel/plugin-transform-strict-mode": "^7.10.4",
+    "@babel/preset-env": "^7.12.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-sass": "^4.0.2"
   }
 }

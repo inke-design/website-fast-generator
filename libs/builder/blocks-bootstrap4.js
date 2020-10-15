@@ -16,15 +16,27 @@ limitations under the License.
 https://github.com/givanz/Vvvebjs
 */
 
-Vvveb.BlocksGroup['Bootstrap 4 Snippets'] =
-["bootstrap4/signin-split", "bootstrap4/slider-header", "bootstrap4/image-gallery", "bootstrap4/video-header", "bootstrap4/about-team", "bootstrap4/portfolio-one-column", "bootstrap4/portfolio-two-column", "bootstrap4/portfolio-three-column", "bootstrap4/portfolio-four-column"];
-
+Vvveb.BlocksGroup["Bootstrap 4 Snippets"] = [
+  "bootstrap4/signin-split",
+  "bootstrap4/slider-header",
+  "bootstrap4/image-gallery",
+  "bootstrap4/video-header",
+  "bootstrap4/about-team",
+  "bootstrap4/portfolio-one-column",
+  "bootstrap4/portfolio-two-column",
+  "bootstrap4/portfolio-three-column",
+  "bootstrap4/portfolio-four-column",
+];
+Vvveb.BlocksGroup["Custome Snippets"] = [
+  "custome/layout"
+];
 
 Vvveb.Blocks.add("bootstrap4/signin-split", {
-    name: "Modern Sign In Page with Split Screen Format",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',    
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/sign-in-split.jpg",
-    html: `
+  name: "Modern Sign In Page with Split Screen Format",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/sign-in-split.jpg",
+  html: `
 <div class="container-fluid">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -144,13 +156,14 @@ Vvveb.Blocks.add("bootstrap4/signin-split", {
 </style>  
 </div>
 `,
-});    
+});
 
 Vvveb.Blocks.add("bootstrap4/image-gallery", {
-    name: "Image gallery",
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/thumbnail-gallery.jpg",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',    
-    html: `
+  name: "Image gallery",
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/thumbnail-gallery.jpg",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',
+  html: `
 <div class="container">
 
   <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Thumbnail Gallery</h1>
@@ -223,13 +236,14 @@ Vvveb.Blocks.add("bootstrap4/image-gallery", {
 
 </div>
 `,
-});    
+});
 
 Vvveb.Blocks.add("bootstrap4/slider-header", {
-    name: "Image Slider Header",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/full-slider.jpg",
-    html:`
+  name: "Image Slider Header",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/full-slider.jpg",
+  html: `
 <header class="slider">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -285,12 +299,12 @@ Vvveb.Blocks.add("bootstrap4/slider-header", {
 `,
 });
 
-
 Vvveb.Blocks.add("bootstrap4/video-header", {
-    name: "Video Header",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/video-header.jpg",
-    html:`
+  name: "Video Header",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/video-header.jpg",
+  html: `
 <header class="video">
   <div class="overlay"></div>
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -368,13 +382,12 @@ header.video .overlay {
 `,
 });
 
-
-
 Vvveb.Blocks.add("bootstrap4/about-team", {
-    name: "About and Team Section",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/about-team.jpg",
-    html:`
+  name: "About and Team Section",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/about-team.jpg",
+  html: `
 <header class="bg-primary text-center py-5 mb-4">
   <div class="container">
     <h1 class="font-weight-light text-white">Meet the Team</h1>
@@ -430,13 +443,12 @@ Vvveb.Blocks.add("bootstrap4/about-team", {
 `,
 });
 
-
-
 Vvveb.Blocks.add("bootstrap4/portfolio-one-column", {
-    name: "One Column Portfolio Layout",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-one-column.jpg",
-    html:`
+  name: "One Column Portfolio Layout",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-one-column.jpg",
+  html: `
     <div class="container">
 
       <!-- Page Heading -->
@@ -542,13 +554,12 @@ Vvveb.Blocks.add("bootstrap4/portfolio-one-column", {
 `,
 });
 
-
-
 Vvveb.Blocks.add("bootstrap4/portfolio-two-column", {
-    name: "Two Column Portfolio Layout",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-one-column.jpg",
-    html:`
+  name: "Two Column Portfolio Layout",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-one-column.jpg",
+  html: `
 <div class="container">
 
   <!-- Page Heading -->
@@ -656,10 +667,11 @@ Vvveb.Blocks.add("bootstrap4/portfolio-two-column", {
 });
 
 Vvveb.Blocks.add("bootstrap4/portfolio-three-column", {
-    name: "Three Column Portfolio Layout",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-three-column.jpg",
-    html:`
+  name: "Three Column Portfolio Layout",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-three-column.jpg",
+  html: `
 <div class="container">
 
   <!-- Page Heading -->
@@ -767,135 +779,14 @@ Vvveb.Blocks.add("bootstrap4/portfolio-three-column", {
 });
 
 
-Vvveb.Blocks.add("bootstrap4/portfolio-four-column", {
-    name: "Four Column Portfolio Layout",
-	dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',        
-    image: "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-four-column.jpg",
-    html:`
+Vvveb.Blocks.add("custome/layout", {
+  name: "自定义模板",
+  dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
+  image:
+    "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-four-column.jpg",
+  html: `
 <div class="container">
-
-  <!-- Page Heading -->
-  <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
-  </h1>
-
-  <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project One</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Two</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Three</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Four</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Five</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Six</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Seven</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Eight</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci dicta dignissimos neque animi ea, veritatis, provident hic consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <!-- Pagination -->
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-    </li>
-  </ul>
-
+  <h2>test layout</h2>
 </div>
 `,
 });
