@@ -4,10 +4,23 @@ const babel = require("gulp-babel");
 const { watch, series, task } = require("gulp");
 const spawn = require("child_process").spawn;
 const path = require("path");
+const named = require("vinyl-named");
+const webpack = require("webpack-stream");
+var rename = require("gulp-rename");
+
+const IMPORT_FILES = ["./src/libs/builder/blocks-bootstrap4.js"];
+
+function getFileName(path) {
+  return path.replace(/(.*\/)*([^.]+).*/gi, "$2");
+}
+
+function getFilePath(path) {
+  return path.replace(/^(\.\/)|(\.\w+)$/gi, '');
+}
 
 function compileSass() {
   return gulp
-    .src("scss/**/*.scss")
+    .src("src/scss/**/*.scss")
     .pipe(sass())
     .on("error", sass.logError)
     .pipe(gulp.dest("dist/css"));
@@ -15,7 +28,7 @@ function compileSass() {
 
 function compileEs() {
   return gulp
-    .src("libs/**/*.js")
+    .src("src/libs/**/*.js")
     .pipe(
       babel({
         presets: [["@babel/preset-env", { modules: false }]],
@@ -24,33 +37,74 @@ function compileEs() {
     .pipe(gulp.dest("dist/libs"));
 }
 
+function compileEsWithWebpack() {
+  const entry = IMPORT_FILES.reduce((sum,filePath) => {
+    sum[getFilePath(filePath)] = filePath
+    return sum
+  }, {})
+
+  return gulp
+    .src(IMPORT_FILES, { base: "./src" })
+    .pipe(
+      webpack({
+        entry,
+        mode: "development",
+        devtool: "none",
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: "babel-loader",
+                options: {
+                  presets: ["@babel/preset-env"],
+                  plugins: ["@babel/plugin-proposal-object-rest-spread"],
+                },
+              },
+            },
+          ],
+        },
+        output: {
+          filename: '[name].js',
+        }
+      })
+    )
+    .pipe(rename(path => {
+      path.dirname = path.dirname.replace(/^(src)\//, '')
+    }))
+    .pipe(gulp.dest("dist"));
+}
+
 function copy() {
   return gulp
     .src(
       [
-        "css**/*.*",
-        "demo/**/*.*",
-        "fonts**/*.*",
-        "img**/*.*",
-        "js**/*.*",
-        "libs/**/*.css",
-        "libs/**/*.svg",
-        "libs/**/*.png",
-        "libs/**/*.jpg",
-        "libs/**/*.gif",
-        "editor.html",
-      ],
-      { base: "." }
+        "src/css**/*.*",
+        "src/demo*/**/*.*",
+        "src/fonts**/*.*",
+        "src/img**/*.*",
+        "src/js**/*.*",
+        "src/template*/**/*.*",
+        "src/libs*/**/*.css",
+        "src/libs*/**/*.svg",
+        "src/libs*/**/*.png",
+        "src/libs*/**/*.jpg",
+        "src/libs*/**/*.gif",
+        "src/editor.html",
+      ]
+      // { base: "" }
     )
     .pipe(gulp.dest("dist"));
 }
 
 function watchSass() {
-  gulp.watch("scss/**/*.scss", compileSass);
+  gulp.watch("src/scss/**/*.scss", compileSass);
 }
 
 task("clean", function () {
   return spawn("rm", ["-rf", path.join(__dirname, "dist")]);
 });
 
-task("default", series("clean", copy, compileEs, compileSass));
+task("default", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
+// task("default", series("clean", compileEsWithWebpack));

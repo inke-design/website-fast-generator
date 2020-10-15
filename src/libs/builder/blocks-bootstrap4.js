@@ -15,6 +15,12 @@ limitations under the License.
 
 https://github.com/givanz/Vvvebjs
 */
+import LayoutTemplate from '../../template/layout/index.js'
+import { test } from '../../template/layout/main'
+
+test()
+
+console.log('LayoutTemplate',LayoutTemplate, test)
 
 Vvveb.BlocksGroup["Bootstrap 4 Snippets"] = [
   "bootstrap4/signin-split",
@@ -784,9 +790,5 @@ Vvveb.Blocks.add("custome/layout", {
   dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/image.svg">',
   image:
     "https://startbootstrap.com/assets/img/screenshots/snippets/portfolio-four-column.jpg",
-  html: `
-<div class="container">
-  <h2>test layout</h2>
-</div>
-`,
+  html: LayoutTemplate,
 });
