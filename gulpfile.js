@@ -8,7 +8,7 @@ const named = require("vinyl-named");
 const webpack = require("webpack-stream");
 var rename = require("gulp-rename");
 
-const IMPORT_FILES = ["./src/libs/builder/blocks-bootstrap4.js"];
+const IMPORT_FILES = ["./src/libs/builder/blocks-bootstrap4.js", "./src/libs/builder/initTemplate.js"];
 
 function getFileName(path) {
   return path.replace(/(.*\/)*([^.]+).*/gi, "$2");

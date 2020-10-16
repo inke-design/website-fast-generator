@@ -121,81 +121,64 @@
 
 						<div class="header">
 							<ul class="nav nav-tabs  nav-fill" id="elements-tabs" role="tablist">
-							  <li class="nav-item component-tab">
-								<a class="nav-link active" id="components-tab" data-toggle="tab" href="#components" role="tab" aria-controls="components" aria-selected="true" title="组件"><img src="libs/builder/icons/product.svg" height="23"> <div><small>Components</small></div></a>
+								<li class="nav-item blocks-tab">
+								<a class="nav-link active" id="blocks-tab" data-toggle="tab" href="#blocks" role="tab" aria-controls="blocks" aria-selected="false" title="模块"><img src="libs/builder/icons/list_group.svg" height="23"> <div><small>Sections</small></div></a>
+								</li>
+
+								<li class="nav-item component-tab">
+								<a class="nav-link" id="components-tab" data-toggle="tab" href="#components" role="tab" aria-controls="components" aria-selected="true" title="组件"><img src="libs/builder/icons/product.svg" height="23"> <div><small>Components</small></div></a>
 							  </li>
 							  <!-- li class="nav-item blocks-tab">
 								<a class="nav-link" id="blocks-tab" data-toggle="tab" href="#blocks" role="tab" aria-controls="blocks" aria-selected="false" title="Sections"><img src="libs/builder/icons/list_group.svg" width="24" height="23"> <div><small>Sections</small></div></a>
 							  </li -->
-							  <li class="nav-item blocks-tab">
-								<a class="nav-link" id="blocks-tab" data-toggle="tab" href="#blocks" role="tab" aria-controls="blocks" aria-selected="false" title="模块"><img src="libs/builder/icons/list_group.svg" height="23"> <div><small>Sections</small></div></a>
-							  </li>
+							  
 							  <li class="nav-item component-properties-tab" style="display:none">
-								<a class="nav-link" id="properties-tab" data-toggle="tab" href="#properties" role="tab" aria-controls="blocks" aria-selected="false" title="属性"><img src="libs/builder/icons/filters.svg" height="23"> <div><small>Properties</small></div></a>
+								<a class="nav-link" id="properties-tab" data-toggle="tab" href="#properties" role="tab" aria-controls="properties" aria-selected="false" title="属性"><img src="libs/builder/icons/filters.svg" height="23"> <div><small>Properties</small></div></a>
 							  </li>
 							</ul>
 					
 							<div class="tab-content">
-							  <div class="tab-pane fade show active" id="components" role="tabpanel" aria-labelledby="components-tab">
-								  
-								   <div class="search">
-										  <input class="form-control form-control-sm component-search" placeholder="Search components" type="text" data-vvveb-action="componentSearch" data-vvveb-on="keyup">
-										  <button class="clear-backspace"  data-vvveb-action="clearComponentSearch">
-											  <i class="la la-close"></i>
-											</button>
-									</div>
-
-									<div class="drag-elements-sidepane sidepane">
-									  <div>
-										  
-										<ul class="components-list clearfix" data-type="leftpanel">
-										</ul>
-
-									</div>
-								</div>
-							</div>
-							  
-							  <div class="tab-pane fade" id="blocks" role="tabpanel" aria-labelledby="blocks-tab">
-								  
-
+								<div class="tab-pane fade show active" id="blocks" role="tabpanel" aria-labelledby="blocks-tab">
+									
+	
 										<ul class="nav nav-tabs nav-fill sections-tabs" id="properties-tabs" role="tablist">
-										  <li class="nav-item content-tab">
+											<li class="nav-item content-tab">
 											<a class="nav-link active" data-toggle="tab" href="#sections-new-tab" role="tab" aria-controls="components" aria-selected="true">
 												<i class="la la-plus"></i> <div><span>添加模块</span></div></a>
-										  </li>
-										  <li class="nav-item style-tab">
+											</li>
+											<li class="nav-item style-tab">
 											<a class="nav-link" data-toggle="tab" href="#sections-list" role="tab" aria-controls="blocks" aria-selected="false">
 												<i class="la la-bars"></i> <div><span>页面模块</span></div></a>
-										  </li>
+											</li>
 										</ul>
 								
 										<div class="tab-content">
 											 <div class="tab-pane fade show active" id="sections-new-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
-
-
-													   <div class="search">
-															  <input class="form-control form-control-sm block-search" placeholder="Search sections" type="text" data-vvveb-action="blockSearch" data-vvveb-on="keyup">
-															  <button class="clear-backspace"  data-vvveb-action="clearBlockSearch">
-																  <i class="la la-close"></i>
-															  </button>
+	
+	
+														 <div class="search">
+																<input class="form-control form-control-sm block-search" placeholder="Search sections" type="text" data-vvveb-action="blockSearch" data-vvveb-on="keyup">
+																<button class="clear-backspace"  data-vvveb-action="clearBlockSearch">
+																	<i class="la la-close"></i>
+																</button>
 														</div>
-
-											  
+	
+												
 														<div class="drag-elements-sidepane sidepane">
-														  <div>
-															  
+															<div>
+																
 															<ul class="blocks-list clearfix" data-type="leftpanel">
 															</ul>
-
-														  </div>
+	
+															</div>
 														</div>
-
+	
 											</div>
 											
 											 <div class="tab-pane fade show" id="sections-list" data-section="style" role="tabpanel" aria-labelledby="style-tab">
-
+	
 								<div class="sections">
-													  
+														
 														<div class="section-item">
 															<div class="handle"></div>
 															<div>
@@ -225,13 +208,33 @@
 															</div>
 														</div>														
 														
-												  </div>
+													</div>
 																									
 											</div>
 											
 										</div>
 							
-							  </div>
+								</div>
+
+							  <div class="tab-pane fade " id="components" role="tabpanel" aria-labelledby="components-tab">
+								  
+								   <div class="search">
+										  <input class="form-control form-control-sm component-search" placeholder="Search components" type="text" data-vvveb-action="componentSearch" data-vvveb-on="keyup">
+										  <button class="clear-backspace"  data-vvveb-action="clearComponentSearch">
+											  <i class="la la-close"></i>
+											</button>
+									</div>
+
+									<div class="drag-elements-sidepane sidepane">
+									  <div>
+										  
+										<ul class="components-list clearfix" data-type="leftpanel">
+										</ul>
+
+									</div>
+								</div>
+							</div>
+							  
 							
 								<div class="tab-pane fade" id="properties" role="tabpanel" aria-labelledby="blocks-tab">
 									<div class="component-properties-sidepane">
@@ -1066,7 +1069,8 @@
 <script src="libs/builder/components-widgets.js"></script>	
 
 <!-- blocks-->
-<script src="libs/builder/blocks-bootstrap4.js"></script>	
+<!-- <script src="libs/builder/blocks-bootstrap4.js"></script>	 -->
+<script src="libs/builder/initTemplate.js"></script>	
 
 <!-- plugins -->
 
