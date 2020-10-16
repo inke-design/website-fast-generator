@@ -80,6 +80,7 @@ function copy() {
   return gulp
     .src(
       [
+        "favicon.ico",
         "src/css**/*.*",
         "src/demo*/**/*.*",
         "src/fonts**/*.*",

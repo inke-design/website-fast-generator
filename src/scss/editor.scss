@@ -26,10 +26,21 @@ $input-btn-padding-y: .4rem;
 $input-btn-padding-x: .5rem;
 $custom-select-padding-y: .4rem;
 
-#logo
-{
-	margin-left: 0.5rem;
-	margin-top: 0.15rem;
+.logo-box {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	float: left;
+	#logo
+	{
+		margin-left: 0.5rem;
+		margin-top: 0.15rem;
+		height: 30px;
+	}
+	.title {
+		font-size: 14px;
+		align-self: flex-end;
+	}
 }
 
 $input-height: default;
