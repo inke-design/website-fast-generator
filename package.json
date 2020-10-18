@@ -14,7 +14,8 @@
     "jquery": "^3.0"
   },
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "dev": "gulp build & gulp dev"
   },
   "keywords": [
     "vvvebjs",
