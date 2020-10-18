@@ -9,28 +9,35 @@
 
 
 ## 使用
-1. 根目录执行`npm run build`
-2. vscode安装`Live Server`插件（相当于一个http资源服务器）
+- 开发调试
+1. `npm install` 或者 `yarn install`
+2. `npm run dev`
+3. vscode安装`Live Server`插件（相当于一个http资源服务器
 3. 在`dist`目录找到`editor.html`，右键`Open with Live Server`,即可实时预览
+
+- 生产打包
+1. `npm install` 或者 `yarn install`
+2. 根目录执行`npm run build`
+
 
 ## 项目结构
 ```
 ├── LICENSE
 ├── README.md
-├── dist									打包后文件目录
-├── gulpfile.js						gulp配置文件
+├── dist                   打包后文件目录
+├── gulpfile.js            gulp配置文件
 ├── node_modules
 ├── package.json
-├── src										开发源代码目录
-│   ├── css								样式
+├── src                    开发源代码目录
+│   ├── css                样式
 │   ├── demo
-│   ├── editor.html				编辑器的html
-│   ├── fonts							字体
-│   ├── img								图片资源
-│   ├── js								第三方js
-│   ├── libs							库文件，主要逻辑在此
+│   ├── editor.html        编辑器的html
+│   ├── fonts              字体
+│   ├── img                图片资源
+│   ├── js                 第三方js
+│   ├── libs               库文件，主要逻辑在此
 │   ├── scss
-│   └── template					*模板库
+│   └── template           *模板库
 └── yarn.lock
 ```
 开发过程中常接触的文件夹一般是：
