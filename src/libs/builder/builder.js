@@ -942,9 +942,13 @@ Vvveb.Builder = {
 				if (self.dragMoveMutation === false) {
 					if (self.component.dragHtml) //if dragHtml is set for dragging then set real component html
 					{
-						newElement = $(self.component.html);
-						self.dragElement.replaceWith(newElement);
-						self.dragElement = newElement;
+						// newElement = $(self.component.html);
+						const modelRes = Vvveb.Model.dispatch({
+							type: Vvveb.Model.TYPES.ADD,
+							node: self.component
+						})
+						self.dragElement.replaceWith(modelRes.dom);
+						self.dragElement = modelRes.dom;
 					}
 					if (self.component.afterDrop) self.dragElement = self.component.afterDrop(self.dragElement);
 				}
@@ -1527,7 +1531,6 @@ Vvveb.Gui = {
 	newPage: function () {
 
 		var newPageModal = $('#new-page-modal');
-		console.log('newPage')
 		newPageModal.modal("show").find("form").off("submit").submit(function (e) {
 
 			var data = {};

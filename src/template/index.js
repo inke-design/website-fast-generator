@@ -4,7 +4,7 @@ import SliderHeader from "./bootstrap4/slider-header";
 import ImageGallery from "./bootstrap4/image-gallery";
 
 // 自定义代码片段
-import LayoutTemplate from "./custome/layout/index.js";
+import { template as LayoutTemplate, css, script } from "./custome/layout/index.js";
 import DemoTemplate from "./custome/demo/index";
 
 const TEST_IMAGE = "//img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
@@ -48,6 +48,8 @@ const templateConfig = {
         dragHtml: `<img src="${TEST_IMAGE}">`,
         image: TEST_IMAGE,
         html: LayoutTemplate,
+        css,
+        script,
       },
       {
         key: "custome/demo",
