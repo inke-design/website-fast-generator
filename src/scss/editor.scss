@@ -43,6 +43,11 @@ $custom-select-padding-y: .4rem;
 	}
 }
 
+.component-code-eidtor {
+	width: 100%;
+	min-height: 300px;;
+}
+
 $input-height: default;
 
 @import "line-awesome";

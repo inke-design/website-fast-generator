@@ -41,14 +41,17 @@ Vvveb.Model = {
    * dispatch action
    *
    * @param {String} action.type action type 值为this.TYPES
-   * @param {Object} action.data action.payload
+   * @param {Object} action.node 节点data
+   * @param {Function} action.before 操作node json数据完成，未转为真实dom前
+   * @param {Function} action.after node转为真实dom后
+   * 
    */
   dispatch(action) {
     return this.reducer(action);
   },
 
   reducer(action) {
-    const { type, node } = action;
+    const { type, node, before, after } = action;
     switch (action.type) {
       case this.TYPES.ADD: {
         const uid = uuid();
@@ -56,6 +59,8 @@ Vvveb.Model = {
           uuid: uid,
           node,
         };
+
+        before && before({ ...vNode });
         const $dom = generateDom(
           { html: node.html, css: node.css, script: node.script },
           vNode
@@ -63,6 +68,11 @@ Vvveb.Model = {
 
         vNode.$dom = $dom;
         this.store.nodes.push(vNode);
+
+        after && after({
+          dom: $dom,
+          ...vNode,
+        })
         return {
           dom: $dom,
         };

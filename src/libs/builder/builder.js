@@ -407,6 +407,34 @@ Vvveb.Components = {
 		}
 
 		if (component.init) component.init(Vvveb.Builder.selectedEl.get(0));
+	},
+
+	renderCodeEditor: function (type) {
+
+		var component = this._components[type];
+
+		var componentsPanel = $(this.componentPropertiesElement);
+		var defaultSection = this.componentPropertiesDefaultSection;
+		var componentsPanelSections = {};
+
+		$(this.componentPropertiesElement + " .tab-pane").each(function () {
+			var sectionName = this.dataset.section;
+			componentsPanelSections[sectionName] = $(this);
+
+		});
+
+		Object.keys(componentsPanelSections).forEach(sectionName => {
+
+			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
+			const section = componentsPanelSections[sectionName].find(".section")
+			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${component.name} Code`);
+
+			section.html('')
+			section.append('<textarea class="component-code-eidtor"></textarea>')
+		})
+
+		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
+
 	}
 };
 
@@ -723,14 +751,15 @@ Vvveb.Builder = {
 
 	loadNodeComponent: function (node) {
 		data = Vvveb.Components.matchNode(node);
-		var component;
+		var componentType;
 
 		if (data)
-			component = data.type;
+		componentType = data.type;
 		else
-			component = Vvveb.defaultComponent;
+		componentType = Vvveb.defaultComponent;
 
-		Vvveb.Components.render(component);
+		// Vvveb.Components.render(component);
+		Vvveb.Components.renderCodeEditor(componentType, data);
 
 	},
 
