@@ -22,7 +22,6 @@ https://github.com/givanz/VvvebJs
 (function () {
 	var cache = {};
 
-	console.log('builder this', this)
 	this.tmpl = function tmpl(str, data) {
 		// Figure out if we're getting a template, or if we need to
 		// load the template - and be sure to cache the result.
@@ -771,12 +770,29 @@ Vvveb.Builder = {
 		oldParent = node.parentNode;
 		oldNextSibling = node.nextSibling;
 
+		const nodeUUID = $(node).data('uuid');
 		next = $(node).prev();
 
-		if (next.length > 0) {
-			next.before(node);
+		// nodeUUID存在，则为我们定义模板组件
+		if(nodeUUID) {
+			Vvveb.Model.dispatch({
+				type: Vvveb.Model.TYPES.MOVE_UP,
+				uuid: nodeUUID,
+				dom: node,
+			}).after(() => {
+				if (next.length > 0) {
+					next.before(node);
+				} else {
+					$(node).parent().before(node);
+				}
+			})
 		} else {
-			$(node).parent().before(node);
+			// 否则就是模板组件里面的小组件
+			if (next.length > 0) {
+				next.before(node);
+			} else {
+				$(node).parent().before(node);
+			}
 		}
 
 		newParent = node.parentNode;
@@ -801,12 +817,29 @@ Vvveb.Builder = {
 		oldParent = node.parentNode;
 		oldNextSibling = node.nextSibling;
 
+		const nodeUUID = $(node).data('uuid');
 		next = $(node).next();
 
-		if (next.length > 0) {
-			next.after(node);
+		// nodeUUID存在，则为我们定义模板组件
+		if(nodeUUID) {
+			Vvveb.Model.dispatch({
+				type: Vvveb.Model.TYPES.MOVE_DOWN,
+				uuid: nodeUUID,
+				dom: node,
+			}).after(() => {
+				if (next.length > 0) {
+					next.after(node);
+				} else {
+					$(node).parent().after(node);
+				}
+			})
 		} else {
-			$(node).parent().after(node);
+			// 否则就是模板组件里面的小组件
+			if (next.length > 0) {
+				next.after(node);
+			} else {
+				$(node).parent().after(node);
+			}
 		}
 
 		newParent = node.parentNode;
@@ -827,13 +860,24 @@ Vvveb.Builder = {
 			node = Vvveb.Builder.selectedEl;
 		}
 
-		clone = node.clone();
-
-		node.after(clone);
+		const nodeUUID = $(node).data('uuid');
+		if(nodeUUID) {
+			Vvveb.Model.dispatch({
+				type: Vvveb.Model.TYPES.CLONE,
+				dom: node,
+				uuid: nodeUUID,
+			}).after(afterNode => {
+				clone = afterNode.$dom;
+				node.after(clone);
+			})
+		} else {
+			clone = node.clone();
+			node.after(clone);
+		}
 
 		node = clone.click();
-
 		element = clone.get(0);
+
 
 		Vvveb.Undo.addMutation({
 			type: 'childList',
@@ -972,13 +1016,15 @@ Vvveb.Builder = {
 					if (self.component.dragHtml) //if dragHtml is set for dragging then set real component html
 					{
 						// newElement = $(self.component.html);
-						const modelRes = Vvveb.Model.dispatch({
+						Vvveb.Model.dispatch({
 							type: Vvveb.Model.TYPES.ADD,
 							node: self.component
+						}).after(afterNode => {
+							self.dragElement.replaceWith(afterNode.$dom);
+							self.dragElement = afterNode.$dom;
 						})
-						self.dragElement.replaceWith(modelRes.dom);
-						self.dragElement = modelRes.dom;
 					}
+
 					if (self.component.afterDrop) self.dragElement = self.component.afterDrop(self.dragElement);
 				}
 
@@ -1112,6 +1158,7 @@ Vvveb.Builder = {
 			$("#select-box").hide();
 
 			node = self.selectedEl.get(0);
+			const nodeUUID = $(node).data('uuid');
 
 			Vvveb.Undo.addMutation({
 				type: 'childList',
@@ -1120,7 +1167,13 @@ Vvveb.Builder = {
 				nextSibling: node.nextSibling
 			});
 
-			self.selectedEl.remove();
+			nodeUUID ? Vvveb.Model.dispatch({
+				type: Vvveb.Model.TYPES.REMOVE,
+				uuid: nodeUUID,
+				dom: node,
+			}).after(() => {
+				self.selectedEl.remove();
+		}) : self.selectedEl.remove();
 
 			event.preventDefault();
 			return false;
