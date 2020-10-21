@@ -98,12 +98,12 @@
 
 					  <div id="filemanager"> 
 							<div class="header">
-								<a href="#" class="text-secondary">Pages</a>
+								<a href="#" class="text-secondary">内置Pages</a>
 
 									<div class="btn-group responsive-btns mr-4 float-right" role="group">
-									  <button class="btn btn-link btn-sm" title="新页面" id="new-file-btn" data-vvveb-action="newPage" data-vvveb-shortcut="">
+									  <!-- <button class="btn btn-link btn-sm" title="新页面" id="new-file-btn" data-vvveb-action="newPage" data-vvveb-shortcut="">
 										  <i class="la la-file"></i> <small>创建页面</small>
-									  </button>
+									  </button> -->
 									  
 									  <!--  &ensp;
 									  <button class="btn btn-link text-dark p-0"  title="Delete file" id="delete-file-btn" data-vvveb-action="deletePage" data-vvveb-shortcut="">
@@ -180,37 +180,7 @@
 											
 											 <div class="tab-pane fade show" id="sections-list" data-section="style" role="tabpanel" aria-labelledby="style-tab">
 	
-								<div class="sections">
-														
-														<div class="section-item">
-															<div class="handle"></div>
-															<div>
-																
-																<div class="name">Top header <div class="type">header</div></div>
-																
-															</div>
-															<div class="buttons">
-																<a class="delete-btn" href="" title="删除节点"><i class="la la-trash text-danger"></i></a>
-																<a class="up-btn" href="" title="上移节点"><i class="la la-arrow-up"></i></a>
-																<a class="down-btn" href="" title="下移节点"><i class="la la-arrow-down"></i></a>
-																<a class="properties-btn" href="" title="属性"><i class="la la-cog"></i></a>
-															</div>
-														</div>														
-														<div class="section-item">
-															<div class="handle"></div>
-															<div>
-																
-																<div class="name">Welcome area <div class="type">section</div></div>
-																
-															</div>
-															<div class="buttons">
-																<a class="delete-btn" href="" title="删除节点"><i class="la la-trash text-danger"></i></a>
-																<a class="up-btn" href="" title="上移节点"><i class="la la-arrow-up"></i></a>
-																<a class="down-btn" href="" title="下移节点"><i class="la la-arrow-down"></i></a>
-																<a class="properties-btn" href="" title="属性"><i class="la la-cog"></i></a>
-															</div>
-														</div>														
-														
+													<div class="sections">
 													</div>
 																									
 											</div>
@@ -1120,14 +1090,38 @@ $(document).ready(function()
 	Vvveb.Sections.init();
 	Vvveb.FileManager.addPages(
 	[
-		{name:"narrow-jumbotron", title:"Jumbotron",  url: "demo/narrow-jumbotron/index.html", file: "demo/narrow-jumbotron/index.html", assets: ['demo/narrow-jumbotron/narrow-jumbotron.css']},
-		{name:"landing-page", title:"Landing page",  url: "demo/startbootstrap-landing-page/index.html", file: "demo/startbootstrap-landing-page/index.html", assets: ['demo/startbootstrap-landing-page/css/landing-page.min.css']},
-		{name:"album", title:"Album",  url: "demo/album/index.html", file: "demo/album/index.html", folder:"content", assets: ['demo/album/album.css']},
-		{name:"blog", title:"Blog",  url: "demo/blog/index.html", file: "demo/blog/index.html", folder:"content", assets: ['demo/blog/blog.css']},
-		{name:"carousel", title:"Carousel",  url: "demo/carousel/index.html",  file: "demo/carousel/index.html", folder:"content", assets: ['demo/carousel/carousel.css']},
-		{name:"offcanvas", title:"Offcanvas",  url: "demo/offcanvas/index.html", file: "demo/offcanvas/index.html", folder:"content", assets: ['demo/offcanvas/offcanvas.css','demo/offcanvas/offcanvas.js']},
-		{name:"pricing", title:"Pricing",  url: "demo/pricing/index.html", file: "demo/pricing/index.html", folder:"ecommerce", assets: ['demo/pricing/pricing.css']},
-		{name:"product", title:"Product",  url: "demo/product/index.html", file: "demo/product/index.html", folder:"ecommerce", assets: ['demo/product/product.css']},
+		{ 
+			name:"product", 
+			title:"产品介绍页", 
+			url: "demo/product/index.html", 
+			file: "demo/product/index.html", 
+			folder:"电商网站", 
+			assets: ['demo/product/product.css']
+		},
+		{ 
+			name:"pricing", 
+			title:"价格展示", 
+			url: "demo/pricing/index.html", 
+			file: "demo/pricing/index.html", 
+			folder:"电商网站", 
+			assets: ['demo/pricing/pricing.css']
+		},
+		{ 
+			name:"carousel", 
+			title:"全屏轮播", 
+			url: "demo/carousel/index.html", 
+			file: "demo/carousel/index.html", 
+			folder:"带轮播图", 
+			assets: ['demo/carousel/carousel.css']
+		},
+		{ 
+			name:"blog", 
+			title:"简介博客", 
+			url: "demo/blog/index.html", 
+			file: "demo/blog/index.html", 
+			folder:"博客", 
+			assets: ['demo/blog/blog.css']
+		},
 		//uncomment php code below and rename file to .php extension to load saved html files in the editor
 		/*
 		<?php 
