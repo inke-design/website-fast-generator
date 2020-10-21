@@ -1,5 +1,5 @@
 const template = `
-<div class="container-fluid">
+<section class="container-fluid">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
     <div class="col-md-8 col-lg-6">
@@ -116,7 +116,7 @@ const template = `
   color: #777;
 }
 </style>  
-</div>
+</section>
 `;
 
 export default template;

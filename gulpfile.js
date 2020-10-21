@@ -110,5 +110,5 @@ task("clean", function () {
 task("default", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
 task("build", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
 task("dev", function() {
-  watch('src*/**/*.*', series(compileEs, compileEsWithWebpack, compileSass))
+  watch('src*/**/*.*', series(copy, compileEs, compileEsWithWebpack, compileSass))
 })

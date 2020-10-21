@@ -1,5 +1,5 @@
 const template = `
-<div class="container">
+<section class="container">
 
   <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Thumbnail Gallery</h1>
 
@@ -69,7 +69,7 @@ const template = `
     </div>
   </div>
 
-</div>
+</section>
 `
 
 export default template

@@ -1,7 +1,7 @@
 const template = `
-<div class="container layout-container">
+<section class="container layout-container">
   <h2 class="test-title">test layout 2</h2>
-</div>`;
+</section>`;
 
 const css = `
 <style>

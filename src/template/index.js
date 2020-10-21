@@ -15,7 +15,7 @@ const templateConfig = {
     list: [
       {
         key: "bootstrap4/signin-split",
-        name: "Modern Sign In Page with Split Screen Format",
+        name: "登录模板",
         dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',
         image:
           "https://startbootstrap.com/assets/img/screenshots/snippets/sign-in-split.jpg",
@@ -23,7 +23,7 @@ const templateConfig = {
       },
       {
         key: "bootstrap4/slider-header",
-        name: "Image Slider Header",
+        name: "轮播图模板",
         dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',
         image:
           "https://startbootstrap.com/assets/img/screenshots/snippets/full-slider.jpg",
@@ -31,7 +31,7 @@ const templateConfig = {
       },
       {
         key: "bootstrap4/image-gallery",
-        name: "Image gallery",
+        name: "图库模板",
         image:
           "https://startbootstrap.com/assets/img/screenshots/snippets/thumbnail-gallery.jpg",
         dragHtml: '<img src="' + Vvveb.baseUrl + 'icons/product.png">',

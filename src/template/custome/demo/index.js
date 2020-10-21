@@ -1,6 +1,6 @@
 const template = `
-<div class="container">
+<section class="container">
   <h2 class="demo-title">this is a demo, will delete</h2>
-</div>`;
+</section>`;
 
 export default template;

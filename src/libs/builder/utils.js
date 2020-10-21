@@ -48,7 +48,9 @@ Vvveb.Utils = {
    * @returns
    */
   swapArray(arr, index, targetIndex) {
-    debugger;
+    if(index < 0 || targetIndex < 0) return arr;
+    if(index >= arr.length || targetIndex >= arr.length) return arr;
+
     let newArr = [...arr];
     let temp = this.clone(newArr[targetIndex]);
     newArr[targetIndex] = newArr[index];

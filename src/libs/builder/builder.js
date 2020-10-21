@@ -866,7 +866,7 @@ Vvveb.Builder = {
 				type: Vvveb.Model.TYPES.CLONE,
 				dom: node,
 				uuid: nodeUUID,
-			}).after(afterNode => {
+			}).after((err, afterNode) => {
 				clone = afterNode.$dom;
 				node.after(clone);
 			})
@@ -1019,7 +1019,7 @@ Vvveb.Builder = {
 						Vvveb.Model.dispatch({
 							type: Vvveb.Model.TYPES.ADD,
 							node: self.component
-						}).after(afterNode => {
+						}).after((err, afterNode) => {
 							self.dragElement.replaceWith(afterNode.$dom);
 							self.dragElement = afterNode.$dom;
 						})
@@ -1741,9 +1741,11 @@ Vvveb.Sections = {
 
 		sectionList.each(function (i, node) {
 
+			const $node = $(node);
+
 			var section = {
-				name: node.id.replace(/[^\w+]+/g, ' '),
-				id: node.id,
+				name: node.id.replace(/[^\w+]+/g, ' ') || $node.data('name'),
+				id: node.id || $node.data('uuid'),
 				type: node.tagName.toLowerCase(),
 				node: node
 			};
@@ -1762,7 +1764,6 @@ Vvveb.Sections = {
 
 	loadSections: function () {
 		var sections = this.getSections();
-
 		$(this.selector).html("");
 		for (i in sections) {
 			this.addSection(sections[i]);
@@ -1847,7 +1848,6 @@ Vvveb.FileManager = {
 
 		$(this.tree).on("click", "li[data-page] label", function (e) {
 			var page = $(this.parentNode).data("page");
-			//console.log(allowedComponents);
 			if (page) Vvveb.FileManager.loadPage(page, allowedComponents);
 			return false;
 		})
