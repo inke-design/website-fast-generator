@@ -54,7 +54,7 @@ Vvveb.Utils = {
       if(index >= arr.length || targetIndex >= arr.length) return arr;
 
       let newArr = [...arr];
-      let temp = this.clone(newArr[targetIndex]);
+      let temp = Vvveb.Utils.clone(newArr[targetIndex]);
       newArr[targetIndex] = newArr[index];
       newArr[index] = temp;
       return newArr;
