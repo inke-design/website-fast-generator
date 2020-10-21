@@ -81,7 +81,7 @@ Vvveb.Model = {
   
           if(index === -1 || index === 0) throw new Error('未找到节点或上移节点越界');
   
-          Vvveb.Utils.swapArray(this.store.nodes, index, index - 1);
+          Vvveb.Utils.Array.swap(this.store.nodes, index, index - 1);
   
           return { ...node }
         })
@@ -93,14 +93,29 @@ Vvveb.Model = {
   
           if(index === -1 || index === this.store.nodes.length - 1) throw new Error('未找到节点或下移节点越界');
   
-          Vvveb.Utils.swapArray(this.store.nodes, index, index + 1);
+          Vvveb.Utils.Array.swap(this.store.nodes, index, index + 1);
   
           return { ...node }
         })
       }
       // 编辑节点
       case this.TYPES.EDIT: {
-        break;
+        return this._baseAfter(() => {
+          const { index, node: vNode } = this.findNodeByUUID(uuid);
+          if(index === -1) throw new Error('未找到节点');
+
+          const vNodeNew = { ...vNode, node: { ...vNode.node, ...node } };
+          const $dom = Vvveb.Utils.generateDom(
+            { html: vNodeNew.node.html, css: vNodeNew.node.css, script: vNodeNew.node.script },
+            vNodeNew
+          );
+  
+          vNodeNew.$dom = $dom;
+          this.store.nodes = Vvveb.Utils.Array.replace(this.store.nodes, index, vNodeNew);
+          
+          vNode.$dom.replaceWith($dom);
+          return { ...vNodeNew }
+        })
       }
       // 拷贝节点
       case this.TYPES.CLONE: {
@@ -147,15 +162,15 @@ Vvveb.Model = {
     try {
       result = fn();
 
-      return { after: this.after(null, result) };
+      return { after: this._after(null, result) };
     } catch(err) {
       console.error('dipatch action报错:', err);
-      return { after: this.after(err, result) };
+      return { after: this._after(err, result) };
     }
   },
 
   // dispatch acion结束之后回调[非异步]
-  after() {
+  _after() {
     const args = arguments;
     const that = this;
     return function (cb) {
