@@ -558,6 +558,7 @@ Vvveb.Builder = {
 
 		self.loadControlGroups();
 		self.loadBlockGroups();
+		self.setBlocksContainerHeight()
 
 		self.selectedEl = null;
 		self.highlightEl = null;
@@ -573,6 +574,18 @@ Vvveb.Builder = {
 		self._initBox();
 
 		self.dragElement = null;
+	},
+
+	// 计算左侧模块容器高度
+	setBlocksContainerHeight() {
+		let navHeight = 0;
+		$(".drag-elements .nav-tabs").each((i, node) => {
+			navHeight += $(node).height()
+		 })
+		 const h = $("#left-panel").height() - $("#filemanager").height() - navHeight;
+		 
+		 $("#left-panel .drag-elements-sidepane").height(h - 80);
+		 return h;
 	},
 
 	/* controls */
