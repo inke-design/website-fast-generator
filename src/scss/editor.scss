@@ -45,7 +45,9 @@ $custom-select-padding-y: .4rem;
 
 .component-code-eidtor {
 	width: 100%;
-	min-height: 300px;;
+  min-height: 300px;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 $input-height: default;

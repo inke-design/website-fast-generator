@@ -3,7 +3,7 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
-  height: calc(100% - 35px);
+  height: calc(100%);
   color: black;
   direction: ltr;
 }
@@ -234,7 +234,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 
 .CodeMirror-lines {
   cursor: text;
-  min-height: 1px; /* prevents collapsing before first draw */
+  min-height: 300px; /* prevents collapsing before first draw */
 }
 .CodeMirror pre {
   /* Reset some styles that the rest of the page might have set */

@@ -408,32 +408,49 @@ Vvveb.Components = {
 		if (component.init) component.init(Vvveb.Builder.selectedEl.get(0));
 	},
 
-	renderCodeEditor: function (type) {
+  // 渲染代码编辑器
+	renderCodeEditor: function (type, data) {
 
-		var component = this._components[type];
+    const uuid = $(data).data('uuid');
+    const name = $(data).data('name');
 
-		var componentsPanel = $(this.componentPropertiesElement);
-		var defaultSection = this.componentPropertiesDefaultSection;
+    const vnode = Vvveb.Model.findNodeByUUID(uuid)
+    var component = this._components[type];
 		var componentsPanelSections = {};
 
 		$(this.componentPropertiesElement + " .tab-pane").each(function () {
 			var sectionName = this.dataset.section;
 			componentsPanelSections[sectionName] = $(this);
-
 		});
+    console.log('uuid', uuid, vnode);
+    if(!uuid) {
+      // 如果不是组件 卸载代码编辑器
+      Object.keys(componentsPanelSections).forEach(sectionName => {
+        console.log('sectionName', sectionName)
+        componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
+      })
+      Vvveb.CodeEditorMore.destroy()
+      return false
+    }
+    // 如果组件 加载载代码编辑器 并进行数据回填
+    const { node: { node:nodeData } } = vnode
+    const { html, css, script } = nodeData
+    Vvveb.CodeEditorMore.setValue({ uuid, html, css, script })
 
 		Object.keys(componentsPanelSections).forEach(sectionName => {
-
+      console.log('sectionName', sectionName)
 			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
 			const section = componentsPanelSections[sectionName].find(".section")
-			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${component.name} Code`);
+			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${name} Code`);
 
-			section.html('')
-			section.append('<textarea class="component-code-eidtor"></textarea>')
-		})
-
+      section.html('')
+      const id = `vvveb-code-editor-${sectionName}`
+      section.append(`<textarea id=${id} class="component-code-eidtor"></textarea>`)
+    })
+    
+    Vvveb.CodeEditorMore.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
-
+    console.log('Vvveb.CodeEditorMore', Vvveb.CodeEditorMore)
 	}
 };
 
@@ -758,7 +775,7 @@ Vvveb.Builder = {
 		componentType = Vvveb.defaultComponent;
 
 		// Vvveb.Components.render(component);
-		Vvveb.Components.renderCodeEditor(componentType, data);
+		Vvveb.Components.renderCodeEditor(componentType, node);
 
 	},
 
