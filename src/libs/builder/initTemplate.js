@@ -8,13 +8,17 @@ import templateConfig from "../../template";
 function initTempate(templateConfig) {
   Object.keys(templateConfig).forEach((groupKey) => {
     const group = templateConfig[groupKey];
-    const { groupName, list } = group;
+    // 如果组需要不显示
+    if(group.hide) return;
 
-    Vvveb.BlocksGroup[groupName] = list.map((templateItem) => {
+    const { groupName, list } = group;
+    const filterGroupList = list.filter(v => !v.hide);
+
+    Vvveb.BlocksGroup[groupName] = filterGroupList.map((templateItem) => {
       return templateItem.key;
     });
 
-    list.forEach((templateItem) => {
+    filterGroupList.forEach((templateItem) => {
       const { key, ...rest } = templateItem;
       Vvveb.Blocks.add(templateItem.key, rest);
     });

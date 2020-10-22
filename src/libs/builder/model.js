@@ -81,7 +81,7 @@ Vvveb.Model = {
   
           if(index === -1 || index === 0) throw new Error('未找到节点或上移节点越界');
   
-          Vvveb.Utils.Array.swap(this.store.nodes, index, index - 1);
+          this.store.nodes = Vvveb.Utils.Array.swap(this.store.nodes, index, index - 1);
   
           return { ...node }
         })
@@ -93,7 +93,7 @@ Vvveb.Model = {
   
           if(index === -1 || index === this.store.nodes.length - 1) throw new Error('未找到节点或下移节点越界');
   
-          Vvveb.Utils.Array.swap(this.store.nodes, index, index + 1);
+          this.store.nodes = Vvveb.Utils.Array.swap(this.store.nodes, index, index + 1);
   
           return { ...node }
         })

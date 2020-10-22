@@ -15,6 +15,7 @@ Vvveb.Utils = {
     script && $dom.append($(script));
 
     $dom.attr("data-uuid", vNode.uuid);
+    $dom.attr("id", vNode.uuid);
     ["type", "name"].forEach((key) => {
       $dom.attr(`data-${key}`, vNode.node[key]);
     });
@@ -54,7 +55,7 @@ Vvveb.Utils = {
       if(index >= arr.length || targetIndex >= arr.length) return arr;
 
       let newArr = [...arr];
-      let temp = this.clone(newArr[targetIndex]);
+      let temp = Vvveb.Utils.clone(newArr[targetIndex]);
       newArr[targetIndex] = newArr[index];
       newArr[index] = temp;
       return newArr;
