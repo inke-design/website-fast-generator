@@ -38,6 +38,10 @@ Vvveb.Model = {
    *
    */
   dispatch(action) {
+    if(!this.isShouldDispatch(action)) {
+      console.warn('数据未发生变更，没有必要dispatch action', action);
+      return;
+    }
     return this.reducer(action);
   },
 
@@ -154,6 +158,30 @@ Vvveb.Model = {
     })
 
     return { index, node }
+  },
+
+  /**
+   * action是否应该被触发
+   * 发现api被调用时候，可能数据根本没有变动，此时就没有必要dispatch一个action
+   * 从而避免触发 遍历nodes、生成dom等 不必要的操作
+   *
+   * @param {*} action dispatch action
+   * 
+   */
+  isShouldDispatch(action) {
+    const { type, node, uuid, dom } = action;
+
+    // 目前只有编辑节点需要优化
+    if(action.type === this.TYPES.EDIT) {
+      const { index, node: vNode } = this.findNodeByUUID(uuid);
+      if(index === -1) return false;
+
+      return Object.keys(node).some(changeKey => {
+        return node[changeKey] !== vNode.node[changeKey]
+      })
+    }
+
+    return true;
   },
 
   // 用于对reducer的操作再封装，统一捕获异常
