@@ -7,6 +7,10 @@ import ImageGallery from "./bootstrap4/image-gallery";
 import { template as LayoutTemplate, css, script } from "./custome/layout/index.js";
 import DemoTemplate from "./custome/demo/index";
 
+// Content
+import VideoCardCotent from "./content/video-card-content";
+
+
 // Footer
 import LiteFooter from "./footer/lite/index";
 import WithGroupFooter from "./footer/with-group-footer";
@@ -71,6 +75,20 @@ const templateConfig = {
         html: DemoTemplate,
       },
     ],
+  },
+  content: {
+    groupName: "Content模板",
+    list: [
+      {
+        key: "content/video-card",
+        name: "带视频播放内容模板",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzMzNzUzMzI4NCM3NTAjcG5n.png">',
+        image: '//img.ikstatic.cn/MTYwMzMzNzUzMzI4NCM3NTAjcG5n.png',
+        html: VideoCardCotent.html,
+        css: VideoCardCotent.css,
+        script: VideoCardCotent.script,
+      },
+    ]
   },
   footer: {
     groupName: "Footer模板",
