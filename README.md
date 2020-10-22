@@ -44,3 +44,18 @@
 * template文件夹，用于新增/修改模板
 * libs文件夹，用于修改/拓展平台的一些逻辑
 
+## Todo List
+What did we do & What will we do
+
+#### v0.1
+- [x] 支持ES6语法及转译
+- [x] 支持import/export modules
+- [x] 模板分离html、css、script
+- [x] model层设计，劫持所有操作，统一管理所有action
+- [x] 模板html、css、script实时编辑预览、语法高亮
+
+#### v0.2
+- [ ] 模板支持通过html、css、js本地文件编写，更好的语法提示, node统一打包处理
+- [ ] 模板html、css、script语法智能提示，自动补全
+
+
