@@ -14,32 +14,30 @@ Vvveb.CodeEditorMore = {
 	
 	init: function(doc) {
 
-		if (!this.codemirriorHTML)
-		{
       const { html, css, script } = this.value
       // 生成html编辑器
 			this.codemirriorHTML = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-content"), {
 				mode: 'text/html',
 				// lineNumbers: true,
 				autofocus: true,
-				// lineWrapping: true,
-				//viewportMargin:Infinity,
+				lineWrapping: true,
+				viewportMargin:Infinity,
         theme: 'material',
       });
       this.codemirriorCss= CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-style"), {
-				mode: 'text/css',
+				mode: 'css',
 				// lineNumbers: true,
 				autofocus: true,
-				// lineWrapping: true,
-				//viewportMargin:Infinity,
+				lineWrapping: true,
+				viewportMargin:Infinity,
         theme: 'material',
       });
       this.codemirriorScript = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-advanced"), {
-				mode: 'text/javascript',
+				mode: 'javascript',
 				// lineNumbers: true,
 				autofocus: true,
-				// lineWrapping: true,
-				//viewportMargin:Infinity,
+				lineWrapping: true,
+				viewportMargin:Infinity,
         theme: 'material',
       });
       this.codemirriorHTML.setValue(html)
@@ -56,7 +54,6 @@ Vvveb.CodeEditorMore = {
       this.codemirriorScript.on("blur", function (e, v) { 
 				that.uplateNode({ script: e.getValue() })
       });
-		}
 		
 		
 		//load code on document changes

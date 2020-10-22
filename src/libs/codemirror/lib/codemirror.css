@@ -6,6 +6,7 @@
   height: calc(100%);
   color: black;
   direction: ltr;
+  overflow: auto;
 }
 
 /* PADDING */

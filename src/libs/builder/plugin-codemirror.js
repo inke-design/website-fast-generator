@@ -11,7 +11,7 @@ Vvveb.CodeEditor = {
 		{
 			this.codemirror = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor textarea"), {
 				mode: 'text/html',
-				lineNumbers: true,
+				// lineNumbers: true,
 				autofocus: true,
 				lineWrapping: true,
 				//viewportMargin:Infinity,

@@ -102,7 +102,7 @@ Vvveb.Utils = {
       if(!Array.isArray(arr)) return [];
 
       return arr.filter((_, idx) => idx !== index);
-    }
+    },
   },
 
 };

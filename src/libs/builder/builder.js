@@ -259,8 +259,8 @@ Vvveb.Components = {
 		var componentsPanel = $(this.componentPropertiesElement);
 		var defaultSection = this.componentPropertiesDefaultSection;
 		var componentsPanelSections = {};
-
-		$(this.componentPropertiesElement + " .tab-pane").each(function () {
+    var propertiesElement = 
+		$(propertiesElement + " .tab-pane").each(function () {
 			var sectionName = this.dataset.section;
 			componentsPanelSections[sectionName] = $(this);
 
@@ -417,8 +417,8 @@ Vvveb.Components = {
     const vnode = Vvveb.Model.findNodeByUUID(uuid)
     var component = this._components[type];
 		var componentsPanelSections = {};
-
-		$(this.componentPropertiesElement + " .tab-pane").each(function () {
+    const propertiesElement = "#component-properties-code-editor"
+		$(propertiesElement + " .tab-pane").each(function () {
 			var sectionName = this.dataset.section;
 			componentsPanelSections[sectionName] = $(this);
 		});
