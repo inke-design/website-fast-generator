@@ -504,9 +504,9 @@ body
 	
 	.components-list, .blocks-list, .component-properties
 	{
-		height:98%;
-		height:calc(100% - #{$builder-filemanager-height} - #{$drag-items-tabs-height} - #{$builder-header-top-height});
-		height:calc(100% - var(--builder-filemanager-height) - #{$drag-items-tabs-height} - #{$builder-header-top-height});
+		// height:98%;
+		// height:calc(100% - #{$builder-filemanager-height} - #{$drag-items-tabs-height} - #{$builder-header-top-height});
+		// height:calc(100% - var(--builder-filemanager-height) - #{$drag-items-tabs-height} - #{$builder-header-top-height});
 		overflow-x: hidden;
 		list-style:none;
 		background: #fafbfc;
@@ -1009,8 +1009,7 @@ li[data-type]
   -ms-user-select: none;
   user-select: none;
   width: 100%;
-  height:1300px;
- 
+
   @include webkit-scrollbar();
  
    > div
