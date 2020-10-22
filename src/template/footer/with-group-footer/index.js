@@ -48,7 +48,7 @@ const html = `
 
 const css = `
 <style>
-  .lite-footer {
+  .with-group-footer {
   }
 </style>
 `
