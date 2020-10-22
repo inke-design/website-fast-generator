@@ -17,7 +17,10 @@ https://github.com/givanz/VvvebJs
 */
 body {
   font-family: "Helvetica Neue", Helvetica, -apple-system, Arial, "Lucida Grande", system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-
+  ul, ol {
+    list-style: none;				/*清除列表风格*/
+  }
+  li{list-style-type:none}
 #logo {
   margin-left: 0.5rem;
   margin-top: 0.15rem; }
@@ -10291,5 +10294,12 @@ ul.autocomplete li.selected {
 
 .sections-tabs .nav-link span {
   font-size: 12px; }
+
+#vvveb-builder #component-properties-code-editor .nav-tabs .nav-link {
+    color: #495057;
+}
+#vvveb-builder #component-properties-code-editor .nav-tabs .nav-link.active {
+    color: #007bff;
+  }
 
 /*# sourceMappingURL=editor.css.map */

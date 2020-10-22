@@ -21,23 +21,23 @@ Vvveb.CodeEditorMore = {
 				// lineNumbers: true,
 				autofocus: true,
 				lineWrapping: true,
-				viewportMargin:Infinity,
+				// viewportMargin:Infinity,
         theme: 'material',
       });
       this.codemirriorCss= CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-style"), {
 				mode: 'css',
 				// lineNumbers: true,
-				autofocus: true,
+				// autofocus: true,
 				lineWrapping: true,
-				viewportMargin:Infinity,
+				// viewportMargin:Infinity,
         theme: 'material',
       });
       this.codemirriorScript = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-advanced"), {
 				mode: 'javascript',
 				// lineNumbers: true,
-				autofocus: true,
+				// autofocus: true,
 				lineWrapping: true,
-				viewportMargin:Infinity,
+				// viewportMargin:Infinity,
         theme: 'material',
       });
       this.codemirriorHTML.setValue(html)

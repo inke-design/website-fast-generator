@@ -7,6 +7,11 @@ import ImageGallery from "./bootstrap4/image-gallery";
 import { template as LayoutTemplate, css, script } from "./custome/layout/index.js";
 import DemoTemplate from "./custome/demo/index";
 
+// Navbar模版
+import NavbarOne from "./navbar/navbar-one";
+import NavbarTwo from "./navbar/navbar-two";
+import NavbarThree from "./navbar/navbar-three";
+
 // Content
 import VideoCardCotent from "./content/video-card-content";
 
@@ -75,6 +80,38 @@ const templateConfig = {
         html: DemoTemplate,
       },
     ],
+  },
+  navbar: {
+    groupName: "Navbar模板",
+    list: [
+      {
+        key: "navbar/navbar-one",
+        name: "Navbar模板一",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM1MzI2MjM4NyMyODkjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzM1MzI2MjM4NyMyODkjanBn.jpg',
+        html: NavbarOne.html,
+        css: NavbarOne.css,
+        script: NavbarOne.script,
+      },
+      {
+        key: "navbar/navbar-two",
+        name: "Navbar模板二",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM1ODc3MjYxMyM1MjUjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzM1ODc3MjYxMyM1MjUjanBn.jpg',
+        html: NavbarTwo.html,
+        css: NavbarTwo.css,
+        script: NavbarTwo.script,
+      },
+      {
+        key: "navbar/navbar-three",
+        name: "Navbar模板三",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg',
+        html: NavbarThree.html,
+        css: NavbarThree.css,
+        script: NavbarThree.script,
+      },
+    ]
   },
   content: {
     groupName: "Content模板",
