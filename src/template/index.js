@@ -10,6 +10,7 @@ import DemoTemplate from "./custome/demo/index";
 // Footer
 import LiteFooter from "./footer/lite/index";
 import WithGroupFooter from "./footer/with-group-footer";
+import ICPFooter from "./footer/icp-footer";
 
 
 const TEST_IMAGE = "//img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
@@ -77,8 +78,8 @@ const templateConfig = {
       {
         key: "footer/lite",
         name: "简洁Footer",
-        dragHtml: `<img src="${TEST_IMAGE}">`,
-        image: TEST_IMAGE,
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzMzNDE4OTg1NyMyNDgjcG5n.png">',
+        image: '//img.ikstatic.cn/MTYwMzMzNDE4OTg1NyMyNDgjcG5n.png',
         html: LiteFooter.html,
         css: LiteFooter.css,
         script: LiteFooter.script,
@@ -86,11 +87,20 @@ const templateConfig = {
       {
         key: "footer/with-group-footer",
         name: "带分组Footer",
-        dragHtml: `<img src="${TEST_IMAGE}">`,
-        image: TEST_IMAGE,
+        dragHtml: `<img src="//img.ikstatic.cn/MTYwMzMzNDEyMDA2MiM0NTMjcG5n.png">`,
+        image: '//img.ikstatic.cn/MTYwMzMzNDEyMDA2MiM0NTMjcG5n.png',
         html: WithGroupFooter.html,
         css: WithGroupFooter.css,
         script: WithGroupFooter.script,
+      },
+      {
+        key: "footer/icp-footer",
+        name: "带备案信息Footer",
+        dragHtml: `<img src="//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
+        image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
+        html: ICPFooter.html,
+        css: ICPFooter.css,
+        script: ICPFooter.script,
       },
     ],
   }
