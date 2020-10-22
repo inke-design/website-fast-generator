@@ -1213,37 +1213,40 @@ Vvveb.Builder = {
 			addSectionBox.hide();
 		});
 
-		function addSectionComponent(html, after = true) {
-			var node = $(html);
+		function addSectionComponent(component, after = true) {
 
-			if (after) {
-				addSectionElement.after(node);
-			} else {
-				addSectionElement.append(node);
-			}
-
-			node = node.get(0);
-
-			Vvveb.Undo.addMutation({
-				type: 'childList',
-				target: node.parentNode,
-				addedNodes: [node],
-				nextSibling: node.nextSibling
-			});
+			Vvveb.Model.dispatch({
+				type: Vvveb.Model.TYPES.ADD,
+				node: component,
+			}).after((err, afterNode) => {
+				if (after) {
+					addSectionElement.after(afterNode.$dom);
+				} else {
+					addSectionElement.append(afterNode.$dom);
+				}
+				var node = afterNode.$dom.get(0);
+	
+				Vvveb.Undo.addMutation({
+					type: 'childList',
+					target: node.parentNode,
+					addedNodes: [node],
+					nextSibling: node.nextSibling
+				});
+			})
 		}
 
 		$(".components-list li ol li", addSectionBox).on("click", function (event) {
-			var html = Vvveb.Components.get(this.dataset.type).html;
+			var component = Vvveb.Components.get(this.dataset.type);
 
-			addSectionComponent(html, ($("[name='add-section-insert-mode']:checked").val() == "after"));
+			addSectionComponent(component, ($("[name='add-section-insert-mode']:checked").val() == "after"));
 
 			addSectionBox.hide();
 		});
 
 		$(".blocks-list li ol li", addSectionBox).on("click", function (event) {
-			var html = Vvveb.Blocks.get(this.dataset.type).html;
+			var component = Vvveb.Blocks.get(this.dataset.type);
 
-			addSectionComponent(html, ($("[name='add-section-insert-mode']:checked").val() == "after"));
+			addSectionComponent(component, ($("[name='add-section-insert-mode']:checked").val() == "after"));
 
 			addSectionBox.hide();
 		});
@@ -1744,7 +1747,7 @@ Vvveb.Sections = {
 			const $node = $(node);
 
 			var section = {
-				name: node.id.replace(/[^\w+]+/g, ' ') || $node.data('name'),
+				name: $node.data('name') || node.id.replace(/[^\w+]+/g, ' '),
 				id: node.id || $node.data('uuid'),
 				type: node.tagName.toLowerCase(),
 				node: node
@@ -1759,6 +1762,10 @@ Vvveb.Sections = {
 
 		var section = $(tmpl("vvveb-section", data));
 		section.data("node", data.node);
+		section.attr("data-uuid", data.uuid || data.id);
+		section.attr("data-name", data.name);
+		section.attr("data-type", data.type);
+
 		$(this.selector).append(section);
 	},
 
@@ -1774,18 +1781,19 @@ Vvveb.Sections = {
 	init: function () {
 
 		$(this.selector).on("click", "> div", function (e) {
-			var node = $(e.currentTarget).data("node");
+			var uuid = $(e.currentTarget).data("uuid");
+			var node = window.FrameDocument.querySelector(`#${uuid}`);
+			var $node = $(node);
 
 			Vvveb.Builder.frameHtml.animate({
-				scrollTop: $(node).offset().top
+				scrollTop: $node.offset().top
 			}, 500);
 
 			//node.click();
 			Vvveb.Builder.selectNode(node);
 			Vvveb.Builder.loadNodeComponent(node);
 		}).on("dblclick", "> div", function (e) {
-			node = $(e.currentTarget).data("node");
-			node.click();
+			$node.click();
 		});
 
 
