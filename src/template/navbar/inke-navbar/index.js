@@ -140,7 +140,8 @@ const css = `
   background: #fff;
   padding: 12px 0;
   border-radius: 8px;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .1)
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .1);
+  z-index: 999;
 }
 
 .inke-navbar-1 .header_wrapper .nav li .nav-li-children a {

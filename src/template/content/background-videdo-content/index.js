@@ -29,7 +29,9 @@ const html = `
 
 const css = `
 <style type="text/css">
-.full-backgroud-video-content {}
+.full-backgroud-video-content {
+  position: relative;
+}
 
 .full-backgroud-video-content .cont {
   width: 100%;

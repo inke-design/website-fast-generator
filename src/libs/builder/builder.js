@@ -66,6 +66,9 @@ function isElement(obj) {
 		(typeof obj.ownerDocument === "object")/* && obj.tagName != "BODY"*/;
 }
 
+function isTemplateElement(obj) {
+		return isElement(obj) && obj.dataset.uuid;
+}
 
 var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
@@ -771,6 +774,9 @@ Vvveb.Builder = {
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
 					componentName = el.attributes[j].nodeName.replace('data-component-', '');
 				}
+				if (el.attributes[j].nodeName.indexOf('data-name') > -1) {
+					componentName = el.attributes[j].nodeValue;
+				}
 			}
 
 		if (componentName != '') return componentName;
@@ -967,7 +973,12 @@ Vvveb.Builder = {
 		self.frameHtml.on("mousemove touchmove", function (event) {
 
 			if (event.target && isElement(event.target) && event.originalEvent) {
-				self.highlightEl = target = $(event.target);
+				/**
+				 *  TODO:
+				 * v0.1 支持往body里面拖拽组件，不支持组件内再嵌套组件
+				 */
+				self.highlightEl = target = $(window.FrameDocument.body);
+
 				var offset = target.offset();
 				var height = target.outerHeight();
 				var halfHeight = Math.max(height / 2, 50);

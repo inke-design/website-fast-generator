@@ -54,10 +54,7 @@ Vvveb.Model = {
         return this._baseAfter(() => {
           const uid = Vvveb.Utils.uuid();
           const vNode = { uuid: uid, node };
-          const $dom = Vvveb.Utils.generateDom(
-            { html: node.html, css: node.css, script: node.script },
-            vNode
-          );
+          const $dom = Vvveb.Utils.render(vNode);
   
           vNode.$dom = $dom;
           this.store.nodes.push(vNode);
@@ -109,10 +106,7 @@ Vvveb.Model = {
           if(index === -1) throw new Error('未找到节点');
 
           const vNodeNew = { ...vNode, node: { ...vNode.node, ...node } };
-          const $dom = Vvveb.Utils.generateDom(
-            { html: vNodeNew.node.html, css: vNodeNew.node.css, script: vNodeNew.node.script },
-            vNodeNew
-          );
+          const $dom = Vvveb.Utils.render(vNodeNew);
   
           vNodeNew.$dom = $dom;
           this.store.nodes = Vvveb.Utils.Array.replace(this.store.nodes, index, vNodeNew);
@@ -130,10 +124,7 @@ Vvveb.Model = {
           const uid = Vvveb.Utils.uuid();
           const node = vNode.node;
           const vNodeClone = { uuid: uid, node: node };
-          const $dom = Vvveb.Utils.generateDom(
-            { html: node.html, css: node.css, script: node.script },
-            vNodeClone
-          );
+          const $dom = Vvveb.Utils.render(vNodeClone);
   
           vNodeClone.$dom = $dom;
           this.store.nodes.push(vNodeClone);

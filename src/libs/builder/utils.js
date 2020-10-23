@@ -7,8 +7,8 @@ Vvveb.Utils = {
   },
 
   // 生成dom
-  generateDom(template = {}, vNode) {
-    const { html, css, script } = template;
+  render(vNode) {
+    const { html, css, script } = vNode.node;
     const $dom = $(html);
 
     css && $dom.append($(css));
