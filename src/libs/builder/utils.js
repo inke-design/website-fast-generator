@@ -105,4 +105,97 @@ Vvveb.Utils = {
     },
   },
 
+  /**
+   * 渲染模板对应的el。如脚本、css库等
+   *
+   * @param {*} type script | stylesheet
+   * @param {*} config { url, attrs, moduleName }
+   */
+  renderModuleEl(type, config) {
+    let dom = null;
+    const { url, attrs } = config;
+
+    switch(type) {
+      case 'script': {
+        dom = document.createElement('script');
+        dom.setAttribute('src', url);
+        break;
+      }
+      case 'stylesheet': {
+        dom = document.createElement('link');
+        dom.setAttribute('rel', 'stylesheet');
+        dom.setAttribute('href', url);
+        break;
+      }
+    }
+
+    dom && dom.setAttribute('data-url', url);
+    dom && dom.setAttribute('data-module', config.moduleName);
+    dom && attrs && Object.keys(attrs).forEach(attrKey => {
+      dom.setAttribute(attrKey, attrs[attrKey]);
+    })
+
+    return dom;
+  },
+
+  /**
+   * 将模块插入到dom，并返回promise
+   *
+   * @param {*} dom 要插入到页面的dom
+   * @param {*} doc dom挂载节点，默认document.body
+   */
+  loadModuleEl(dom, doc = document) {
+    let parent =  doc.body;
+    return new Promise((resolve, reject) => {
+      if(!dom) {
+        reject('dom不存在');
+        return;
+      }
+
+      const selector = `[data-module="${dom.dataset.module}"]`;
+      const origin = parent.querySelector(selector);
+
+      if(origin) {
+        console.warn(`${dom.dataset.module}已经存在了`);
+        resolve(origin);
+        return;
+      }
+
+      dom.addEventListener('load', () => {
+        resolve(dom)
+      });
+
+      dom.addEventListener('error', (err) => {
+        reject(err)
+      });
+
+      parent.appendChild(dom);
+    })
+  },
+
+  /**
+   * 加载模块
+   *
+   * @param {*} module
+   * @param {*} doc 文档document
+   */
+  loadExportModules(modules, doc) {
+    const modulePromise = [];
+    Object.keys(modules).forEach(moduleType => {
+      const moduleList = modules[moduleType];
+
+      Object.keys(moduleList).forEach(moduleName => {
+        const el = this.renderModuleEl(moduleType, {
+          ...moduleList[moduleName],
+          moduleName,
+        });
+
+        this.loadModuleEl(el, doc).then(() => {
+          modulePromise.push(el);
+        })
+      })
+    });
+
+    return Promise.all(modulePromise);
+  }
 };

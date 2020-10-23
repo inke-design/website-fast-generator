@@ -3,6 +3,7 @@ Vvveb.Model = {
     nodes: [],
   },
 
+  // action type
   TYPES: {
     // 添加节点
     ADD: "ADD",
@@ -16,6 +17,44 @@ Vvveb.Model = {
     CLONE: "CLONE",
     // 修改节点
     EDIT: "EDIT",
+  },
+
+  // 暴露给公共使用的模块
+  exportModule: {
+    /**
+     * 公共脚本库。内置了jQuery
+     * 
+     * script[key] 脚本库名称，唯一值
+     * script[key][vaue].url script src
+     * script[key][vaue].atr script 属性
+     * 
+     */
+    script: {
+      jQuery: {
+        url: '//static.inke.cn/web/common/jquery/jquery-1.9.1.min.js',
+        attrs: {}
+      },
+    },
+    stylesheet: {
+      animate: {
+        url: '//www.inke.cn/css/animate.min.css',
+      }
+    }
+  },
+
+  // 添加模块
+  addModule(exportModule) {
+    if(!exportModule) return;
+
+    Object.keys(exportModule).forEach(moduleType => {
+      const moduleListMap = exportModule[moduleType];
+      const crrModuleListMap = this.exportModule[moduleType];
+
+      this.exportModule[moduleType] = {
+        ...moduleListMap,
+        ...moduleListMap,
+      }
+    })
   },
 
   // store写入值
@@ -59,6 +98,7 @@ Vvveb.Model = {
           vNode.$dom = $dom;
           this.store.nodes.push(vNode);
 
+          node.exportModule && this.addModule(node.exportModule)
           return { uuid: uid, node, $dom }
         })
       }
@@ -195,7 +235,8 @@ Vvveb.Model = {
     return function (cb) {
       cb && cb.apply(this, args);
 
-			Vvveb.Sections.loadSections();
+      Vvveb.Sections.loadSections();
+		  Vvveb.Utils.loadExportModules(Vvveb.Model.exportModule, window.FrameDocument);
       return that;
     };
   },
