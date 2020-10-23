@@ -425,7 +425,6 @@ Vvveb.Components = {
 			var sectionName = this.dataset.section;
 			componentsPanelSections[sectionName] = $(this);
 		});
-    console.log('uuid', uuid, vnode);
     if(!uuid) {
       // 如果不是组件 卸载代码编辑器
       Object.keys(componentsPanelSections).forEach(sectionName => {
@@ -441,7 +440,6 @@ Vvveb.Components = {
     Vvveb.CodeEditorMore.setValue({ uuid, html, css, script })
 
 		Object.keys(componentsPanelSections).forEach(sectionName => {
-      console.log('sectionName', sectionName)
 			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
 			const section = componentsPanelSections[sectionName].find(".section")
 			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${name} Code`);
@@ -450,7 +448,7 @@ Vvveb.Components = {
       const id = `vvveb-code-editor-${sectionName}`
       section.append(`<textarea id=${id} class="component-code-eidtor"></textarea>`)
     })
-    
+
     Vvveb.CodeEditorMore.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
     console.log('Vvveb.CodeEditorMore', Vvveb.CodeEditorMore)

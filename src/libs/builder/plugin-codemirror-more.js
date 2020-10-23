@@ -40,6 +40,7 @@ Vvveb.CodeEditorMore = {
 				// viewportMargin:Infinity,
         theme: 'material',
       });
+      console.log(this.codemirriorHTML, this.codemirriorCss, this.codemirriorScript)
       this.codemirriorHTML.setValue(html)
       this.codemirriorCss.setValue(css)
       this.codemirriorScript.setValue(script)
