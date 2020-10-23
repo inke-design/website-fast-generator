@@ -53,9 +53,14 @@ What did we do & What will we do
 - [x] 模板分离html、css、script
 - [x] model层设计，劫持所有操作，统一管理所有action
 - [x] 模板html、css、script实时编辑预览、语法高亮
+- [ ] 内置3套Navbar模板、4套Content模板、3套Footer模板
 
 #### v0.2
-- [ ] 模板支持通过html、css、js本地文件编写，更好的语法提示, node统一打包处理
+- [ ] 模板支持通过本地html、css、js文件编写，更好的语法提示, node统一打包处理
 - [ ] 模板html、css、script语法智能提示，自动补全
+- [ ] 导出网页可再次导入以模板维度修改
+- [ ] 接入compile
+- [ ] 网页可以拆分html、css、script独立文件导出
+
 
 
