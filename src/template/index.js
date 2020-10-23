@@ -12,6 +12,9 @@ import NavbarOne from "./navbar/navbar-one";
 import NavbarTwo from "./navbar/navbar-two";
 import NavbarThree from "./navbar/navbar-three";
 
+// banner模版
+import BannerOne from "./banner/banner-one";
+
 // Content
 import VideoCardCotent from "./content/video-card-content";
 
@@ -107,6 +110,38 @@ const templateConfig = {
         name: "Navbar模板三",
         dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg',
+        html: NavbarThree.html,
+        css: NavbarThree.css,
+        script: NavbarThree.script,
+      },
+    ]
+  },
+  banner: {
+    groupName: "Banner模板",
+    list: [
+      {
+        key: "banner/banner-one",
+        name: "Banner模板一",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg',
+        html: BannerOne.html,
+        css: BannerOne.css,
+        script: BannerOne.script,
+      },
+      {
+        key: "banner/banner-two",
+        name: "Banner模板二",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg',
+        html: NavbarTwo.html,
+        css: NavbarTwo.css,
+        script: NavbarTwo.script,
+      },
+      {
+        key: "banner/banner-three",
+        name: "Banner模板三",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg',
         html: NavbarThree.html,
         css: NavbarThree.css,
         script: NavbarThree.script,
