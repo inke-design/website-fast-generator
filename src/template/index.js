@@ -8,6 +8,7 @@ import { template as LayoutTemplate, css, script } from "./custome/layout/index.
 import DemoTemplate from "./custome/demo/index";
 
 // Navbar模版
+import InkeNavbar from "./navbar/inke-navbar";
 import NavbarOne from "./navbar/navbar-one";
 import NavbarTwo from "./navbar/navbar-two";
 import NavbarThree from "./navbar/navbar-three";
@@ -16,6 +17,7 @@ import NavbarThree from "./navbar/navbar-three";
 import BannerOne from "./banner/banner-one";
 
 // Content
+import BackVideoContent from "./content/background-videdo-content";
 import VideoCardCotent from "./content/video-card-content";
 
 
@@ -88,6 +90,15 @@ const templateConfig = {
     groupName: "Navbar模板",
     list: [
       {
+        key: "navbar/inke-navbar",
+        name: "映客官网Navbar",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQxOTU5MjM2NSM1ODQjcG5n.png">',
+        image: '//img.ikstatic.cn/MTYwMzQxOTU5MjM2NSM1ODQjcG5n.png',
+        html: InkeNavbar.html,
+        css: InkeNavbar.css,
+        script: InkeNavbar.script,
+      },
+      {
         key: "navbar/navbar-one",
         name: "Navbar模板一",
         dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM1MzI2MjM4NyMyODkjanBn.jpg">',
@@ -151,6 +162,15 @@ const templateConfig = {
   content: {
     groupName: "Content模板",
     list: [
+      {
+        key: "content/back-video-content",
+        name: "全屏背景视频内容模板",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQyMjIwNjY0NCM1NTYjcG5n.png">',
+        image: '//img.ikstatic.cn/MTYwMzQyMjIwNjY0NCM1NTYjcG5n.png',
+        html: BackVideoContent.html,
+        css: BackVideoContent.css,
+        script: BackVideoContent.script,
+      },
       {
         key: "content/video-card",
         name: "带视频播放内容模板",
