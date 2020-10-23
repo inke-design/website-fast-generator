@@ -190,9 +190,8 @@ Vvveb.Utils = {
           moduleName,
         });
 
-        this.loadModuleEl(el, doc).then(() => {
-          modulePromise.push(el);
-        })
+        const promise = this.loadModuleEl(el, doc);
+        modulePromise.push(promise);
       })
     });
 
