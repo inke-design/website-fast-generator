@@ -21,7 +21,8 @@ import BannerThree from "./banner/banner-three";
 // Content
 import BackVideoContent from "./content/background-videdo-content";
 import VideoCardCotent from "./content/video-card-content";
-
+import AboutUs from "./content/about-us";
+import MoreIcon from "./content/more-icon";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
@@ -182,6 +183,24 @@ const templateConfig = {
         html: VideoCardCotent.html,
         css: VideoCardCotent.css,
         script: VideoCardCotent.script,
+      },
+      {
+        key: "content/about-us",
+        name: "关于我们模版",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzYzODMzNDQ1MiM4MjgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzYzODMzNDQ1MiM4MjgjanBn.jpg',
+        html: AboutUs.html,
+        css: AboutUs.css,
+        script: AboutUs.script,
+      },
+      {
+        key: "content/more-icon",
+        name: "多图标描述",
+        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg',
+        html: MoreIcon.html,
+        css: MoreIcon.css,
+        script: MoreIcon.script,
       },
     ]
   },

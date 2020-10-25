@@ -55,3 +55,15 @@ $input-height: default;
 @import "line-awesome";
 @import "bootstrap";
 @import "builder";
+
+.codeEditor.tab-content > .tab-pane {
+  display: block;
+  position: absolute;
+  z-index: -1;
+}
+
+.codeEditor.tab-content > .active {
+  display: block;
+  position: relative;
+  z-index: 1;
+}

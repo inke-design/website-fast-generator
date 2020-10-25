@@ -19,7 +19,7 @@ Vvveb.CodeEditorMore = {
 			this.codemirriorHTML = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-content"), {
 				mode: 'text/html',
 				// lineNumbers: true,
-				autofocus: true,
+				// autofocus: true,
 				lineWrapping: true,
 				// viewportMargin:Infinity,
         theme: 'material',
@@ -40,25 +40,24 @@ Vvveb.CodeEditorMore = {
 				// viewportMargin:Infinity,
         theme: 'material',
       });
-      console.log(this.codemirriorHTML, this.codemirriorCss, this.codemirriorScript)
       this.codemirriorHTML.setValue(html)
       this.codemirriorCss.setValue(css)
       this.codemirriorScript.setValue(script)
       // 编辑器失去焦点触发数据更新
       const that = this
 			this.codemirriorHTML.on("blur", function (e, v) { 
-        that.uplateNode({ html: e.getValue() })
+        that.uplateNode({ html: e.getValue() }, 'html')
       });
       this.codemirriorCss.on("blur", function (e, v) { 
-        that.uplateNode({ css: e.getValue() })
+        that.uplateNode({ css: e.getValue() }, 'css')
       });
       this.codemirriorScript.on("blur", function (e, v) { 
-				that.uplateNode({ script: e.getValue() })
+				that.uplateNode({ script: e.getValue() }, 'script')
       });
 		
 		
 		//load code on document changes
-		Vvveb.Builder.frameBody.on("vvveb.undo.add vvveb.undo.restore", function (e) { Vvveb.CodeEditor.setValue(e);});
+		// Vvveb.Builder.frameBody.on("vvveb.undo.add vvveb.undo.restore", function (e) { Vvveb.CodeEditor.setValue(e);});
 		//load code when a new url is loaded
 		// Vvveb.Builder.documentFrame.on("load", function (e) { Vvveb.CodeEditor.setValue();});
 		// this.setValue();
@@ -70,9 +69,11 @@ Vvveb.CodeEditorMore = {
   },
   
   // 更新节点
-  uplateNode: function (params) {
+  uplateNode: function (params, field) {
     const { uuid } = this.value
-    console.log(uuid, params)
+    const oldValue = this.value[field]
+    const newValue = params[field]
+    if(oldValue === newValue) return
     Vvveb.Model.dispatch({
       type: Vvveb.Model.TYPES.EDIT,
       uuid,

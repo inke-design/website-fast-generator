@@ -428,7 +428,6 @@ Vvveb.Components = {
     if(!uuid) {
       // 如果不是组件 卸载代码编辑器
       Object.keys(componentsPanelSections).forEach(sectionName => {
-        console.log('sectionName', sectionName)
         componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
       })
       Vvveb.CodeEditorMore.destroy()
@@ -451,7 +450,6 @@ Vvveb.Components = {
 
     Vvveb.CodeEditorMore.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
-    console.log('Vvveb.CodeEditorMore', Vvveb.CodeEditorMore)
 	}
 };
 
