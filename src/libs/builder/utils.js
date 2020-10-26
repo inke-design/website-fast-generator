@@ -15,6 +15,7 @@ Vvveb.Utils = {
     script && $dom.append($(script));
 
     $dom.attr("data-uuid", vNode.uuid);
+    $dom.attr("data-component", 'template');
     $dom.attr("id", vNode.uuid);
     ["type", "name"].forEach((key) => {
       $dom.attr(`data-${key}`, vNode.node[key]);

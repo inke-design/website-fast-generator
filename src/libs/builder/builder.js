@@ -806,16 +806,29 @@ Vvveb.Builder = {
 
 		// nodeUUID存在，则为我们定义模板组件
 		if(nodeUUID) {
+			next = $(node).prev("[data-component]");
 			Vvveb.Model.dispatch({
 				type: Vvveb.Model.TYPES.MOVE_UP,
 				uuid: nodeUUID,
 				dom: node,
-			}).after(() => {
+			}).after((err) => {
+				if(err) return ;
 				if (next.length > 0) {
 					next.before(node);
 				} else {
 					$(node).parent().before(node);
 				}
+				newParent = node.parentNode;
+				newNextSibling = node.nextSibling;
+		
+				Vvveb.Undo.addMutation({
+					type: 'move',
+					target: node,
+					oldParent: oldParent,
+					newParent: newParent,
+					oldNextSibling: oldNextSibling,
+					newNextSibling: newNextSibling
+				});
 			})
 		} else {
 			// 否则就是模板组件里面的小组件
@@ -824,20 +837,18 @@ Vvveb.Builder = {
 			} else {
 				$(node).parent().before(node);
 			}
+			newParent = node.parentNode;
+			newNextSibling = node.nextSibling;
+	
+			Vvveb.Undo.addMutation({
+				type: 'move',
+				target: node,
+				oldParent: oldParent,
+				newParent: newParent,
+				oldNextSibling: oldNextSibling,
+				newNextSibling: newNextSibling
+			});
 		}
-
-		newParent = node.parentNode;
-		newNextSibling = node.nextSibling;
-
-		Vvveb.Undo.addMutation({
-			type: 'move',
-			target: node,
-			oldParent: oldParent,
-			newParent: newParent,
-			oldNextSibling: oldNextSibling,
-			newNextSibling: newNextSibling
-		});
-
 	},
 
 	moveNodeDown: function (node) {
@@ -853,16 +864,31 @@ Vvveb.Builder = {
 
 		// nodeUUID存在，则为我们定义模板组件
 		if(nodeUUID) {
+			next = $(node).next("[data-component]");
+
 			Vvveb.Model.dispatch({
 				type: Vvveb.Model.TYPES.MOVE_DOWN,
 				uuid: nodeUUID,
 				dom: node,
-			}).after(() => {
+			}).after((err) => {
+				if(err) return;
 				if (next.length > 0) {
 					next.after(node);
 				} else {
 					$(node).parent().after(node);
 				}
+
+				newParent = node.parentNode;
+				newNextSibling = node.nextSibling;
+
+				Vvveb.Undo.addMutation({
+					type: 'move',
+					target: node,
+					oldParent: oldParent,
+					newParent: newParent,
+					oldNextSibling: oldNextSibling,
+					newNextSibling: newNextSibling
+				});
 			})
 		} else {
 			// 否则就是模板组件里面的小组件
@@ -871,19 +897,19 @@ Vvveb.Builder = {
 			} else {
 				$(node).parent().after(node);
 			}
+			
+			newParent = node.parentNode;
+			newNextSibling = node.nextSibling;
+	
+			Vvveb.Undo.addMutation({
+				type: 'move',
+				target: node,
+				oldParent: oldParent,
+				newParent: newParent,
+				oldNextSibling: oldNextSibling,
+				newNextSibling: newNextSibling
+			});
 		}
-
-		newParent = node.parentNode;
-		newNextSibling = node.nextSibling;
-
-		Vvveb.Undo.addMutation({
-			type: 'move',
-			target: node,
-			oldParent: oldParent,
-			newParent: newParent,
-			oldNextSibling: oldNextSibling,
-			newNextSibling: newNextSibling
-		});
 	},
 
 	cloneNode: function (node) {
@@ -1853,9 +1879,16 @@ Vvveb.Sections = {
 		$(this.selector).on("click", ".delete-btn", function (e) {
 			var section = $(e.currentTarget).parents(".section-item");
 			var node = section.data("node");
-			node.remove();
-			section.remove();
+			const nodeUUID = $(node).data('uuid');
 
+			nodeUUID && Vvveb.Model.dispatch({
+				type: Vvveb.Model.TYPES.REMOVE,
+				uuid: nodeUUID,
+				dom: node,
+			}).after(err => {
+				if(err) return;
+				node.remove();
+			})
 			e.preventDefault();
 		});
 
@@ -1863,7 +1896,7 @@ Vvveb.Sections = {
 			var section = $(e.currentTarget).parents(".section-item");
 			var node = section.data("node");
 			Vvveb.Builder.moveNodeUp(node);
-			Vvveb.Builder.moveNodeUp(section.get(0));
+			// Vvveb.Builder.moveNodeUp(section.get(0));
 
 			e.preventDefault();
 		});
@@ -1873,7 +1906,7 @@ Vvveb.Sections = {
 			var section = $(e.currentTarget).parents(".section-item");
 			var node = section.data("node");
 			Vvveb.Builder.moveNodeDown(node);
-			Vvveb.Builder.moveNodeDown(section.get(0));
+			// Vvveb.Builder.moveNodeDown(section.get(0));
 
 			e.preventDefault();
 		});
