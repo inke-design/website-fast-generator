@@ -97,7 +97,7 @@ const css = `
   margin: 0 auto;
   width: 42px;
   height: 42px;
-  background: url(//img.ikstatic.cn/MTU4OTc5NDUzNzQxNSM0NDgjcG5n.png) center no-repeat;
+  background: url(https://img.ikstatic.cn/MTU4OTc5NDUzNzQxNSM0NDgjcG5n.png) center no-repeat;
   background-size: 42px 42px
 }
 
@@ -148,7 +148,7 @@ const css = `
 }
 
 .full-backgroud-video-content .window-wrapper li:nth-of-type(1) a {
-  background: url(//img.ikstatic.cn/MTU4OTk0Njk3OTQ3NyM5OTUjcG5n.png) center no-repeat;
+  background: url(https://img.ikstatic.cn/MTU4OTk0Njk3OTQ3NyM5OTUjcG5n.png) center no-repeat;
   background-size: 100%;
 }
 
@@ -203,7 +203,7 @@ const css = `
 .full-backgroud-video-content #muted,
 .full-backgroud-video-content .window-wrapper li a,
 .full-backgroud-video-content .window-wrapper li span {
-  background-image: url(//www.inke.cn/images/sprite_img.png);
+  background-image: url(https://www.inke.cn/images/sprite_img.png);
   background-repeat: no-repeat
 }
 
@@ -214,22 +214,22 @@ const css = `
 }
 
 .full-backgroud-video-content window-wrapper li:nth-of-type(1) a {
-  background: url(//img.ikstatic.cn/MTU4OTk0Njk3OTQ3NyM5OTUjcG5n.png) center no-repeat;
+  background: url(https://img.ikstatic.cn/MTU4OTk0Njk3OTQ3NyM5OTUjcG5n.png) center no-repeat;
   background-size: 100%
 }
 
 .full-backgroud-video-content .window-wrapper li:nth-of-type(2) a {
-  background: url(//img.ikstatic.cn/MTU4OTk0Njk5NTY2MiM1MDEjcG5n.png) center no-repeat;
+  background: url(https://img.ikstatic.cn/MTU4OTk0Njk5NTY2MiM1MDEjcG5n.png) center no-repeat;
   background-size: 100%
 }
 
 .full-backgroud-video-content .window-wrapper li:nth-of-type(3) span {
-  background: url(//img.ikstatic.cn/MTU4OTk0Njk4NDg3NyM5NjEjcG5n.png) center no-repeat;
+  background: url(https://img.ikstatic.cn/MTU4OTk0Njk4NDg3NyM5NjEjcG5n.png) center no-repeat;
   background-size: 100%
 }
 
 .full-backgroud-video-content .window-wrapper li:nth-of-type(4) a {
-  background: url(//img.ikstatic.cn/MTU4OTk0Njk5MDQ2MiMyMTIjcG5n.png) center no-repeat;
+  background: url(https://img.ikstatic.cn/MTU4OTk0Njk5MDQ2MiMyMTIjcG5n.png) center no-repeat;
   background-size: 100%
 }
 

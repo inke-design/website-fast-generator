@@ -1211,24 +1211,24 @@ Vvveb.Builder = {
     $("[spellcheckker]", doc).removeAttr("spellcheckker");
     $(window).triggerHandler("vvveb.getHtml.before", doc);
     if (hasDoctpe) html = "<!DOCTYPE " + doc.doctype.name + (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '') + (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '') + (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '') + ">\n";
-    var innerHtml = this.replaceRelativeLink(doc.documentElement.innerHTML);
+    this.replaceRelativeLink(doc.documentElement);
+    var innerHtml = doc.documentElement.innerHTML;
     html += innerHtml + "\n</html>";
     html = this.removeHelpers(html, keepHelperAttributes);
     var filter = $(window).triggerHandler("vvveb.getHtml.after", html);
     if (filter) return filter;
     return html;
   },
-  replaceRelativeLink: function replaceRelativeLink(html) {
-    var fakeContainer = $('<div class="__fake-container"></div>');
-    fakeContainer.append(html);
-    var $html = $(fakeContainer);
-    $html.find('link').each(function (idx, node) {
-      node.href = node.href;
+  replaceRelativeLink: function replaceRelativeLink(doc) {
+    doc.querySelectorAll('link').forEach(function (el) {
+      var path = el.getAttribute('href');
+      if (path) el.href = el.href;
     });
-    $html.find('script').each(function (idx, node) {
-      node.src = node.src;
+    doc.querySelectorAll('script').forEach(function (el) {
+      var path = el.getAttribute('src');
+      if (path) el.src = el.src;
     });
-    return fakeContainer.html();
+    return doc;
   },
   setHtml: function setHtml(html) {
     //update only body to avoid breaking iframe css/js relative paths
