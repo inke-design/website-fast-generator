@@ -9402,7 +9402,7 @@ body {
           color: #007bff; }
       #vvveb-builder #left-panel #filemanager .tree {
         height: 200px;
-        height: calc( var(--builder-filemanager-height) - 50px);
+        height: 150px;
         padding: 0.5rem 0rem;
         overflow-y: hidden;
         overflow-x: hidden;

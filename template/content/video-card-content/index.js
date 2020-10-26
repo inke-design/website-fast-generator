@@ -106,7 +106,7 @@ const css = `
 .video-card-content .info {
   padding: 72px 0 22px;
   height: 1012px;
-  background: url(//img.ikstatic.cn/MTU5MjI3NjIwMDY4NiM0NzQjcG5n.png)
+  background: url(https://img.ikstatic.cn/MTU5MjI3NjIwMDY4NiM0NzQjcG5n.png)
     center no-repeat;
   background-size: 1333px 1012px;
 }
@@ -125,7 +125,7 @@ const css = `
 }
 
 .video-card-content .info .video-box .play {
-  background: url(//img.ikstatic.cn/MTU5MjIwNjAzNTAyMyM4NjgjcG5n.png)
+  background: url(https://img.ikstatic.cn/MTU5MjIwNjAzNTAyMyM4NjgjcG5n.png)
     center no-repeat;
   background-size: 84px 84px;
   position: absolute;
@@ -157,7 +157,7 @@ const css = `
 .video-card-content .info .box .logo {
   width: 144px;
   height: 144px;
-  background: url(//img.ikstatic.cn/MTU5MjIwNzI4ODY5NyM5MDEjcG5n.png)
+  background: url(https://img.ikstatic.cn/MTU5MjIwNzI4ODY5NyM5MDEjcG5n.png)
     center no-repeat;
   background-size: 144px 144px;
 }
