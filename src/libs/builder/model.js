@@ -93,7 +93,7 @@ Vvveb.Model = {
         return this._baseAfter(() => {
           const uid = Vvveb.Utils.uuid();
           const vNode = { uuid: uid, node };
-          const $dom = Vvveb.Utils.render(vNode);
+          const $dom = Vvveb.Utils.render(vNode, window.FrameDocument);
   
           vNode.$dom = $dom;
           this.store.nodes.push(vNode);
@@ -146,7 +146,7 @@ Vvveb.Model = {
           if(index === -1) throw new Error('未找到节点');
 
           const vNodeNew = { ...vNode, node: { ...vNode.node, ...node } };
-          const $dom = Vvveb.Utils.render(vNodeNew);
+          const $dom = Vvveb.Utils.render(vNodeNew, window.FrameDocument);
   
           vNodeNew.$dom = $dom;
           this.store.nodes = Vvveb.Utils.Array.replace(this.store.nodes, index, vNodeNew);
@@ -164,7 +164,7 @@ Vvveb.Model = {
           const uid = Vvveb.Utils.uuid();
           const node = vNode.node;
           const vNodeClone = { uuid: uid, node: node };
-          const $dom = Vvveb.Utils.render(vNodeClone);
+          const $dom = Vvveb.Utils.render(vNodeClone, window.FrameDocument);
   
           vNodeClone.$dom = $dom;
           this.store.nodes.push(vNodeClone);

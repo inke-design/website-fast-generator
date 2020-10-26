@@ -4,7 +4,7 @@ const html = `
   <img
     class="top-img wow fadeInUp"
     data-wow-duration="1s"
-    src="//img.ikstatic.cn/MTU5MDAzOTc4NTM4MCMgMjQjcG5n.png"
+    src="https://img.ikstatic.cn/MTU5MDAzOTc4NTM4MCMgMjQjcG5n.png"
     alt=""
     style="
       visibility: visible;
@@ -25,7 +25,7 @@ const html = `
   >
     <img
       class="video"
-      src="//img.ikstatic.cn/MTU5MjI4NTc3NDUyOSM5NzcjcG5n.png"
+      src="https://img.ikstatic.cn/MTU5MjI4NTc3NDUyOSM5NzcjcG5n.png"
       alt=""
     />
     <div id="videoPlay" class="play"></div>
@@ -79,7 +79,7 @@ const html = `
         controls=""
         controlslist="nodownload"
         class="video"
-        src="//m4a.inke.cn/MTU5MjIwNTAxMDQyMiM4MDcjbXA0.mp4"
+        src="https://m4a.inke.cn/MTU5MjIwNTAxMDQyMiM4MDcjbXA0.mp4"
       >
         您的浏览器不支持video标签，建议更新浏览器版本
       </video>

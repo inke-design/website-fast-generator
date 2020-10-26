@@ -30,7 +30,7 @@ import WithGroupFooter from "./footer/with-group-footer";
 import ICPFooter from "./footer/icp-footer";
 
 
-const TEST_IMAGE = "//img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
+const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
 
 const templateConfig = {
   bootstrap4: {
@@ -95,7 +95,7 @@ const templateConfig = {
       {
         key: "navbar/inke-navbar",
         name: "映客官网Navbar",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQxOTU5MjM2NSM1ODQjcG5n.png">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQxOTU5MjM2NSM1ODQjcG5n.png">',
         image: '//img.ikstatic.cn/MTYwMzQxOTU5MjM2NSM1ODQjcG5n.png',
         html: InkeNavbar.html,
         css: InkeNavbar.css,
@@ -104,7 +104,7 @@ const templateConfig = {
       {
         key: "navbar/navbar-one",
         name: "Navbar模板一",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM1MzI2MjM4NyMyODkjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzM1MzI2MjM4NyMyODkjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzM1MzI2MjM4NyMyODkjanBn.jpg',
         html: NavbarOne.html,
         css: NavbarOne.css,
@@ -113,7 +113,7 @@ const templateConfig = {
       {
         key: "navbar/navbar-two",
         name: "Navbar模板二",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM1ODc3MjYxMyM1MjUjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzM1ODc3MjYxMyM1MjUjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzM1ODc3MjYxMyM1MjUjanBn.jpg',
         html: NavbarTwo.html,
         css: NavbarTwo.css,
@@ -122,7 +122,7 @@ const templateConfig = {
       {
         key: "navbar/navbar-three",
         name: "Navbar模板三",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg',
         html: NavbarThree.html,
         css: NavbarThree.css,
@@ -136,7 +136,7 @@ const templateConfig = {
       {
         key: "banner/banner-one",
         name: "Banner模板一",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzQyNDY3MTMxMSMxODgjanBn.jpg',
         html: BannerOne.html,
         css: BannerOne.css,
@@ -146,7 +146,7 @@ const templateConfig = {
       {
         key: "banner/banner-two",
         name: "Banner模板二",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQ0Mjc1NDA5NSM1ODkjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQ0Mjc1NDA5NSM1ODkjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzQ0Mjc1NDA5NSM1ODkjanBn.jpg',
         html: BannerTwo.html,
         css: BannerTwo.css,
@@ -155,7 +155,7 @@ const templateConfig = {
       {
         key: "banner/banner-three",
         name: "Banner模板三",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg',
         html: BannerThree.html,
         css: BannerThree.css,
@@ -169,7 +169,7 @@ const templateConfig = {
       {
         key: "content/back-video-content",
         name: "全屏背景视频内容模板",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzQyMjIwNjY0NCM1NTYjcG5n.png">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQyMjIwNjY0NCM1NTYjcG5n.png">',
         image: '//img.ikstatic.cn/MTYwMzQyMjIwNjY0NCM1NTYjcG5n.png',
         html: BackVideoContent.html,
         css: BackVideoContent.css,
@@ -178,7 +178,7 @@ const templateConfig = {
       {
         key: "content/video-card",
         name: "带视频播放内容模板",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzMzNzUzMzI4NCM3NTAjcG5n.png">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzMzNzUzMzI4NCM3NTAjcG5n.png">',
         image: '//img.ikstatic.cn/MTYwMzMzNzUzMzI4NCM3NTAjcG5n.png',
         html: VideoCardCotent.html,
         css: VideoCardCotent.css,
@@ -187,7 +187,7 @@ const templateConfig = {
       {
         key: "content/about-us",
         name: "关于我们模版",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzYzODMzNDQ1MiM4MjgjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzYzODMzNDQ1MiM4MjgjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzYzODMzNDQ1MiM4MjgjanBn.jpg',
         html: AboutUs.html,
         css: AboutUs.css,
@@ -196,7 +196,7 @@ const templateConfig = {
       {
         key: "content/more-icon",
         name: "多图标描述",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg">',
         image: '//img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg',
         html: MoreIcon.html,
         css: MoreIcon.css,
@@ -210,7 +210,7 @@ const templateConfig = {
       {
         key: "footer/lite",
         name: "简洁Footer",
-        dragHtml: '<img src="//img.ikstatic.cn/MTYwMzMzNDE4OTg1NyMyNDgjcG5n.png">',
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzMzNDE4OTg1NyMyNDgjcG5n.png">',
         image: '//img.ikstatic.cn/MTYwMzMzNDE4OTg1NyMyNDgjcG5n.png',
         html: LiteFooter.html,
         css: LiteFooter.css,
@@ -219,7 +219,7 @@ const templateConfig = {
       {
         key: "footer/with-group-footer",
         name: "带分组Footer",
-        dragHtml: `<img src="//img.ikstatic.cn/MTYwMzMzNDEyMDA2MiM0NTMjcG5n.png">`,
+        dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzNDEyMDA2MiM0NTMjcG5n.png">`,
         image: '//img.ikstatic.cn/MTYwMzMzNDEyMDA2MiM0NTMjcG5n.png',
         html: WithGroupFooter.html,
         css: WithGroupFooter.css,
@@ -228,7 +228,7 @@ const templateConfig = {
       {
         key: "footer/icp-footer",
         name: "带备案信息Footer",
-        dragHtml: `<img src="//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
+        dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
         image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
         html: ICPFooter.html,
         css: ICPFooter.css,

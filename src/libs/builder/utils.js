@@ -7,7 +7,7 @@ Vvveb.Utils = {
   },
 
   // 生成dom
-  render(vNode) {
+  render(vNode, doc) {
     const { html, css, script } = vNode.node;
     const $dom = $(html);
 
@@ -144,8 +144,25 @@ Vvveb.Utils = {
    * @param {*} dom 要插入到页面的dom
    * @param {*} doc dom挂载节点，默认document.body
    */
-  loadModuleEl(dom, doc = document) {
-    let parent =  doc.body;
+  loadModuleEl({ type, el: dom }, doc = document) {
+    let parent = parentBody =  doc.head;
+    let parentHead =  doc.head;
+
+    switch(type) {
+      case 'script': {
+        parent = parentBody
+        break;
+      }
+      case 'stylesheet': {
+        parent = parentHead;
+        break;
+      }
+      default: {
+        parent = parentBody
+        break;
+      }
+    }
+
     return new Promise((resolve, reject) => {
       if(!dom) {
         reject('dom不存在');
@@ -190,7 +207,7 @@ Vvveb.Utils = {
           moduleName,
         });
 
-        const promise = this.loadModuleEl(el, doc);
+        const promise = this.loadModuleEl({ type: moduleType, el }, doc);
         modulePromise.push(promise);
       })
     });

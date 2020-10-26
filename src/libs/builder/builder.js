@@ -1398,7 +1398,8 @@ Vvveb.Builder = {
 			+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
 			+ ">\n";
 
-		html += doc.documentElement.innerHTML + "\n</html>";
+		const innerHtml = this.replaceRelativeLink(doc.documentElement.innerHTML);
+		html += innerHtml + "\n</html>";
 
 		html = this.removeHelpers(html, keepHelperAttributes);
 
@@ -1406,6 +1407,20 @@ Vvveb.Builder = {
 		if (filter) return filter;
 
 		return html;
+	},
+
+	replaceRelativeLink(html) {
+		const fakeContainer = $('<div class="__fake-container"></div>');
+		fakeContainer.append(html)
+		const $html = $(fakeContainer);
+
+		$html.find('link').each((idx, node) => {
+			node.href = node.href;
+		})
+		$html.find('script').each((idx, node) => {
+			node.src = node.src;
+		})
+		return fakeContainer.html();
 	},
 
 	setHtml: function (html) {
