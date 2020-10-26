@@ -1559,6 +1559,7 @@ Vvveb.Gui = {
 		var link = document.createElement('a');
 		if ('download' in link) {
 			link.dataset.download = filename;
+			link.download = filename;
 			link.href = uriContent;
 			link.target = "_blank";
 
