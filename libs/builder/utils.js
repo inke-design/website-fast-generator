@@ -33,6 +33,7 @@ Vvveb.Utils = {
     css && $dom.append($(css));
     script && $dom.append($(script));
     $dom.attr("data-uuid", vNode.uuid);
+    $dom.attr("data-component", 'template');
     $dom.attr("id", vNode.uuid);
     ["type", "name"].forEach(function (key) {
       $dom.attr("data-".concat(key), vNode.node[key]);

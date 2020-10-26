@@ -679,16 +679,30 @@ Vvveb.Builder = {
     next = $(node).prev(); // nodeUUID存在，则为我们定义模板组件
 
     if (nodeUUID) {
+      next = $(node).prev("[data-component]");
       Vvveb.Model.dispatch({
         type: Vvveb.Model.TYPES.MOVE_UP,
         uuid: nodeUUID,
         dom: node
-      }).after(function () {
+      }).after(function (err) {
+        if (err) return;
+
         if (next.length > 0) {
           next.before(node);
         } else {
           $(node).parent().before(node);
         }
+
+        newParent = node.parentNode;
+        newNextSibling = node.nextSibling;
+        Vvveb.Undo.addMutation({
+          type: 'move',
+          target: node,
+          oldParent: oldParent,
+          newParent: newParent,
+          oldNextSibling: oldNextSibling,
+          newNextSibling: newNextSibling
+        });
       });
     } else {
       // 否则就是模板组件里面的小组件
@@ -697,18 +711,18 @@ Vvveb.Builder = {
       } else {
         $(node).parent().before(node);
       }
-    }
 
-    newParent = node.parentNode;
-    newNextSibling = node.nextSibling;
-    Vvveb.Undo.addMutation({
-      type: 'move',
-      target: node,
-      oldParent: oldParent,
-      newParent: newParent,
-      oldNextSibling: oldNextSibling,
-      newNextSibling: newNextSibling
-    });
+      newParent = node.parentNode;
+      newNextSibling = node.nextSibling;
+      Vvveb.Undo.addMutation({
+        type: 'move',
+        target: node,
+        oldParent: oldParent,
+        newParent: newParent,
+        oldNextSibling: oldNextSibling,
+        newNextSibling: newNextSibling
+      });
+    }
   },
   moveNodeDown: function moveNodeDown(node) {
     if (!node) {
@@ -721,16 +735,30 @@ Vvveb.Builder = {
     next = $(node).next(); // nodeUUID存在，则为我们定义模板组件
 
     if (nodeUUID) {
+      next = $(node).next("[data-component]");
       Vvveb.Model.dispatch({
         type: Vvveb.Model.TYPES.MOVE_DOWN,
         uuid: nodeUUID,
         dom: node
-      }).after(function () {
+      }).after(function (err) {
+        if (err) return;
+
         if (next.length > 0) {
           next.after(node);
         } else {
           $(node).parent().after(node);
         }
+
+        newParent = node.parentNode;
+        newNextSibling = node.nextSibling;
+        Vvveb.Undo.addMutation({
+          type: 'move',
+          target: node,
+          oldParent: oldParent,
+          newParent: newParent,
+          oldNextSibling: oldNextSibling,
+          newNextSibling: newNextSibling
+        });
       });
     } else {
       // 否则就是模板组件里面的小组件
@@ -739,18 +767,18 @@ Vvveb.Builder = {
       } else {
         $(node).parent().after(node);
       }
-    }
 
-    newParent = node.parentNode;
-    newNextSibling = node.nextSibling;
-    Vvveb.Undo.addMutation({
-      type: 'move',
-      target: node,
-      oldParent: oldParent,
-      newParent: newParent,
-      oldNextSibling: oldNextSibling,
-      newNextSibling: newNextSibling
-    });
+      newParent = node.parentNode;
+      newNextSibling = node.nextSibling;
+      Vvveb.Undo.addMutation({
+        type: 'move',
+        target: node,
+        oldParent: oldParent,
+        newParent: newParent,
+        oldNextSibling: oldNextSibling,
+        newNextSibling: newNextSibling
+      });
+    }
   },
   cloneNode: function cloneNode(node) {
     if (!node) {
@@ -1540,22 +1568,29 @@ Vvveb.Sections = {
     $(this.selector).on("click", ".delete-btn", function (e) {
       var section = $(e.currentTarget).parents(".section-item");
       var node = section.data("node");
-      node.remove();
-      section.remove();
+      var nodeUUID = $(node).data('uuid');
+      nodeUUID && Vvveb.Model.dispatch({
+        type: Vvveb.Model.TYPES.REMOVE,
+        uuid: nodeUUID,
+        dom: node
+      }).after(function (err) {
+        if (err) return;
+        node.remove();
+      });
       e.preventDefault();
     });
     $(this.selector).on("click", ".up-btn", function (e) {
       var section = $(e.currentTarget).parents(".section-item");
       var node = section.data("node");
-      Vvveb.Builder.moveNodeUp(node);
-      Vvveb.Builder.moveNodeUp(section.get(0));
+      Vvveb.Builder.moveNodeUp(node); // Vvveb.Builder.moveNodeUp(section.get(0));
+
       e.preventDefault();
     });
     $(this.selector).on("click", ".down-btn", function (e) {
       var section = $(e.currentTarget).parents(".section-item");
       var node = section.data("node");
-      Vvveb.Builder.moveNodeDown(node);
-      Vvveb.Builder.moveNodeDown(section.get(0));
+      Vvveb.Builder.moveNodeDown(node); // Vvveb.Builder.moveNodeDown(section.get(0));
+
       e.preventDefault();
     });
     $(this.selector).on("click", ".properties-btn", function (e) {
