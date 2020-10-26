@@ -47,5 +47,31 @@ const css = `
 const script =  `
 `
 
+const exportModule = {
+  script: {
+    jQuery: {
+      url: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+      }
+    },
+    popperJs: {
+      url: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo',
+      }
+    },
+    bootstrapJs: {
+      url: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI' 
+      }
+    }
+  }
+}
 
-export default { html, css, script };
+
+export default { html, css, script, exportModule };

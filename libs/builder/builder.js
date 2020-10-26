@@ -1347,10 +1347,9 @@ Vvveb.Gui = {
   viewport: function viewport() {
     $("#canvas").attr("class", this.dataset.view);
   },
+  // 编辑器展开状态切换
   toggleEditor: function toggleEditor() {
-    $("#vvveb-builder").toggleClass("bottom-panel-expand");
-    $("#toggleEditorJsExecute").toggle();
-    Vvveb.CodeEditor.toggle();
+    Vvveb.CodeEditorMore.toggle();
   },
   toggleEditorJsExecute: function toggleEditorJsExecute() {
     Vvveb.Builder.runJsOnSetHtml = this.checked;
@@ -1358,7 +1357,9 @@ Vvveb.Gui = {
   preview: function preview() {
     Vvveb.Builder.isPreview == true ? Vvveb.Builder.isPreview = false : Vvveb.Builder.isPreview = true;
     $("#iframe-layer").toggle();
-    $("#vvveb-builder").toggleClass("preview");
+    $("#vvveb-builder").toggleClass("preview"); // 预览关闭代码编辑器弹窗
+
+    Vvveb.CodeEditorMore.closeCodeEditor();
   },
   fullscreen: function fullscreen() {
     launchFullScreen(document); // the whole page

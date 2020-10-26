@@ -191,10 +191,36 @@ __webpack_require__.r(__webpack_exports__);
 var html = "\n<section class=\"banner-one\">\n<div id=\"carouselExampleCaptions\" class=\"carousel slide\" data-ride=\"carousel\">\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"1\"></li>\n    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\">\n    <div class=\"carousel-item active\">\n      <img src=\"https://img.ikstatic.cn/MTYwMzQxODU2MTk5MCM1NjMjanBn.jpg\" class=\"d-block w-100\" alt=\"...\">\n      <div class=\"carousel-caption d-none d-md-block\">\n        <h5>First slide label</h5>\n        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>\n      </div>\n    </div>\n    <div class=\"carousel-item\">\n      <img src=\"https://img.ikstatic.cn/MTYwMzQxODU4ODc2OCM2MzcjanBn.jpg\" class=\"d-block w-100\" alt=\"...\">\n      <div class=\"carousel-caption d-none d-md-block\">\n        <h5>Second slide label</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n      </div>\n    </div>\n    <div class=\"carousel-item\">\n      <img src=\"https://img.ikstatic.cn/MTYwMzQxODU3NDY0NSM5NDQjanBn.jpg\" class=\"d-block w-100\" alt=\"...\">\n      <div class=\"carousel-caption d-none d-md-block\">\n        <h5>Third slide label</h5>\n        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>\n      </div>\n    </div>\n  </div>\n  <a class=\"carousel-control-prev\" href=\"#carouselExampleCaptions\" role=\"button\" data-slide=\"prev\">\n    <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    <span class=\"sr-only\">Previous</span>\n  </a>\n  <a class=\"carousel-control-next\" href=\"#carouselExampleCaptions\" role=\"button\" data-slide=\"next\">\n    <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    <span class=\"sr-only\">Next</span>\n  </a>\n</div>\n</section>\n";
 var css = "\n";
 var script = "\n";
+var exportModule = {
+  script: {
+    jQuery: {
+      url: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+      }
+    },
+    popperJs: {
+      url: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo'
+      }
+    },
+    bootstrapJs: {
+      url: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI'
+      }
+    }
+  }
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   html: html,
   css: css,
-  script: script
+  script: script,
+  exportModule: exportModule
 });
 
 /***/ }),
@@ -211,10 +237,36 @@ __webpack_require__.r(__webpack_exports__);
 var html = "\n<section class=\"banner-one\">\n<div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>\n    <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>\n    <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\">\n    <div class=\"carousel-item active\">\n      <img src=\"https://img.ikstatic.cn/MTYwMzQxODU2MTk5MCM1NjMjanBn.jpg\" class=\"d-block w-100\" alt=\"...\">\n    </div>\n    <div class=\"carousel-item\">\n      <img src=\"https://img.ikstatic.cn/MTYwMzQxODU2MTk5MCM1NjMjanBn.jpg\" class=\"d-block w-100\" alt=\"...\">\n    </div>\n    <div class=\"carousel-item\">\n      <img src=\"https://img.ikstatic.cn/MTYwMzQxODU4ODc2OCM2MzcjanBn.jpg\" class=\"d-block w-100\" alt=\"...\">\n    </div>\n  </div>\n  <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">\n    <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    <span class=\"sr-only\">Previous</span>\n  </a>\n  <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">\n    <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    <span class=\"sr-only\">Next</span>\n  </a>\n</div>\n</section>\n";
 var css = "\n";
 var script = "\n";
+var exportModule = {
+  script: {
+    jQuery: {
+      url: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+      }
+    },
+    popperJs: {
+      url: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo'
+      }
+    },
+    bootstrapJs: {
+      url: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js',
+      attrs: {
+        crossorigin: 'anonymous',
+        integrity: 'sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI'
+      }
+    }
+  }
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   html: html,
   css: css,
-  script: script
+  script: script,
+  exportModule: exportModule
 });
 
 /***/ }),
@@ -589,7 +641,8 @@ var templateConfig = {
       image: '//img.ikstatic.cn/MTYwMzQ0Mjc1NDA5NSM1ODkjanBn.jpg',
       html: _banner_banner_two__WEBPACK_IMPORTED_MODULE_10__["default"].html,
       css: _banner_banner_two__WEBPACK_IMPORTED_MODULE_10__["default"].css,
-      script: _banner_banner_two__WEBPACK_IMPORTED_MODULE_10__["default"].script
+      script: _banner_banner_two__WEBPACK_IMPORTED_MODULE_10__["default"].script,
+      exportModule: _banner_banner_one__WEBPACK_IMPORTED_MODULE_9__["default"].exportModule
     }, {
       key: "banner/banner-three",
       name: "Banner模板三",
@@ -597,7 +650,8 @@ var templateConfig = {
       image: '//img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg',
       html: _banner_banner_three__WEBPACK_IMPORTED_MODULE_11__["default"].html,
       css: _banner_banner_three__WEBPACK_IMPORTED_MODULE_11__["default"].css,
-      script: _banner_banner_three__WEBPACK_IMPORTED_MODULE_11__["default"].script
+      script: _banner_banner_three__WEBPACK_IMPORTED_MODULE_11__["default"].script,
+      exportModule: _banner_banner_one__WEBPACK_IMPORTED_MODULE_9__["default"].exportModule
     }]
   },
   content: {

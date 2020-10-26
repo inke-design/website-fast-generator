@@ -10309,9 +10309,11 @@ ul.autocomplete li.selected {
 .codeEditor.tab-content > .tab-pane {
   display: block;
   position: absolute;
-  z-index: -1; }
+  z-index: -1;
+  opacity: 0; }
 
 .codeEditor.tab-content > .active {
   display: block;
   position: relative;
-  z-index: 1; }
+  z-index: 1;
+  opacity: 1; }
