@@ -1,7 +1,6 @@
 Vvveb.CodeEditorMore = {
 	
 	isActive: false,
-	doc:false,
   codemirriorHTML: null,
   codemirriorCss: null,
   codemirriorScript: null,
@@ -10,40 +9,28 @@ Vvveb.CodeEditorMore = {
     css: '',
     script: ''
   },
-
 	
-	init: function(doc) {
-
-      const { html, css, script } = this.value
-      // 生成html编辑器
-			this.codemirriorHTML = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-content"), {
-				mode: 'text/html',
-				// lineNumbers: true,
-				// autofocus: true,
+	init: function() {
+      // 生成编辑器实例
+			this.codemirriorHTML = this.createCodeEditor(document.querySelector("#vvveb-code-editor-content"), {
+        mode: 'text/html',
 				lineWrapping: true,
-				// viewportMargin:Infinity,
         theme: 'material',
       });
-      this.codemirriorCss= CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-style"), {
-				mode: 'css',
-				// lineNumbers: true,
-				// autofocus: true,
+      this.codemirriorCss= this.createCodeEditor(document.querySelector("#vvveb-code-editor-style"), {
+        mode: 'css',
 				lineWrapping: true,
-				// viewportMargin:Infinity,
         theme: 'material',
       });
-      this.codemirriorScript = CodeMirror.fromTextArea(document.querySelector("#vvveb-code-editor-advanced"), {
-				mode: 'javascript',
-				// lineNumbers: true,
-				// autofocus: true,
+      this.codemirriorScript = this.createCodeEditor(document.querySelector("#vvveb-code-editor-advanced"), {
+        mode: 'javascript',
 				lineWrapping: true,
-				// viewportMargin:Infinity,
         theme: 'material',
       });
-      this.codemirriorHTML.setValue(html)
-      this.codemirriorCss.setValue(css)
-      this.codemirriorScript.setValue(script)
-      // 编辑器失去焦点触发数据更新
+      // 将数据回填并刷新编辑器
+      this.setCodeEditorValue()
+      this.refresh()
+      // 编辑器绑定失去焦点触发数据更新事件
       const that = this
 			this.codemirriorHTML.on("blur", function (e, v) { 
         that.uplateNode({ html: e.getValue() }, 'html')
@@ -54,14 +41,27 @@ Vvveb.CodeEditorMore = {
       this.codemirriorScript.on("blur", function (e, v) { 
 				that.uplateNode({ script: e.getValue() }, 'script')
       });
-		
-		
-		//load code on document changes
-		// Vvveb.Builder.frameBody.on("vvveb.undo.add vvveb.undo.restore", function (e) { Vvveb.CodeEditor.setValue(e);});
-		//load code when a new url is loaded
-		// Vvveb.Builder.documentFrame.on("load", function (e) { Vvveb.CodeEditor.setValue();});
-		// this.setValue();
-	},
+  },
+
+  // 创建文本编辑器
+  createCodeEditor: function (dom, option) {
+    return  CodeMirror.fromTextArea(dom, option);
+  },
+
+  // 编辑器数据回填
+  setCodeEditorValue: function () {
+    const { html, css, script } = this.value;
+    this.codemirriorHTML && this.codemirriorHTML.setValue(html)
+    this.codemirriorCss && this.codemirriorCss.setValue(css)
+    this.codemirriorScript && this.codemirriorScript.setValue(script)
+  },
+
+  // 编辑器刷新
+  refresh: function () {
+    this.codemirriorHTML && this.codemirriorHTML.refresh()
+    this.codemirriorCss && this.codemirriorCss.refresh()
+    this.codemirriorScript && this.codemirriorScript.refresh()
+  },
 
   // 设置value初始值
 	setValue: function(value) {
@@ -83,6 +83,7 @@ Vvveb.CodeEditorMore = {
 
   // 销毁
 	destroy: function(element) {
+    if(!this.codemirriorHTML) return
     this.codemirriorHTML && this.codemirriorHTML.toTextArea()
     this.codemirriorCss && this.codemirriorCss.toTextArea()
     this.codemirriorScript && this.codemirriorScript.toTextArea()
@@ -96,15 +97,16 @@ Vvveb.CodeEditorMore = {
     this.codemirriorScript = null
 	},
 
+  // 切换状态
 	toggle: function() {
-		if (this.isActive != true)
-		{
-			this.isActive = true;
-			return this.init();
-		}
-		this.isActive = false;
-		this.destroy();
+    this.isActive = !this.isActive
+    $("#vvveb-builder").toggleClass("bottom-panel-expand");
+  },
+
+  // 关闭编辑器弹窗
+  closeCodeEditor: function() {
+    if(!this.isActive) return
+    this.isActive = false
+    $("#vvveb-builder").removeClass("bottom-panel-expand");
   }
-  
-  
 }

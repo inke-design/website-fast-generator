@@ -447,7 +447,6 @@ Vvveb.Components = {
       const id = `vvveb-code-editor-${sectionName}`
       section.append(`<textarea id=${id} class="component-code-eidtor"></textarea>`)
     })
-
     Vvveb.CodeEditorMore.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
 	}
@@ -1592,10 +1591,9 @@ Vvveb.Gui = {
 		$("#canvas").attr("class", this.dataset.view);
 	},
 
+  // 编辑器展开状态切换
 	toggleEditor: function () {
-		$("#vvveb-builder").toggleClass("bottom-panel-expand");
-		$("#toggleEditorJsExecute").toggle();
-		Vvveb.CodeEditor.toggle();
+		Vvveb.CodeEditorMore.toggle()
 	},
 
 	toggleEditorJsExecute: function () {
@@ -1605,12 +1603,14 @@ Vvveb.Gui = {
 	preview: function () {
 		(Vvveb.Builder.isPreview == true) ? Vvveb.Builder.isPreview = false : Vvveb.Builder.isPreview = true;
 		$("#iframe-layer").toggle();
-		$("#vvveb-builder").toggleClass("preview");
+    $("#vvveb-builder").toggleClass("preview");
+    // 预览关闭代码编辑器弹窗
+    Vvveb.CodeEditorMore.closeCodeEditor()
 	},
 
 	fullscreen: function () {
 		launchFullScreen(document); // the whole page
-	},
+  },
 
 	componentSearch: function () {
 		searchText = this.value;

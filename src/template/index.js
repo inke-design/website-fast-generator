@@ -151,6 +151,7 @@ const templateConfig = {
         html: BannerTwo.html,
         css: BannerTwo.css,
         script: BannerTwo.script,
+        exportModule: BannerOne.exportModule,
       },
       {
         key: "banner/banner-three",
@@ -160,6 +161,7 @@ const templateConfig = {
         html: BannerThree.html,
         css: BannerThree.css,
         script: BannerThree.script,
+        exportModule: BannerOne.exportModule,
       },
     ]
   },
