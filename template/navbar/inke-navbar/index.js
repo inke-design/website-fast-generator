@@ -1,7 +1,7 @@
 const html = `
 <section class="inke-navbar-1">
 <div class="header_wrapper" style="width: 1300px">
-  <img id="inke-logo" class="logo" src="//img.ikstatic.cn/MTU5MDExOTQzNDY0OCMgODcjcG5n.png" />
+  <img id="inke-logo" class="logo" src="https://img.ikstatic.cn/MTU5MDExOTQzNDY0OCMgODcjcG5n.png" />
   <ul class="nav">
     <li><a href="/">首页</a></li>
     <li class="nav-li">

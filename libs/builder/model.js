@@ -101,7 +101,7 @@ Vvveb.Model = {
               uuid: uid,
               node: node
             };
-            var $dom = Vvveb.Utils.render(vNode);
+            var $dom = Vvveb.Utils.render(vNode, window.FrameDocument);
             vNode.$dom = $dom;
 
             _this2.store.nodes.push(vNode);
@@ -176,7 +176,7 @@ Vvveb.Model = {
               node: _objectSpread(_objectSpread({}, vNode.node), node)
             });
 
-            var $dom = Vvveb.Utils.render(vNodeNew);
+            var $dom = Vvveb.Utils.render(vNodeNew, window.FrameDocument);
             vNodeNew.$dom = $dom;
             _this2.store.nodes = Vvveb.Utils.Array.replace(_this2.store.nodes, index, vNodeNew);
             vNode.$dom.replaceWith($dom);
@@ -199,7 +199,7 @@ Vvveb.Model = {
               uuid: uid,
               node: node
             };
-            var $dom = Vvveb.Utils.render(vNodeClone);
+            var $dom = Vvveb.Utils.render(vNodeClone, window.FrameDocument);
             vNodeClone.$dom = $dom;
 
             _this2.store.nodes.push(vNodeClone);

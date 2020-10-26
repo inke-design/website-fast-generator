@@ -1183,11 +1183,24 @@ Vvveb.Builder = {
     $("[spellcheckker]", doc).removeAttr("spellcheckker");
     $(window).triggerHandler("vvveb.getHtml.before", doc);
     if (hasDoctpe) html = "<!DOCTYPE " + doc.doctype.name + (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '') + (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '') + (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '') + ">\n";
-    html += doc.documentElement.innerHTML + "\n</html>";
+    var innerHtml = this.replaceRelativeLink(doc.documentElement.innerHTML);
+    html += innerHtml + "\n</html>";
     html = this.removeHelpers(html, keepHelperAttributes);
     var filter = $(window).triggerHandler("vvveb.getHtml.after", html);
     if (filter) return filter;
     return html;
+  },
+  replaceRelativeLink: function replaceRelativeLink(html) {
+    var fakeContainer = $('<div class="__fake-container"></div>');
+    fakeContainer.append(html);
+    var $html = $(fakeContainer);
+    $html.find('link').each(function (idx, node) {
+      node.href = node.href;
+    });
+    $html.find('script').each(function (idx, node) {
+      node.src = node.src;
+    });
+    return fakeContainer.html();
   },
   setHtml: function setHtml(html) {
     //update only body to avoid breaking iframe css/js relative paths

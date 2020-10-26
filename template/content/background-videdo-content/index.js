@@ -2,7 +2,7 @@ const html = `
 <section class="full-backgroud-video-content">
 <div class="cont">
   <div class="cont-bg"><video id="bgvideo" width="100%" height="100%"
-      src="//m4a.inke.cn/MTU5MTI0Mjg1NzAwNCMzNzYjbXA0.mp4" loop="" style="width: 1300px; height: 731.25px;"
+      src="https://m4a.inke.cn/MTU5MTI0Mjg1NzAwNCMzNzYjbXA0.mp4" loop="" style="width: 1300px; height: 731.25px;"
       autoplay="">您的浏览器不支持video标签，建议更新浏览器版本</video>
     <div class="cont-bg-mask"></div>
   </div>
