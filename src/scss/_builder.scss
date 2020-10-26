@@ -270,7 +270,7 @@ body
 			.tree
 			{
 				height:$builder-filemanager-height - $builder-header-top-height;
-				height:calc( var(--builder-filemanager-height) - #{$builder-header-top-height});
+				height: 150px;
 				padding:0.5rem 0rem;
 				overflow-y: hidden;
 				overflow-x: hidden;
