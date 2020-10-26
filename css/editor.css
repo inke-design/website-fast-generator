@@ -9898,7 +9898,8 @@ li[data-type] {
     outline: 1px solid slategrey; }
   .drag-elements-sidepane > div {
     height: 100%;
-    overflow-y: auto; }
+    overflow-y: auto;
+    overflow-x: hidden; }
   .drag-elements-sidepane ul {
     z-index: 1;
     margin: 0;
