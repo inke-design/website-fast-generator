@@ -1423,9 +1423,9 @@ Vvveb.Builder = {
 			+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
 			+ ">\n";
 
-		const innerHtml = this.replaceRelativeLink(doc.documentElement.innerHTML);
+		this.replaceRelativeLink(doc.documentElement);
+		const innerHtml = doc.documentElement.innerHTML;
 		html += innerHtml + "\n</html>";
-
 		html = this.removeHelpers(html, keepHelperAttributes);
 
 		var filter = $(window).triggerHandler("vvveb.getHtml.after", html);
@@ -1434,18 +1434,17 @@ Vvveb.Builder = {
 		return html;
 	},
 
-	replaceRelativeLink(html) {
-		const fakeContainer = $('<div class="__fake-container"></div>');
-		fakeContainer.append(html)
-		const $html = $(fakeContainer);
+	replaceRelativeLink(doc) {
+		doc.querySelectorAll('link').forEach(el => {
+			let path = el.getAttribute('href')
+			if(path) el.href = el.href;
+		})
+		doc.querySelectorAll('script').forEach(el => {
+			let path = el.getAttribute('src')
 
-		$html.find('link').each((idx, node) => {
-			node.href = node.href;
+			if(path) el.src = el.src;
 		})
-		$html.find('script').each((idx, node) => {
-			node.src = node.src;
-		})
-		return fakeContainer.html();
+		return doc;
 	},
 
 	setHtml: function (html) {
