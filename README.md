@@ -7,6 +7,8 @@
 
 > 拓展后支持ES6语法及模块化开发, 采用gulp打包
 
+## DEMO:
+[https://inke-design.github.io/website-fast-generator/editor.html](https://inke-design.github.io/website-fast-generator/editor.html)
 
 ## 使用
 - 开发调试
