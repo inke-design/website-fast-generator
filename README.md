@@ -58,11 +58,15 @@ What did we do & What will we do
 - [x] 内置4套Navbar模板、4套Content模板、3套Footer模板、3套Banner模板
 
 #### v0.2
+- [ ] 数据驱动设计
+- [ ] 生成更好的网页结构
+- [ ] 自定义模板，一键保存
+  - [ ] 支持导入html、css、script
+  - [ ] 接入compile
+- [ ] 网页编辑器支持语法提示，自动补全([monaco-editor](https://github.com/microsoft/monaco-editor))
 - [ ] 模板支持通过本地html、css、js文件编写，更好的语法提示, node统一打包处理
-- [ ] 模板html、css、script语法智能提示，自动补全
 - [ ] 导出网页可再次导入以模板维度修改
-- [ ] 接入compile
-- [ ] 网页可以拆分html、css、script独立文件导出
+- [ ] 网页可以拆分html、css、script独立文件导出([jsZip](https://github.com/Stuk/jszip))
 
 
 
