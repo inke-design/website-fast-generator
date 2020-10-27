@@ -9517,7 +9517,13 @@ body {
       border-radius: 0px;
       min-width: 4.5rem;
       color: #343a40;
-      line-height: 1.2rem; }
+      line-height: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #vvveb-builder .drag-elements .nav-item .nav-link .nav-link-title {
+        margin-left: 6px;
+        font-size: 14px; }
       #vvveb-builder .drag-elements .nav-item .nav-link i.la-lg {
         font-size: 1.4rem;
         margin: 0.2rem 0; }

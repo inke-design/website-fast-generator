@@ -504,7 +504,7 @@ Vvveb.Builder = {
       navHeight += $(node).height();
     });
     var h = $("#left-panel").height() - $("#filemanager").height() - navHeight;
-    $("#left-panel .drag-elements-sidepane").height(h - 80);
+    $("#left-panel .drag-elements-sidepane").height(h);
     return h;
   },
 
