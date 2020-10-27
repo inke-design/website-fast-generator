@@ -476,6 +476,14 @@ body
 				min-width:4.5rem;
 				color:$dark;
 				line-height:1.2rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.nav-link-title {
+					margin-left: 6px;
+					font-size: 14px;
+				}
 				
 				i.la-lg
 				{
