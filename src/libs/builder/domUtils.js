@@ -8,7 +8,6 @@ Vvveb.domUtils = {
   },
 
   selectNode(uuid) {
-    console.log('selectNode', uuid);
     const selector = `[data-uuid="${uuid}"]`;
     const $frameDoc = $(this.frameDoc);
     this.$selectedEl = $frameDoc.find(selector);

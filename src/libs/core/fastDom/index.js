@@ -47,7 +47,6 @@ FastDom.prototype.render = function (node) {
 
 
 FastDom.prototype.renderDom = function(doc) {
-  console.log('this.vnodes',this.nodes, this.vnodes)
   const docHead = doc.head;
   const docBody =  doc.body;
 

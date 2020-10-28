@@ -1,5 +1,5 @@
 import Model from "./model";
-import { logger, uuidMiddleware } from "./model/middlewares";
+import { logger, uuidMiddleware, loadSectionsMiddleWare } from "./model/middlewares";
 import FastDom from './fastDom';
 import { actions } from './actions';
 
@@ -10,7 +10,7 @@ const model = new Model({
     nodes: [],
   },
   // 配置中间件
-  middlewares: [uuidMiddleware, logger ],
+  middlewares: [uuidMiddleware, loadSectionsMiddleWare, logger ],
 });
 
 // 注册action
