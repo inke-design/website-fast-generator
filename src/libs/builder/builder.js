@@ -808,7 +808,7 @@ Vvveb.Builder = {
 		if(nodeUUID) {
 			next = $(node).prev("[data-component]");
 			Vvveb.Model2.dispatch({
-				type: Vvveb.Model.TYPES.MOVE_UP,
+				type: 'MOVE_UP',
 				uuid: nodeUUID,
 			});
 		} else {
@@ -848,7 +848,7 @@ Vvveb.Builder = {
 			next = $(node).next("[data-component]");
 
 			Vvveb.Model2.dispatch({
-				type: Vvveb.Model.TYPES.MOVE_DOWN,
+				type: 'MOVE_DOWN',
 				uuid: nodeUUID,
 			});
 		} else {
@@ -881,7 +881,7 @@ Vvveb.Builder = {
 		const nodeUUID = $(node).data('uuid');
 		if(nodeUUID) {
 			Vvveb.Model2.dispatch({
-				type: Vvveb.Model.TYPES.CLONE,
+				type: 'CLONE',
 				dom: node,
 				uuid: nodeUUID,
 			});
@@ -1037,7 +1037,7 @@ Vvveb.Builder = {
 					{
 						newElement = $(self.component.html);
 						Vvveb.Model2.dispatch({
-							type: Vvveb.Model.TYPES.ADD,
+							type: 'ADD',
 							payload: self.component
 						}).then(() => {
 							Vvveb.domUtils
@@ -1168,7 +1168,7 @@ Vvveb.Builder = {
 			});
 
 			nodeUUID ? Vvveb.Model2.dispatch({
-				type: Vvveb.Model.TYPES.REMOVE,
+				type: 'REMOVE',
 				uuid: nodeUUID,
 			}) : null;
 
@@ -1213,7 +1213,7 @@ Vvveb.Builder = {
 		function addSectionComponent(component, after = true) {
 
 			Vvveb.Model2.dispatch({
-				type: Vvveb.Model.TYPES.ADD,
+				type: 'ADD',
 				payload: component,
 			});
 		}
@@ -1802,7 +1802,7 @@ Vvveb.Sections = {
 			const nodeUUID = $(node).data('uuid');
 
 			nodeUUID && Vvveb.Model2.dispatch({
-				type: Vvveb.Model.TYPES.REMOVE,
+				type: 'REMOVE',
 				uuid: nodeUUID,
 			});
 			e.preventDefault();
