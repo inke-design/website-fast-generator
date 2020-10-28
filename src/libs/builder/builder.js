@@ -807,29 +807,10 @@ Vvveb.Builder = {
 		// nodeUUID存在，则为我们定义模板组件
 		if(nodeUUID) {
 			next = $(node).prev("[data-component]");
-			Vvveb.Model.dispatch({
+			Vvveb.Model2.dispatch({
 				type: Vvveb.Model.TYPES.MOVE_UP,
 				uuid: nodeUUID,
-				dom: node,
-			}).after((err) => {
-				if(err) return ;
-				if (next.length > 0) {
-					next.before(node);
-				} else {
-					$(node).parent().before(node);
-				}
-				newParent = node.parentNode;
-				newNextSibling = node.nextSibling;
-		
-				Vvveb.Undo.addMutation({
-					type: 'move',
-					target: node,
-					oldParent: oldParent,
-					newParent: newParent,
-					oldNextSibling: oldNextSibling,
-					newNextSibling: newNextSibling
-				});
-			})
+			});
 		} else {
 			// 否则就是模板组件里面的小组件
 			if (next.length > 0) {
@@ -866,30 +847,10 @@ Vvveb.Builder = {
 		if(nodeUUID) {
 			next = $(node).next("[data-component]");
 
-			Vvveb.Model.dispatch({
+			Vvveb.Model2.dispatch({
 				type: Vvveb.Model.TYPES.MOVE_DOWN,
 				uuid: nodeUUID,
-				dom: node,
-			}).after((err) => {
-				if(err) return;
-				if (next.length > 0) {
-					next.after(node);
-				} else {
-					$(node).parent().after(node);
-				}
-
-				newParent = node.parentNode;
-				newNextSibling = node.nextSibling;
-
-				Vvveb.Undo.addMutation({
-					type: 'move',
-					target: node,
-					oldParent: oldParent,
-					newParent: newParent,
-					oldNextSibling: oldNextSibling,
-					newNextSibling: newNextSibling
-				});
-			})
+			});
 		} else {
 			// 否则就是模板组件里面的小组件
 			if (next.length > 0) {
@@ -919,14 +880,11 @@ Vvveb.Builder = {
 
 		const nodeUUID = $(node).data('uuid');
 		if(nodeUUID) {
-			Vvveb.Model.dispatch({
+			Vvveb.Model2.dispatch({
 				type: Vvveb.Model.TYPES.CLONE,
 				dom: node,
 				uuid: nodeUUID,
-			}).after((err, afterNode) => {
-				clone = afterNode.$dom;
-				node.after(clone);
-			})
+			});
 		} else {
 			clone = node.clone();
 			node.after(clone);
@@ -1077,38 +1035,18 @@ Vvveb.Builder = {
 				if (self.dragMoveMutation === false) {
 					if (self.component.dragHtml) //if dragHtml is set for dragging then set real component html
 					{
-						// newElement = $(self.component.html);
-						Vvveb.Model.dispatch({
+						newElement = $(self.component.html);
+						Vvveb.Model2.dispatch({
 							type: Vvveb.Model.TYPES.ADD,
-							node: self.component
-						}).after((err, afterNode) => {
-							self.dragElement.replaceWith(afterNode.$dom);
-							self.dragElement = afterNode.$dom;
+							payload: self.component
+						}).then(() => {
+							Vvveb.domUtils
+								.setFrameDocument(window.FrameDocument)
+								.selectNode(self.activeUUID);
 						})
 					}
 
-					if (self.component.afterDrop) self.dragElement = self.component.afterDrop(self.dragElement);
-				}
-
-				self.dragElement.css("border", "");
-
-				node = self.dragElement.get(0);
-				self.selectNode(node);
-				self.loadNodeComponent(node);
-
-				if (self.dragMoveMutation === false) {
-					Vvveb.Undo.addMutation({
-						type: 'childList',
-						target: node.parentNode,
-						addedNodes: [node],
-						nextSibling: node.nextSibling
-					});
-				} else {
-					self.dragMoveMutation.newParent = node.parentNode;
-					self.dragMoveMutation.newNextSibling = node.nextSibling;
-
-					Vvveb.Undo.addMutation(self.dragMoveMutation);
-					self.dragMoveMutation = false;
+					return;
 				}
 			}
 		});
@@ -1229,13 +1167,10 @@ Vvveb.Builder = {
 				nextSibling: node.nextSibling
 			});
 
-			nodeUUID ? Vvveb.Model.dispatch({
+			nodeUUID ? Vvveb.Model2.dispatch({
 				type: Vvveb.Model.TYPES.REMOVE,
 				uuid: nodeUUID,
-				dom: node,
-			}).after(() => {
-				self.selectedEl.remove();
-		}) : self.selectedEl.remove();
+			}) : null;
 
 			event.preventDefault();
 			return false;
@@ -1277,24 +1212,10 @@ Vvveb.Builder = {
 
 		function addSectionComponent(component, after = true) {
 
-			Vvveb.Model.dispatch({
+			Vvveb.Model2.dispatch({
 				type: Vvveb.Model.TYPES.ADD,
-				node: component,
-			}).after((err, afterNode) => {
-				if (after) {
-					addSectionElement.after(afterNode.$dom);
-				} else {
-					addSectionElement.append(afterNode.$dom);
-				}
-				var node = afterNode.$dom.get(0);
-	
-				Vvveb.Undo.addMutation({
-					type: 'childList',
-					target: node.parentNode,
-					addedNodes: [node],
-					nextSibling: node.nextSibling
-				});
-			})
+				payload: component,
+			});
 		}
 
 		$(".components-list li ol li", addSectionBox).on("click", function (event) {
@@ -1880,14 +1801,10 @@ Vvveb.Sections = {
 			var node = section.data("node");
 			const nodeUUID = $(node).data('uuid');
 
-			nodeUUID && Vvveb.Model.dispatch({
+			nodeUUID && Vvveb.Model2.dispatch({
 				type: Vvveb.Model.TYPES.REMOVE,
 				uuid: nodeUUID,
-				dom: node,
-			}).after(err => {
-				if(err) return;
-				node.remove();
-			})
+			});
 			e.preventDefault();
 		});
 

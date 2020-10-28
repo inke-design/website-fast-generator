@@ -8,7 +8,11 @@ const named = require("vinyl-named");
 const webpack = require("webpack-stream");
 var rename = require("gulp-rename");
 
-const IMPORT_FILES = ["./src/libs/builder/blocks-bootstrap4.js", "./src/libs/builder/initTemplate.js"];
+const IMPORT_FILES = [
+  "./src/libs/builder/blocks-bootstrap4.js", 
+  "./src/libs/builder/initTemplate.js", 
+  './src/libs/core/index.js'
+];
 
 function getFileName(path) {
   return path.replace(/(.*\/)*([^.]+).*/gi, "$2");
@@ -32,6 +36,7 @@ function compileEs() {
     .pipe(
       babel({
         presets: [["@babel/preset-env", { modules: false }]],
+        plugins: ["@babel/plugin-syntax-class-properties", "@babel/plugin-proposal-class-properties"],
       })
     )
     .pipe(gulp.dest("dist/libs"));
@@ -59,7 +64,7 @@ function compileEsWithWebpack() {
                 loader: "babel-loader",
                 options: {
                   presets: ["@babel/preset-env"],
-                  plugins: ["@babel/plugin-proposal-object-rest-spread"],
+                  plugins: ["@babel/plugin-proposal-object-rest-spread", "@babel/plugin-syntax-class-properties", "@babel/plugin-proposal-class-properties"],
                 },
               },
             },
