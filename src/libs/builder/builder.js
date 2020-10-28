@@ -1790,7 +1790,7 @@ Vvveb.Sections = {
 
 			//node.click();
 			Vvveb.Builder.selectNode(node);
-			Vvveb.Builder.loadNodeComponent(node);
+			// Vvveb.Builder.loadNodeComponent(node);
 		}).on("dblclick", "> div", function (e) {
 			$node.click();
 		});

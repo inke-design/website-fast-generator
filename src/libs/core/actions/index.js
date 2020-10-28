@@ -54,7 +54,7 @@ export const actions = [
         console.warn("节点已在最上面了");
         return state;
       }
-      const newNodes = ArrayUtils.swap(arr, idx, idx - 1);
+      const newNodes = ArrayUtils.swap(state.nodes, idx, idx - 1);
 
       state.nodes = newNodes;
       return state;
@@ -74,7 +74,7 @@ export const actions = [
         console.warn("节点已在最下面了");
         return state;
       }
-      const newNodes = ArrayUtils.swap(arr, idx, idx + 1);
+      const newNodes = ArrayUtils.swap(state.nodes, idx, idx + 1);
 
       state.nodes = newNodes;
       return state;

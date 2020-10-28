@@ -17,7 +17,7 @@ export function clone(value) {
 
   if (isArr) return [...value];
 
-  if (this.isObject(value)) return { ...value };
+  if (isObject(value)) return { ...value };
 
   return value;
 }
