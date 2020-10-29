@@ -4,14 +4,16 @@ import { isEmpty, compose } from "../utils/index";
 export default class Model {
   constructor({ state = {}, middlewares = [] }) {
     this.store = observe(state);
+
     this.INSTALL_TYPES = {
       action: "action",
     };
+
     this.actions = {};
+
     this.middlewares = middlewares;
 
-    const _dispatch = this._applyMiddleware(this.middlewares);
-    this.dispatch = _dispatch;
+    this._initMiddleWares(this.middlewares);
   }
 
   getState() {
@@ -48,7 +50,11 @@ export default class Model {
     }
   }
 
-  getter() {}
+  getter() {
+    /**
+     * TODO:
+     */
+  }
 
   subscribe(fn, keys) {
     this._addWatcher(keys, fn);
@@ -102,5 +108,13 @@ export default class Model {
         reject(err);
       }
     });
+  }
+
+  _initMiddleWares(middlewares) {
+    if(!isEmpty(middlewares)) {
+      this._dispatch = this.dispatch;
+
+      this.dispatch = this._applyMiddleware(middlewares);
+    }
   }
 }

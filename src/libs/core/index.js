@@ -21,9 +21,11 @@ model.install("action", actions);
 model.subscribe((newVal, oldVal, state) => {
   const fastDom = new FastDom();
 
-  // vnode => dom
+  // node => dom
   fastDom
+    // 加载nodes
     .loadNodes(state.nodes)
+    // 渲染nodes
     .renderDom(window.FrameDocument);
 }, []);
 

@@ -168,6 +168,7 @@ FastDom.prototype.loadExportModules = function (modules, doc) {
   return Promise.all(modulePromise);
 };
 
+// 将节点渲染成一个vnode,方便后续处理
 FastDom.prototype.render = function (node) {
   const vnode = { node };
 
@@ -194,24 +195,32 @@ FastDom.prototype.render = function (node) {
   return vnode;
 };
 
+// 渲染并插入dom到页面
 FastDom.prototype.renderDom = function(doc) {
   const docHead = doc.head;
   const docBody = doc.body;
 
+  // 构造伪head容器
   let fakeHead = $();
+  // 构造伪body容器
   let fakeBody = $();
+  // 构造伪srcipt容器
   let fakeScript = $();
 
+  // 先将节点统一加入伪容器，后面一次性替换真实dom,避免多次重绘
   this.vnodes.forEach((vnode) => {
     fakeHead = fakeHead.add(vnode.$css);
     fakeBody = fakeBody.add(vnode.$html);
     fakeScript = fakeScript.add(vnode.$script);
   });
 
+  // 将页面body置空
   $(docBody).html("");
   // 加载公共模块
   this.loadExportModules(this.exportModule, doc);
+  // 加载伪head到真实document.head
   $(docHead).append(fakeHead);
+  // 加载伪body到真实document.body
   $(docBody).prepend(fakeBody).append(fakeScript);
 };
 

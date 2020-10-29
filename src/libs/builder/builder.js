@@ -794,82 +794,36 @@ Vvveb.Builder = {
 	},
 
 	moveNodeUp: function (node) {
-		if (!node) {
-			node = Vvveb.Builder.selectedEl.get(0);
-		}
-
-		oldParent = node.parentNode;
-		oldNextSibling = node.nextSibling;
-
 		const nodeUUID = $(node).data('uuid');
-		next = $(node).prev();
 
 		// nodeUUID存在，则为我们定义模板组件
 		if(nodeUUID) {
-			next = $(node).prev("[data-component]");
 			Vvveb.Model2.dispatch({
 				type: 'MOVE_UP',
 				uuid: nodeUUID,
 			});
 		} else {
-			// 否则就是模板组件里面的小组件
-			if (next.length > 0) {
-				next.before(node);
-			} else {
-				$(node).parent().before(node);
-			}
-			newParent = node.parentNode;
-			newNextSibling = node.nextSibling;
-	
-			Vvveb.Undo.addMutation({
-				type: 'move',
-				target: node,
-				oldParent: oldParent,
-				newParent: newParent,
-				oldNextSibling: oldNextSibling,
-				newNextSibling: newNextSibling
-			});
+			/**
+			 * TODO:
+			 * 非模版组件
+			 */
 		}
 	},
 
 	moveNodeDown: function (node) {
-		if (!node) {
-			node = Vvveb.Builder.selectedEl.get(0);
-		}
-
-		oldParent = node.parentNode;
-		oldNextSibling = node.nextSibling;
-
 		const nodeUUID = $(node).data('uuid');
-		next = $(node).next();
 
 		// nodeUUID存在，则为我们定义模板组件
 		if(nodeUUID) {
-			next = $(node).next("[data-component]");
-
 			Vvveb.Model2.dispatch({
 				type: 'MOVE_DOWN',
 				uuid: nodeUUID,
 			});
 		} else {
-			// 否则就是模板组件里面的小组件
-			if (next.length > 0) {
-				next.after(node);
-			} else {
-				$(node).parent().after(node);
-			}
-			
-			newParent = node.parentNode;
-			newNextSibling = node.nextSibling;
-	
-			Vvveb.Undo.addMutation({
-				type: 'move',
-				target: node,
-				oldParent: oldParent,
-				newParent: newParent,
-				oldNextSibling: oldNextSibling,
-				newNextSibling: newNextSibling
-			});
+			/**
+			 * TODO:
+			 * 非模版组件
+			 */
 		}
 	},
 
