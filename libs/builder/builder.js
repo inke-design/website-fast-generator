@@ -387,15 +387,8 @@ Vvveb.Components = {
       script: script
     });
     Object.keys(componentsPanelSections).forEach(function (sectionName) {
-      componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", {
-        key: "default",
-        header: component.name
-      }));
-      var section = componentsPanelSections[sectionName].find(".section");
-      componentsPanelSections[sectionName].find('[data-header="default"] span').html("".concat(name, " Code"));
-      section.html('');
       var id = "vvveb-code-editor-".concat(sectionName);
-      section.append("<textarea id=".concat(id, " class=\"component-code-eidtor\"></textarea>"));
+      componentsPanelSections[sectionName].html('').append("<textarea id=".concat(id, " class=\"component-code-eidtor\"></textarea>"));
     });
     Vvveb.CodeEditorMore.init();
     if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));

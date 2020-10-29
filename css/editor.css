@@ -10312,14 +10312,25 @@ ul.autocomplete li.selected {
 .sections-tabs .nav-link span {
   font-size: 12px; }
 
+.codeEditor.tab-content {
+  min-height: 100%; }
+
 .codeEditor.tab-content > .tab-pane {
   display: block;
   position: absolute;
   z-index: -1;
-  opacity: 0; }
+  opacity: 0;
+  min-height: 100%; }
 
 .codeEditor.tab-content > .active {
   display: block;
   position: relative;
   z-index: 1;
   opacity: 1; }
+
+.code-editor-tab a span {
+  color: #495057;
+  padding: 0 10px; }
+
+.code-editor-tab a.active span {
+  color: #007bff; }

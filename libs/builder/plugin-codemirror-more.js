@@ -19,21 +19,25 @@ Vvveb.CodeEditorMore = {
     this.codemirriorHTML = this.createCodeEditor(document.querySelector("#vvveb-code-editor-content"), {
       mode: 'text/html',
       lineWrapping: true,
-      theme: 'material'
+      theme: 'material',
+      lineNumbers: true
     });
     this.codemirriorCss = this.createCodeEditor(document.querySelector("#vvveb-code-editor-style"), {
       mode: 'css',
       lineWrapping: true,
-      theme: 'material'
+      theme: 'material',
+      lineNumbers: true
     });
     this.codemirriorScript = this.createCodeEditor(document.querySelector("#vvveb-code-editor-advanced"), {
       mode: 'javascript',
       lineWrapping: true,
-      theme: 'material'
+      theme: 'material',
+      lineNumbers: true
     }); // 将数据回填并刷新编辑器
 
     this.setCodeEditorValue();
-    this.refresh(); // 编辑器绑定失去焦点触发数据更新事件
+    this.refresh(); // this.setShowHint()
+    // 编辑器绑定失去焦点触发数据更新事件
 
     var that = this;
     this.codemirriorHTML.on("blur", function (e, v) {
@@ -71,6 +75,20 @@ Vvveb.CodeEditorMore = {
     this.codemirriorHTML && this.codemirriorHTML.refresh();
     this.codemirriorCss && this.codemirriorCss.refresh();
     this.codemirriorScript && this.codemirriorScript.refresh();
+  },
+  // 编辑器设置代码补全
+  setShowHint: function setShowHint() {
+    var _this = this;
+
+    this.codemirriorHTML && this.codemirriorHTML.on("cursorActivity", function () {
+      _this.codemirriorHTML.showHint();
+    });
+    this.codemirriorCss && this.codemirriorCss.on("cursorActivity", function () {
+      _this.codemirriorCss.showHint();
+    });
+    this.codemirriorScript && this.codemirriorScript.on("cursorActivity", function () {
+      _this.codemirriorScript.showHint();
+    });
   },
   // 设置value初始值
   setValue: function setValue(value) {

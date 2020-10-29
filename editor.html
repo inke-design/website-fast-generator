@@ -420,7 +420,23 @@
 		 			 <button id="code-editor-btn" data-view="mobile" class="btn btn-sm btn-light btn-sm"  title="代码编辑" data-vvveb-action="toggleEditor">
 						  <i class="la la-code"></i> 代码编辑
 					  </button>
-					 
+            <ul class="nav nav-tabs nav-fill code-editor-tab" id="properties-tabs" role="tablist">
+              <li class="nav-item content-tab">
+              <a class="nav-link active" data-toggle="tab" href="#content-left-panel-tab" role="tab" aria-controls="components" aria-selected="true">
+                <div><span>Html</span></div>
+              </a>
+              </li>
+              <li class="nav-item style-tab">
+              <a class="nav-link" data-toggle="tab" href="#style-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
+                <div><span>Style</span></div>
+              </a>
+              </li>
+              <li class="nav-item advanced-tab">
+              <a class="nav-link" data-toggle="tab" href="#advanced-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
+                <div><span>Script</span></div>
+              </a>
+              </li>
+            </ul>
           <!-- <div id="toggleEditorJsExecute" class="custom-control custom-checkbox mt-1" style="display:none">
 							<input type="checkbox" class="custom-control-input" id="customCheck" name="example1" data-vvveb-action="toggleEditorJsExecute">
 							<label class="custom-control-label" for="customCheck"><small>Run javascript code on edit</small></label>
@@ -428,34 +444,19 @@
 					</div>
 					
           <div class="component-properties" id="component-properties-code-editor">
-                  <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist">
-                      <li class="nav-item content-tab">
-                      <a class="nav-link active" data-toggle="tab" href="#content-left-panel-tab" role="tab" aria-controls="components" aria-selected="true">
-                        <i class="la la-lg la-html5"></i> <div><span>html</span></div></a>
-                      </li>
-                      <li class="nav-item style-tab">
-                      <a class="nav-link" data-toggle="tab" href="#style-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
-                        <i class="la la-lg la-css3"></i> <div><span>Style</span></div></a>
-                      </li>
-                      <li class="nav-item advanced-tab">
-                      <a class="nav-link" data-toggle="tab" href="#advanced-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
-                        <i class="la la-lg la-code-fork"></i> <div><span>script</span></div></a>
-                      </li>
-                    </ul>
-                
-                    <div class="codeEditor tab-content">
-                       <div class="tab-pane fade show active" id="content-left-panel-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
-                        <div class="mt-4 text-center">点击一个组件容器编辑HTML</div>
-                      </div>
-                      
-                       <div class="tab-pane fade show" id="style-left-panel-tab" data-section="style" role="tabpanel" aria-labelledby="style-tab">
-                        <div class="mt-4 text-center">点击一个组件容器编辑Style</div>
-                      </div>
-                      
-                       <div class="tab-pane fade show" id="advanced-left-panel-tab" data-section="advanced"  role="tabpanel" aria-labelledby="advanced-tab">
-                        <div class="mt-4 text-center">点击一个组件容器编辑script</div>
-                      </div>
-                    </div>
+            <div class="codeEditor tab-content">
+               <div class="tab-pane fade show active" id="content-left-panel-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
+                <div class="mt-4 text-center">点击一个组件容器编辑HTML</div>
+              </div>
+              
+               <div class="tab-pane fade show" id="style-left-panel-tab" data-section="style" role="tabpanel" aria-labelledby="style-tab">
+                <div class="mt-4 text-center">点击一个组件容器编辑Style</div>
+              </div>
+              
+               <div class="tab-pane fade show" id="advanced-left-panel-tab" data-section="advanced"  role="tabpanel" aria-labelledby="advanced-tab">
+                <div class="mt-4 text-center">点击一个组件容器编辑script</div>
+              </div>
+            </div>
           </div>
 				</div>	
 			</div>
