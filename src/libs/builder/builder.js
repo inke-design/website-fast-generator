@@ -439,13 +439,8 @@ Vvveb.Components = {
     Vvveb.CodeEditorMore.setValue({ uuid, html, css, script })
 
 		Object.keys(componentsPanelSections).forEach(sectionName => {
-			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
-			const section = componentsPanelSections[sectionName].find(".section")
-			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${name} Code`);
-
-      section.html('')
       const id = `vvveb-code-editor-${sectionName}`
-      section.append(`<textarea id=${id} class="component-code-eidtor"></textarea>`)
+      componentsPanelSections[sectionName].html('').append(`<textarea id=${id} class="component-code-eidtor"></textarea>`)
     })
     Vvveb.CodeEditorMore.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
