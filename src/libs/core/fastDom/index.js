@@ -63,9 +63,11 @@ FastDom.prototype.addModule = function (exportModule) {
  * @param {*} config { url, attrs, moduleName }
  */
 FastDom.prototype.renderModuleEl = function (type, config) {
+  // 对象池
   let dom = null;
   const { url, attrs } = config;
 
+  // 策略集
   switch (type) {
     case "script": {
       dom = document.createElement("script");
@@ -80,6 +82,7 @@ FastDom.prototype.renderModuleEl = function (type, config) {
     }
   }
 
+  // 短路
   dom && dom.setAttribute("data-url", url);
   dom && dom.setAttribute("data-module", config.moduleName);
   dom &&
