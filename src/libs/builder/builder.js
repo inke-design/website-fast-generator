@@ -684,6 +684,7 @@ Vvveb.Builder = {
 		self.iframe = this.documentFrame.get(0);
 		self.iframe.src = url;
 
+		Vvveb.domUtils.setIframe(self.iframe);
 		return this.documentFrame.on("load", function () {
 			window.FrameWindow = self.iframe.contentWindow;
 			window.FrameDocument = self.iframe.contentWindow.document;
@@ -1485,6 +1486,11 @@ Vvveb.Gui = {
 		} else {
 			location.href = uriContent;
 		}
+	},
+
+	// 打包下载文件下载
+	downloadZip: function() {
+		Vvveb.domUtils.downloadZip();
 	},
 
 	viewport: function () {

@@ -227,4 +227,5 @@ FastDom.prototype.renderDom = function(doc) {
   $(docBody).prepend(fakeBody).append(fakeScript);
 };
 
+window.FastDom = FastDom;
 export default FastDom;
