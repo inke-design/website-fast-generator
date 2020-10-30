@@ -22,10 +22,32 @@ export function clone(value) {
   return value;
 }
 
+// 生成UUID
 export function uuid() {
   const time = Date.now();
   const r = Math.random();
   return `${time.toString(36)}-${r.toString(36).substr(2)}`;
+}
+
+/**
+ * 类似lodash get
+ *
+ * @export
+ * @param {*} target 
+ * @param {*} path
+ * @param {*} [defaultValue=undefined]
+ * @return {*} 
+ */
+export function get(target, path, defaultValue = undefined) {
+  const paths = path.replace(/\[(\d+)\]/, '.$1').split(".");
+
+  let result = Object(target);
+  for(let p of paths) {
+    result = Object(result)[p];
+    if(result === undefined) return defaultValue;
+  }
+
+  return result;
 }
 
 export function compose(...funcs) {

@@ -1,5 +1,5 @@
 import { observe, Watcher } from "../observer";
-import { isEmpty, compose } from "../utils/index";
+import { isEmpty, compose, get } from "../utils/index";
 
 export default class Model {
   constructor({ state = {}, middlewares = [] }) {
@@ -50,10 +50,18 @@ export default class Model {
     }
   }
 
-  getter() {
-    /**
-     * TODO:
-     */
+  getter(fn) {
+    const state = {...this.getState()};
+
+    if(typeof fn === 'string') {
+      return get(state, fn, undefined);
+    } 
+
+    if(typeof fn === 'function') {
+      return fn(state);
+    }
+
+    throw new Error("getter params is not a function or string");
   }
 
   subscribe(fn, keys) {
