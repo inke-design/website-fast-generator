@@ -37,14 +37,21 @@
 │   ├── fonts              字体
 │   ├── img                图片资源
 │   ├── js                 第三方js
-│   ├── libs               库文件，主要逻辑在此
+├── libs                   库文件，主要逻辑在此
+│   ├── autocomplete
+│   ├── bootstrap-colorpicker
+│   ├── builder            编辑器的主要逻辑
+│   ├── codemirror
+│   ├── core               数据驱动iframe渲染的主要逻辑
+│   └── jszip
 │   ├── scss
 │   └── template           *模板库
 └── yarn.lock
 ```
 开发过程中常接触的文件夹一般是：
 * template文件夹，用于新增/修改模板
-* libs文件夹，用于修改/拓展平台的一些逻辑
+* libs/builder 编辑器逻辑相关
+* libs/core    生成网页主逻辑
 
 ## Todo List
 What did we do & What will we do
@@ -64,9 +71,14 @@ What did we do & What will we do
   - [ ] 支持导入html、css、script
   - [ ] 接入compile
 - [ ] 网页编辑器支持语法提示，自动补全([monaco-editor](https://github.com/microsoft/monaco-editor))
+- [ ] 组件适配移动端
+- [ ] 网页可以拆分html、css、script独立文件导出([jsZip](https://github.com/Stuk/jszip))
+- [ ] 更容易的选中编辑模版
+- [ ] 更多的模板
 - [ ] 模板支持通过本地html、css、js文件编写，更好的语法提示, node统一打包处理
 - [ ] 导出网页可再次导入以模板维度修改
-- [ ] 网页可以拆分html、css、script独立文件导出([jsZip](https://github.com/Stuk/jszip))
+
+
 
 
 

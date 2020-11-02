@@ -63,7 +63,7 @@
 						  <i class="la la-arrows"></i>
 					  </button>
 
-					  <button class="btn btn-light" title="下载" id="download-btn" data-vvveb-action="download" data-download="index.html">
+					  <button class="btn btn-light" title="下载" id="download-btn" data-vvveb-action="downloadZip" data-download="index.html">
 						  <i class="la la-download"></i>
 					  </button>
 
@@ -441,22 +441,42 @@
 							<input type="checkbox" class="custom-control-input" id="customCheck" name="example1" data-vvveb-action="toggleEditorJsExecute">
 							<label class="custom-control-label" for="customCheck"><small>Run javascript code on edit</small></label>
 						</div> -->
+						<ul class="nav nav-tabs nav-fill code-tabs" id="properties-tabs" role="tablist">
+							<li class="nav-item content-tab">
+								<a class="nav-link active" data-toggle="tab" href="#content-left-panel-tab" role="tab" aria-controls="components" aria-selected="true">
+									<i class="la la-lg la-html5 icon"></i> 
+									<div class="text"><span>html</span></div>
+								</a>
+							</li>
+							<li class="nav-item style-tab">
+								<a class="nav-link" data-toggle="tab" href="#style-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
+									<i class="la la-lg la-css3 icon"></i> 
+									<div class="text"><span>Style</span></div>
+								</a>
+							</li>
+							<li class="nav-item advanced-tab">
+								<a class="nav-link" data-toggle="tab" href="#advanced-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
+									<i class="la la-lg la-code-fork icon"></i> 
+									<div class="text"><span>script</span></div>
+								</a>
+							</li>
+						</ul>
 					</div>
 					
           <div class="component-properties" id="component-properties-code-editor">
-            <div class="codeEditor tab-content">
-               <div class="tab-pane fade show active" id="content-left-panel-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
-                <div class="mt-4 text-center">点击一个组件容器编辑HTML</div>
-              </div>
-              
-               <div class="tab-pane fade show" id="style-left-panel-tab" data-section="style" role="tabpanel" aria-labelledby="style-tab">
-                <div class="mt-4 text-center">点击一个组件容器编辑Style</div>
-              </div>
-              
-               <div class="tab-pane fade show" id="advanced-left-panel-tab" data-section="advanced"  role="tabpanel" aria-labelledby="advanced-tab">
-                <div class="mt-4 text-center">点击一个组件容器编辑script</div>
-              </div>
-            </div>
+                    <div class="codeEditor tab-content">
+                       <div class="tab-pane fade show active" id="content-left-panel-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
+                        <div class="mt-4 text-center">点击一个组件容器编辑HTML</div>
+                      </div>
+                      
+                       <div class="tab-pane fade show" id="style-left-panel-tab" data-section="style" role="tabpanel" aria-labelledby="style-tab">
+                        <div class="mt-4 text-center">点击一个组件容器编辑Style</div>
+                      </div>
+                      
+                       <div class="tab-pane fade show" id="advanced-left-panel-tab" data-section="advanced"  role="tabpanel" aria-labelledby="advanced-tab">
+                        <div class="mt-4 text-center">点击一个组件容器编辑script</div>
+                      </div>
+                    </div>
           </div>
 				</div>	
 			</div>
@@ -1016,11 +1036,11 @@
 
 <!-- builder code-->
 <script src="libs/builder/builder.js"></script>	
-<script src="libs/builder/utils.js"></script>	
+<script src="libs/builder/domUtils.js"></script>	
 <!-- undo manager-->
 <script src="libs/builder/undo.js"></script>	
 <!-- Model manager-->
-<script src="libs/builder/model.js"></script>	
+<script src="libs/core/index.js"></script>	
 <!-- inputs-->
 <script src="libs/builder/inputs.js"></script>	
 
@@ -1043,6 +1063,8 @@
 <!-- plugins -->
 
 <!-- code mirror - code editor syntax highlight -->
+<script src="libs/core/monacoEditor/index.js"></script>
+<script src="libs/builder/plugin-monaco-editor.js"></script>
 <link href="libs/codemirror/lib/codemirror.css" rel="stylesheet"/>
 <link href="libs/codemirror/theme/material.css" rel="stylesheet"/>
 <script src="libs/codemirror/lib/codemirror.js"></script>
@@ -1051,10 +1073,10 @@
 <script src="libs/codemirror/lib/css.js"></script>
 <script src="libs/codemirror/lib/formatting.js"></script>
 <script src="libs/builder/plugin-codemirror-more.js"></script>	
-<!-- jszip - download page as zip -->
-<!-- script src="libs/jszip/jszip.min.js"></script>
-<script src="libs/builder/plugin-jszip.js"></script -->
 
+<!-- jszip - download page as zip -->
+<script src="./js/jszip.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.0.0/FileSaver.min.js"></script>
 
 <!-- autocomplete plugin used by autocomplete input-->
 <script src="libs/autocomplete/jquery.autocomplete.js"></script>	
