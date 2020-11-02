@@ -45,6 +45,7 @@ $custom-select-padding-y: .4rem;
 
 .component-code-eidtor {
 	width: 100%;
+	height: 100%;
   min-height: 347px;
   max-height: 500px;
   overflow: hidden;
@@ -66,6 +67,7 @@ $input-height: default;
   z-index: -1;
 	opacity: 0;
 	width: 100%;
+	height: 100%;
 }
 
 .codeEditor.tab-content > .active {
@@ -74,6 +76,16 @@ $input-height: default;
   z-index: 1;
 	opacity: 1;
 	width: 100%;
+	height: 100%;
+}
+
+#component-properties-code-editor {
+	.codeEditor {
+		height: 100%;
+		.section {
+			height: 100%;
+		}
+	}
 }
 
 #vvveb-builder {
