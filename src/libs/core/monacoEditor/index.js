@@ -20,13 +20,14 @@ self.MonacoEnvironment = {
 
 class MonacoEditor {
   constructor(config) {
-    const { el, initValue, lang = 'javascript', onChange, onBlur } = config;
+    const { el, initValue, lang = 'javascript', onChange, onBlur, theme = 'vs-dark' } = config;
 
     this.el = el;
     this.initValue = initValue;
     this.lang = lang;
     this.onChange = onChange; 
     this.onBlur = onBlur; 
+    this.theme = theme;
 
     this._create();
   }
@@ -35,6 +36,7 @@ class MonacoEditor {
     const editor = monaco.editor.create(this.el, {
       value: this.initValue,
       language: this.lang,
+      theme: this.theme,
     });
 
     this.editor = editor;

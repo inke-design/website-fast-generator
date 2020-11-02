@@ -425,24 +425,29 @@
 							<input type="checkbox" class="custom-control-input" id="customCheck" name="example1" data-vvveb-action="toggleEditorJsExecute">
 							<label class="custom-control-label" for="customCheck"><small>Run javascript code on edit</small></label>
 						</div> -->
+						<ul class="nav nav-tabs nav-fill code-tabs" id="properties-tabs" role="tablist">
+							<li class="nav-item content-tab">
+								<a class="nav-link active" data-toggle="tab" href="#content-left-panel-tab" role="tab" aria-controls="components" aria-selected="true">
+									<i class="la la-lg la-html5 icon"></i> 
+									<div class="text"><span>html</span></div>
+								</a>
+							</li>
+							<li class="nav-item style-tab">
+								<a class="nav-link" data-toggle="tab" href="#style-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
+									<i class="la la-lg la-css3 icon"></i> 
+									<div class="text"><span>Style</span></div>
+								</a>
+							</li>
+							<li class="nav-item advanced-tab">
+								<a class="nav-link" data-toggle="tab" href="#advanced-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
+									<i class="la la-lg la-code-fork icon"></i> 
+									<div class="text"><span>script</span></div>
+								</a>
+							</li>
+						</ul>
 					</div>
 					
           <div class="component-properties" id="component-properties-code-editor">
-                  <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist">
-                      <li class="nav-item content-tab">
-                      <a class="nav-link active" data-toggle="tab" href="#content-left-panel-tab" role="tab" aria-controls="components" aria-selected="true">
-                        <i class="la la-lg la-html5"></i> <div><span>html</span></div></a>
-                      </li>
-                      <li class="nav-item style-tab">
-                      <a class="nav-link" data-toggle="tab" href="#style-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
-                        <i class="la la-lg la-css3"></i> <div><span>Style</span></div></a>
-                      </li>
-                      <li class="nav-item advanced-tab">
-                      <a class="nav-link" data-toggle="tab" href="#advanced-left-panel-tab" role="tab" aria-controls="blocks" aria-selected="false">
-                        <i class="la la-lg la-code-fork"></i> <div><span>script</span></div></a>
-                      </li>
-                    </ul>
-                
                     <div class="codeEditor tab-content">
                        <div class="tab-pane fade show active" id="content-left-panel-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
                         <div class="mt-4 text-center">点击一个组件容器编辑HTML</div>

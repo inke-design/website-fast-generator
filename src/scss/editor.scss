@@ -45,7 +45,7 @@ $custom-select-padding-y: .4rem;
 
 .component-code-eidtor {
 	width: 100%;
-  min-height: 300px;
+  min-height: 347px;
   max-height: 500px;
   overflow: hidden;
 }
@@ -70,4 +70,24 @@ $input-height: default;
   z-index: 1;
 	opacity: 1;
 	width: 100%;
+}
+
+#vvveb-builder {
+	.code-tabs {
+		.nav-item {
+			.nav-link {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-left: 1rem;
+				padding-right: 1rem;
+				.icon {
+	
+				}
+				.text {
+					font-size: 14px;
+				}
+			}
+		}
+	}
 }

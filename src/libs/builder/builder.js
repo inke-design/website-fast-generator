@@ -442,6 +442,7 @@ Vvveb.Components = {
 			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
 			const section = componentsPanelSections[sectionName].find(".section")
 			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${name} Code`);
+			componentsPanelSections[sectionName].find('[data-header="default"]').css('display', "none")
 
       section.html('')
       const id = `vvveb-code-editor-${sectionName}`
