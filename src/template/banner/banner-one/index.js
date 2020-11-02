@@ -55,7 +55,14 @@ const exportModule = {
         integrity: 'sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI' 
       }
     }
-  }
+  },
+  stylesheet: {
+    bootstrapCSS: {
+      url: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css',
+      integrity: 'sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk',
+      crossorigin: 'anonymous',
+    }
+  },
 }
 
 export default { html, css, script, exportModule };
