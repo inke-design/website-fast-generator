@@ -51,6 +51,7 @@ Vvveb.domUtils = {
 
     const fakeIframe = document.createElement("iframe");
     const src = $(this.iframe).get(0).src;
+    const that = this;
 
     $(fakeIframe).on("load", function() {
       const fakeIframeDoc = fakeIframe.contentWindow.document;
@@ -77,7 +78,7 @@ Vvveb.domUtils = {
       fastDom.loadExportModules(fastDom.exportModule, fakeIframeDoc);
 
       fastDom.vnodes.forEach((vnode) => {
-        const filename = this.getFilename(vnode.node.type);
+        const filename = that.getFilename(vnode.node.type);
         
         $fakeBody = $fakeBody.add(vnode.$html);
 
