@@ -356,8 +356,13 @@ Vvveb.Components = {
   // 渲染代码编辑器
   renderCodeEditor: function renderCodeEditor(type, data) {
     var uuid = $(data).data('uuid');
-    var name = $(data).data('name');
-    var vnode = Vvveb.Model.findNodeByUUID(uuid);
+    if (!uuid) return;
+    var nodeData = Vvveb.Model2.getter(function (_ref) {
+      var nodes = _ref.nodes;
+      return nodes.find(function (v) {
+        return v.uuid === uuid;
+      });
+    });
     var component = this._components[type];
     var componentsPanelSections = {};
     var propertiesElement = "#component-properties-code-editor";
@@ -371,26 +376,33 @@ Vvveb.Components = {
       Object.keys(componentsPanelSections).forEach(function (sectionName) {
         componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
       });
-      Vvveb.CodeEditorMore.destroy();
+      Vvveb.MonacoEditorPlugin.destroy();
       return false;
     } // 如果组件 加载载代码编辑器 并进行数据回填
 
 
-    var nodeData = vnode.node.node;
     var html = nodeData.html,
         css = nodeData.css,
         script = nodeData.script;
-    Vvveb.CodeEditorMore.setValue({
+    Vvveb.MonacoEditorPlugin.setValue({
       uuid: uuid,
       html: html,
       css: css,
       script: script
     });
     Object.keys(componentsPanelSections).forEach(function (sectionName) {
+      componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", {
+        key: "default",
+        header: component.name
+      }));
+      var section = componentsPanelSections[sectionName].find(".section");
+      componentsPanelSections[sectionName].find('[data-header="default"] span').html("".concat(name, " Code"));
+      componentsPanelSections[sectionName].find('[data-header="default"]').css('display', "none");
+      section.html('');
       var id = "vvveb-code-editor-".concat(sectionName);
-      componentsPanelSections[sectionName].html('').append("<textarea id=".concat(id, " class=\"component-code-eidtor\"></textarea>"));
+      section.append("<div style=\"width: 100%\" id=".concat(id, " class=\"component-code-eidtor\"></div>"));
     });
-    Vvveb.CodeEditorMore.init();
+    Vvveb.MonacoEditorPlugin.init();
     if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
   }
 };
@@ -585,6 +597,7 @@ Vvveb.Builder = {
     var self = this;
     self.iframe = this.documentFrame.get(0);
     self.iframe.src = url;
+    Vvveb.domUtils.setIframe(self.iframe);
     return this.documentFrame.on("load", function () {
       window.FrameWindow = self.iframe.contentWindow;
       window.FrameDocument = self.iframe.contentWindow.document;
@@ -662,115 +675,33 @@ Vvveb.Builder = {
     Vvveb.Components.renderCodeEditor(componentType, node);
   },
   moveNodeUp: function moveNodeUp(node) {
-    if (!node) {
-      node = Vvveb.Builder.selectedEl.get(0);
-    }
-
-    oldParent = node.parentNode;
-    oldNextSibling = node.nextSibling;
-    var nodeUUID = $(node).data('uuid');
-    next = $(node).prev(); // nodeUUID存在，则为我们定义模板组件
+    var nodeUUID = $(node).data('uuid'); // nodeUUID存在，则为我们定义模板组件
 
     if (nodeUUID) {
-      next = $(node).prev("[data-component]");
-      Vvveb.Model.dispatch({
-        type: Vvveb.Model.TYPES.MOVE_UP,
-        uuid: nodeUUID,
-        dom: node
-      }).after(function (err) {
-        if (err) return;
-
-        if (next.length > 0) {
-          next.before(node);
-        } else {
-          $(node).parent().before(node);
-        }
-
-        newParent = node.parentNode;
-        newNextSibling = node.nextSibling;
-        Vvveb.Undo.addMutation({
-          type: 'move',
-          target: node,
-          oldParent: oldParent,
-          newParent: newParent,
-          oldNextSibling: oldNextSibling,
-          newNextSibling: newNextSibling
-        });
+      Vvveb.Model2.dispatch({
+        type: 'MOVE_UP',
+        uuid: nodeUUID
       });
     } else {
-      // 否则就是模板组件里面的小组件
-      if (next.length > 0) {
-        next.before(node);
-      } else {
-        $(node).parent().before(node);
-      }
-
-      newParent = node.parentNode;
-      newNextSibling = node.nextSibling;
-      Vvveb.Undo.addMutation({
-        type: 'move',
-        target: node,
-        oldParent: oldParent,
-        newParent: newParent,
-        oldNextSibling: oldNextSibling,
-        newNextSibling: newNextSibling
-      });
+      /**
+       * TODO:
+       * 非模版组件
+       */
     }
   },
   moveNodeDown: function moveNodeDown(node) {
-    if (!node) {
-      node = Vvveb.Builder.selectedEl.get(0);
-    }
-
-    oldParent = node.parentNode;
-    oldNextSibling = node.nextSibling;
-    var nodeUUID = $(node).data('uuid');
-    next = $(node).next(); // nodeUUID存在，则为我们定义模板组件
+    var nodeUUID = $(node).data('uuid'); // nodeUUID存在，则为我们定义模板组件
 
     if (nodeUUID) {
-      next = $(node).next("[data-component]");
-      Vvveb.Model.dispatch({
-        type: Vvveb.Model.TYPES.MOVE_DOWN,
-        uuid: nodeUUID,
-        dom: node
-      }).after(function (err) {
-        if (err) return;
-
-        if (next.length > 0) {
-          next.after(node);
-        } else {
-          $(node).parent().after(node);
-        }
-
-        newParent = node.parentNode;
-        newNextSibling = node.nextSibling;
-        Vvveb.Undo.addMutation({
-          type: 'move',
-          target: node,
-          oldParent: oldParent,
-          newParent: newParent,
-          oldNextSibling: oldNextSibling,
-          newNextSibling: newNextSibling
-        });
+      Vvveb.Model2.dispatch({
+        type: 'MOVE_DOWN',
+        uuid: nodeUUID
       });
     } else {
-      // 否则就是模板组件里面的小组件
-      if (next.length > 0) {
-        next.after(node);
-      } else {
-        $(node).parent().after(node);
-      }
-
-      newParent = node.parentNode;
-      newNextSibling = node.nextSibling;
-      Vvveb.Undo.addMutation({
-        type: 'move',
-        target: node,
-        oldParent: oldParent,
-        newParent: newParent,
-        oldNextSibling: oldNextSibling,
-        newNextSibling: newNextSibling
-      });
+      /**
+       * TODO:
+       * 非模版组件
+       */
     }
   },
   cloneNode: function cloneNode(node) {
@@ -781,13 +712,10 @@ Vvveb.Builder = {
     var nodeUUID = $(node).data('uuid');
 
     if (nodeUUID) {
-      Vvveb.Model.dispatch({
-        type: Vvveb.Model.TYPES.CLONE,
+      Vvveb.Model2.dispatch({
+        type: 'CLONE',
         dom: node,
         uuid: nodeUUID
-      }).after(function (err, afterNode) {
-        clone = afterNode.$dom;
-        node.after(clone);
       });
     } else {
       clone = node.clone();
@@ -925,36 +853,16 @@ Vvveb.Builder = {
         if (self.dragMoveMutation === false) {
           if (self.component.dragHtml) //if dragHtml is set for dragging then set real component html
             {
-              // newElement = $(self.component.html);
-              Vvveb.Model.dispatch({
-                type: Vvveb.Model.TYPES.ADD,
-                node: self.component
-              }).after(function (err, afterNode) {
-                self.dragElement.replaceWith(afterNode.$dom);
-                self.dragElement = afterNode.$dom;
+              newElement = $(self.component.html);
+              Vvveb.Model2.dispatch({
+                type: 'ADD',
+                payload: self.component
+              }).then(function () {
+                Vvveb.domUtils.setFrameDocument(window.FrameDocument).selectNode(self.activeUUID);
               });
             }
 
-          if (self.component.afterDrop) self.dragElement = self.component.afterDrop(self.dragElement);
-        }
-
-        self.dragElement.css("border", "");
-        node = self.dragElement.get(0);
-        self.selectNode(node);
-        self.loadNodeComponent(node);
-
-        if (self.dragMoveMutation === false) {
-          Vvveb.Undo.addMutation({
-            type: 'childList',
-            target: node.parentNode,
-            addedNodes: [node],
-            nextSibling: node.nextSibling
-          });
-        } else {
-          self.dragMoveMutation.newParent = node.parentNode;
-          self.dragMoveMutation.newNextSibling = node.nextSibling;
-          Vvveb.Undo.addMutation(self.dragMoveMutation);
-          self.dragMoveMutation = false;
+          return;
         }
       }
     });
@@ -1042,13 +950,10 @@ Vvveb.Builder = {
         removedNodes: [node],
         nextSibling: node.nextSibling
       });
-      nodeUUID ? Vvveb.Model.dispatch({
-        type: Vvveb.Model.TYPES.REMOVE,
-        uuid: nodeUUID,
-        dom: node
-      }).after(function () {
-        self.selectedEl.remove();
-      }) : self.selectedEl.remove();
+      nodeUUID ? Vvveb.Model2.dispatch({
+        type: 'REMOVE',
+        uuid: nodeUUID
+      }) : null;
       event.preventDefault();
       return false;
     });
@@ -1079,23 +984,9 @@ Vvveb.Builder = {
 
     function addSectionComponent(component) {
       var after = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      Vvveb.Model.dispatch({
-        type: Vvveb.Model.TYPES.ADD,
-        node: component
-      }).after(function (err, afterNode) {
-        if (after) {
-          addSectionElement.after(afterNode.$dom);
-        } else {
-          addSectionElement.append(afterNode.$dom);
-        }
-
-        var node = afterNode.$dom.get(0);
-        Vvveb.Undo.addMutation({
-          type: 'childList',
-          target: node.parentNode,
-          addedNodes: [node],
-          nextSibling: node.nextSibling
-        });
+      Vvveb.Model2.dispatch({
+        type: 'ADD',
+        payload: component
       });
     }
 
@@ -1365,6 +1256,10 @@ Vvveb.Gui = {
       location.href = uriContent;
     }
   },
+  // 打包下载文件下载
+  downloadZip: function downloadZip() {
+    Vvveb.domUtils.downloadZip();
+  },
   viewport: function viewport() {
     $("#canvas").attr("class", this.dataset.view);
   },
@@ -1562,13 +1457,9 @@ Vvveb.Sections = {
       var section = $(e.currentTarget).parents(".section-item");
       var node = section.data("node");
       var nodeUUID = $(node).data('uuid');
-      nodeUUID && Vvveb.Model.dispatch({
-        type: Vvveb.Model.TYPES.REMOVE,
-        uuid: nodeUUID,
-        dom: node
-      }).after(function (err) {
-        if (err) return;
-        node.remove();
+      nodeUUID && Vvveb.Model2.dispatch({
+        type: 'REMOVE',
+        uuid: nodeUUID
       });
       e.preventDefault();
     });
