@@ -11,7 +11,8 @@ var rename = require("gulp-rename");
 const IMPORT_FILES = [
   "./src/libs/builder/blocks-bootstrap4.js", 
   "./src/libs/builder/initTemplate.js", 
-  './src/libs/core/index.js'
+  './src/libs/core/index.js',
+  './src/libs/core/monacoEditor/index.js',
 ];
 
 function getFileName(path) {
@@ -52,7 +53,14 @@ function compileEsWithWebpack() {
     .src(IMPORT_FILES, { base: "./src" })
     .pipe(
       webpack({
-        entry,
+        entry: {
+          ...entry,
+          'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+          'json.worker': 'monaco-editor/esm/vs/language/json/json.worker',
+          'css.worker': 'monaco-editor/esm/vs/language/css/css.worker',
+          'html.worker': 'monaco-editor/esm/vs/language/html/html.worker',
+          'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker'
+        },
         mode: "development",
         devtool: "none",
         module: {
@@ -68,9 +76,18 @@ function compileEsWithWebpack() {
                 },
               },
             },
+            {
+              test: /\.css$/,
+              use: ['style-loader', 'css-loader']
+            },
+            {
+              test: /\.ttf$/,
+              use: ['file-loader']
+            }
           ],
         },
         output: {
+		      globalObject: 'self',
           filename: '[name].js',
         }
       })

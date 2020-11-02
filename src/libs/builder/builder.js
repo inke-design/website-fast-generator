@@ -413,11 +413,12 @@ Vvveb.Components = {
 
   // 渲染代码编辑器
 	renderCodeEditor: function (type, data) {
-
     const uuid = $(data).data('uuid');
-    const name = $(data).data('name');
 
-    const vnode = Vvveb.Model.findNodeByUUID(uuid)
+		if(!uuid) return;
+
+		const nodeData = Vvveb.Model2.getter(({nodes}) => nodes.find(v => v.uuid === uuid))
+		
     var component = this._components[type];
 		var componentsPanelSections = {};
     const propertiesElement = "#component-properties-code-editor"
@@ -430,13 +431,12 @@ Vvveb.Components = {
       Object.keys(componentsPanelSections).forEach(sectionName => {
         componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
       })
-      Vvveb.CodeEditorMore.destroy()
+      Vvveb.MonacoEditorPlugin.destroy()
       return false
     }
     // 如果组件 加载载代码编辑器 并进行数据回填
-    const { node: { node:nodeData } } = vnode
     const { html, css, script } = nodeData
-    Vvveb.CodeEditorMore.setValue({ uuid, html, css, script })
+    Vvveb.MonacoEditorPlugin.setValue({ uuid, html, css, script })
 
 		Object.keys(componentsPanelSections).forEach(sectionName => {
 			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
@@ -445,9 +445,10 @@ Vvveb.Components = {
 
       section.html('')
       const id = `vvveb-code-editor-${sectionName}`
-      section.append(`<textarea id=${id} class="component-code-eidtor"></textarea>`)
-    })
-    Vvveb.CodeEditorMore.init()
+      section.append(`<div style="width: 100%" id=${id} class="component-code-eidtor"></div>`)
+		})
+		
+    Vvveb.MonacoEditorPlugin.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
 	}
 };
@@ -1750,7 +1751,7 @@ Vvveb.Sections = {
 
 			//node.click();
 			Vvveb.Builder.selectNode(node);
-			// Vvveb.Builder.loadNodeComponent(node);
+			Vvveb.Builder.loadNodeComponent(node);
 		}).on("dblclick", "> div", function (e) {
 			$node.click();
 		});

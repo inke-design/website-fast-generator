@@ -25,6 +25,24 @@ export const actions = [
     },
   },
   {
+    type: ACTION_TYPES.EDIT,
+    reducer: (state, action) => {
+      const { uuid } = action;
+      const [idx, node] = ArrayUtils.findIndex(state.nodes, { uuid });
+
+      if (idx === -1) {
+        console.warn("未找到节点");
+        return state;
+      }
+
+      const newNode = {...node, ...action.node };
+
+      state.nodes[idx] = newNode;
+
+      return state;
+    },
+  },
+  {
     type: ACTION_TYPES.CLONE,
     reducer: (state, action) => {
       return state;
@@ -35,7 +53,6 @@ export const actions = [
     reducer: (state, action) => {
       const newNodes = state.nodes.filter((v) => v.uuid !== action.uuid);
 
-      console.log('REMOVE', action.uuid, state.nodes, newNodes);
       state.nodes = newNodes;
       return state;
     },
