@@ -32,6 +32,10 @@ class MonacoEditor {
     this._create();
   }
 
+  getInstance() {
+    return this.editor;
+  }
+
   _create() {
     const editor = monaco.editor.create(this.el, {
       value: this.initValue,

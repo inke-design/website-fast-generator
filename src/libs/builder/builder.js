@@ -1501,7 +1501,7 @@ Vvveb.Gui = {
 
   // 编辑器展开状态切换
 	toggleEditor: function () {
-		Vvveb.CodeEditorMore.toggle()
+		Vvveb.MonacoEditorPlugin.toggle()
 	},
 
 	toggleEditorJsExecute: function () {
@@ -1513,7 +1513,7 @@ Vvveb.Gui = {
 		$("#iframe-layer").toggle();
     $("#vvveb-builder").toggleClass("preview");
     // 预览关闭代码编辑器弹窗
-    Vvveb.CodeEditorMore.closeCodeEditor()
+    Vvveb.MonacoEditorPlugin.closeCodeEditor()
 	},
 
 	fullscreen: function () {
