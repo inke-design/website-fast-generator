@@ -1265,7 +1265,7 @@ Vvveb.Gui = {
   },
   // 编辑器展开状态切换
   toggleEditor: function toggleEditor() {
-    Vvveb.CodeEditorMore.toggle();
+    Vvveb.MonacoEditorPlugin.toggle();
   },
   toggleEditorJsExecute: function toggleEditorJsExecute() {
     Vvveb.Builder.runJsOnSetHtml = this.checked;
@@ -1275,7 +1275,7 @@ Vvveb.Gui = {
     $("#iframe-layer").toggle();
     $("#vvveb-builder").toggleClass("preview"); // 预览关闭代码编辑器弹窗
 
-    Vvveb.CodeEditorMore.closeCodeEditor();
+    Vvveb.MonacoEditorPlugin.closeCodeEditor();
   },
   fullscreen: function fullscreen() {
     launchFullScreen(document); // the whole page

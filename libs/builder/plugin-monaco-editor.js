@@ -104,6 +104,7 @@ Vvveb.MonacoEditorPlugin = {
   toggle: function toggle() {
     this.isActive = !this.isActive;
     $("#vvveb-builder").toggleClass("bottom-panel-expand");
+    this.setEditorLayout();
   },
   // 关闭编辑器弹窗
   closeCodeEditor: function closeCodeEditor() {
@@ -132,6 +133,24 @@ Vvveb.MonacoEditorPlugin = {
         {
           return code;
         }
+    }
+  },
+  setEditorLayout: function setEditorLayout() {
+    if (this.isActive) {
+      var height = $(".codeEditor.tab-content").height();
+      var width = $(".codeEditor.tab-content").width();
+      this.htmlEditor && this.htmlEditor.getInstance().layout({
+        width: width,
+        height: height
+      });
+      this.cssEditor && this.cssEditor.getInstance().layout({
+        width: width,
+        height: height
+      });
+      this.scriptEditor && this.scriptEditor.getInstance().layout({
+        width: width,
+        height: height
+      });
     }
   }
 };
