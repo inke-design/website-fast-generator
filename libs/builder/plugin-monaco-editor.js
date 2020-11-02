@@ -52,6 +52,7 @@ Vvveb.MonacoEditorPlugin = {
     }); // 将数据回填并刷新编辑器
 
     this.setCodeEditorValue();
+    this.setEditorLayout();
   },
   // 创建文本编辑器
   createCodeEditor: function createCodeEditor(dom, option) {
