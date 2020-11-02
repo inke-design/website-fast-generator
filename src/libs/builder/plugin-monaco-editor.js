@@ -31,7 +31,7 @@ Vvveb.MonacoEditorPlugin = {
         lang: 'css',
         initValue: '.a {}',
         onBlur: (value) => {
-          that.updateNode({ html: value }, 'css');
+          that.updateNode({ css: value }, 'css');
         },
       });
 
@@ -40,7 +40,7 @@ Vvveb.MonacoEditorPlugin = {
         lang: 'javascript',
         initValue: 'console.log(1)',
         onBlur: (value) => {
-          that.updateNode({ html: value }, 'script');
+          that.updateNode({ script: value }, 'script');
         },
       });
 
@@ -80,6 +80,10 @@ Vvveb.MonacoEditorPlugin = {
     const newValue = params[field]
     if(oldValue === newValue) return
 
+    Object.keys(params).forEach(key => {
+      params[key] = this.wrapCode(field, params[key])
+    });
+
     Vvveb.Model2.dispatch({
       type: 'EDIT',
       uuid,
@@ -110,6 +114,20 @@ Vvveb.MonacoEditorPlugin = {
   replaceTag(str) {
     if(!str) return '';
 
-    return str.replace(/(<script.*>)|(<\/script>)|(<style.*>)|(<\/style>)/g, '');;
+    return str.replace(/(<script.*>)|(<\/script>)|(<s.*>)|(<\/style>)/g, '');;
+  },
+
+  wrapCode(type, code) {
+    switch(type) {
+      case 'css': {
+        return `<style type="text/css">\n${code}\n</style>`;
+      }
+      case 'script': {
+        return `<script>\n${code}\n</script>`;
+      }
+      default: {
+        return code;
+      }
+    }
   },
 }

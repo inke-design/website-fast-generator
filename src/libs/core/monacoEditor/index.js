@@ -2,7 +2,6 @@ import * as monaco from 'monaco-editor';
 
 self.MonacoEnvironment = {
 	getWorkerUrl: function (moduleId, label) {
-    console.log('getWorkerUrl:', moduleId, label);
 		if (label === 'json') {
 			return './json.worker.js';
 		}
@@ -38,7 +37,6 @@ class MonacoEditor {
       language: this.lang,
     });
 
-    console.log('create', this.el, this.lang);
     this.editor = editor;
 
     this._initFns();
@@ -57,12 +55,6 @@ class MonacoEditor {
   // 更改语言
   changeLang(lang) {
     monaco.editor.setModelLanguage(this.editor.getModel(), lang);
-
-    console.log(
-      `model language was changed to ${
-        editor.getModel().getLanguageIdentifier().language
-      }`
-    );
   }
 
   destroy() {
