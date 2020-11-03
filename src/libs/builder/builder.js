@@ -67,7 +67,7 @@ function isElement(obj) {
 }
 
 function isTemplateElement(obj) {
-		return isElement(obj) && obj.dataset.uuid;
+	return isElement(obj) && obj.dataset.uuid;
 }
 
 var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
@@ -262,12 +262,12 @@ Vvveb.Components = {
 		var componentsPanel = $(this.componentPropertiesElement);
 		var defaultSection = this.componentPropertiesDefaultSection;
 		var componentsPanelSections = {};
-    var propertiesElement = 
-		$(propertiesElement + " .tab-pane").each(function () {
-			var sectionName = this.dataset.section;
-			componentsPanelSections[sectionName] = $(this);
+		var propertiesElement =
+			$(propertiesElement + " .tab-pane").each(function () {
+				var sectionName = this.dataset.section;
+				componentsPanelSections[sectionName] = $(this);
 
-		});
+			});
 
 		var section = componentsPanelSections[defaultSection].find('.section[data-section="default"]');
 
@@ -411,32 +411,32 @@ Vvveb.Components = {
 		if (component.init) component.init(Vvveb.Builder.selectedEl.get(0));
 	},
 
-  // 渲染代码编辑器
+	// 渲染代码编辑器
 	renderCodeEditor: function (type, data) {
-    const uuid = $(data).data('uuid');
+		const uuid = $(data).data('uuid');
 
-		if(!uuid) return;
+		if (!uuid) return;
 
-		const nodeData = Vvveb.Model2.getter(({nodes}) => nodes.find(v => v.uuid === uuid))
-		
-    var component = this._components[type];
+		const nodeData = Vvveb.Model2.getter(({ nodes }) => nodes.find(v => v.uuid === uuid));
+
+		var component = this._components[type];
 		var componentsPanelSections = {};
-    const propertiesElement = "#component-properties-code-editor"
+		const propertiesElement = "#component-properties-code-editor"
 		$(propertiesElement + " .tab-pane").each(function () {
 			var sectionName = this.dataset.section;
 			componentsPanelSections[sectionName] = $(this);
 		});
-    if(!uuid) {
-      // 如果不是组件 卸载代码编辑器
-      Object.keys(componentsPanelSections).forEach(sectionName => {
-        componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
-      })
-      Vvveb.MonacoEditorPlugin.destroy()
-      return false
-    }
-    // 如果组件 加载载代码编辑器 并进行数据回填
-    const { html, css, script } = nodeData
-    Vvveb.MonacoEditorPlugin.setValue({ uuid, html, css, script })
+		if (!nodeData) {
+			// 如果不是组件 卸载代码编辑器
+			Object.keys(componentsPanelSections).forEach(sectionName => {
+				componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
+			})
+			Vvveb.MonacoEditorPlugin.destroy()
+			return false
+		}
+		// 如果组件 加载载代码编辑器 并进行数据回填
+		const { html, css, script } = nodeData
+		Vvveb.MonacoEditorPlugin.setValue({ uuid, html, css, script })
 
 		Object.keys(componentsPanelSections).forEach(sectionName => {
 			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
@@ -444,12 +444,12 @@ Vvveb.Components = {
 			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${name} Code`);
 			componentsPanelSections[sectionName].find('[data-header="default"]').css('display', "none")
 
-      section.html('')
-      const id = `vvveb-code-editor-${sectionName}`
-      section.append(`<div style="width: 100%" id=${id} class="component-code-eidtor"></div>`)
+			section.html('')
+			const id = `vvveb-code-editor-${sectionName}`
+			section.append(`<div style="width: 100%" id=${id} class="component-code-eidtor"></div>`)
 		})
-		
-    Vvveb.MonacoEditorPlugin.init()
+
+		Vvveb.MonacoEditorPlugin.init()
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
 	}
 };
@@ -581,11 +581,11 @@ Vvveb.Builder = {
 		let navHeight = 0;
 		$(".drag-elements .nav-tabs").each((i, node) => {
 			navHeight += $(node).height()
-		 })
-		 const h = $("#left-panel").height() - $("#filemanager").height() - navHeight;
-		 
-		 $("#left-panel .drag-elements-sidepane").height(h);
-		 return h;
+		})
+		const h = $("#left-panel").height() - $("#filemanager").height() - navHeight;
+
+		$("#left-panel .drag-elements-sidepane").height(h);
+		return h;
 	},
 
 	/* controls */
@@ -787,9 +787,9 @@ Vvveb.Builder = {
 		var componentType;
 
 		if (data)
-		componentType = data.type;
+			componentType = data.type;
 		else
-		componentType = Vvveb.defaultComponent;
+			componentType = Vvveb.defaultComponent;
 
 		// Vvveb.Components.render(component);
 		Vvveb.Components.renderCodeEditor(componentType, node);
@@ -797,10 +797,12 @@ Vvveb.Builder = {
 	},
 
 	moveNodeUp: function (node) {
+		if(!node) node = this.selectedEl;
+
 		const nodeUUID = $(node).data('uuid');
 
 		// nodeUUID存在，则为我们定义模板组件
-		if(nodeUUID) {
+		if (nodeUUID) {
 			Vvveb.Model2.dispatch({
 				type: 'MOVE_UP',
 				uuid: nodeUUID,
@@ -814,10 +816,12 @@ Vvveb.Builder = {
 	},
 
 	moveNodeDown: function (node) {
+		if(!node) node = this.selectedEl;
+
 		const nodeUUID = $(node).data('uuid');
 
 		// nodeUUID存在，则为我们定义模板组件
-		if(nodeUUID) {
+		if (nodeUUID) {
 			Vvveb.Model2.dispatch({
 				type: 'MOVE_DOWN',
 				uuid: nodeUUID,
@@ -836,7 +840,7 @@ Vvveb.Builder = {
 		}
 
 		const nodeUUID = $(node).data('uuid');
-		if(nodeUUID) {
+		if (nodeUUID) {
 			Vvveb.Model2.dispatch({
 				type: 'CLONE',
 				dom: node,
@@ -960,6 +964,15 @@ Vvveb.Builder = {
 					if (!self.designerMode && self.iconDrag) self.iconDrag.css({ 'left': x + 275/*left panel width*/, 'top': y - 30 });
 				}// else //uncomment else to disable parent highlighting when dragging
 				{
+					const $templateNode = Vvveb.domUtils.getTemplateNode(event.target);
+					const templateNode = $templateNode.get(0);
+					if (!templateNode) return;
+
+					const offset = $templateNode.offset();
+					const width =  $templateNode.outerWidth();
+					const height =  $templateNode.outerHeight();
+
+					self.selectedEl = $templateNode;
 
 					$("#highlight-box").css(
 						{
@@ -967,7 +980,7 @@ Vvveb.Builder = {
 							"left": offset.left - self.frameDoc.scrollLeft(),
 							"width": width,
 							"height": height,
-							"display": event.target.hasAttribute('contenteditable') ? "none" : "block",
+							"display": templateNode.hasAttribute('contenteditable') ? "none" : "block",
 							"border": self.isDragging ? "1px dashed aqua" : "",//when dragging highlight parent with green
 						});
 
@@ -976,7 +989,7 @@ Vvveb.Builder = {
 					} else {
 						$("#section-actions").removeClass("outside");
 					}
-					$("#highlight-name").html(self._getElementType(event.target));
+					$("#highlight-name").html(self._getElementType(templateNode));
 					if (self.isDragging) $("#highlight-name").hide(); else $("#highlight-name").show();//hide tag name when dragging
 				}
 			}
@@ -1000,6 +1013,8 @@ Vvveb.Builder = {
 							Vvveb.domUtils
 								.setFrameDocument(window.FrameDocument)
 								.selectNode(self.activeUUID);
+
+							self.selectedEl = $(`#${self.activeUUID}`);
 						})
 					}
 
@@ -1036,11 +1051,20 @@ Vvveb.Builder = {
 			if (Vvveb.Builder.isPreview == false) {
 				if (event.target) {
 					//if component properties is loaded in left panel tab instead of right panel show tab
-					if ($(".component-properties-tab").is(":visible"))//if properites tab is enabled/visible 
+					if ($(".component-properties-tab").is(":visible")) {
 						$('.component-properties-tab a').show().tab('show');
+					}
 
-					self.selectNode(event.target);
-					self.loadNodeComponent(event.target);
+					const $templateNode = Vvveb.domUtils.getTemplateNode(event.target);
+
+					if ($templateNode.get(0)) {
+						const uuid = $templateNode.data("uuid");
+
+						Vvveb.domUtils.selectNode(uuid);
+
+						self.selectedEl = $templateNode;
+						self.loadNodeComponent($templateNode.get(0));
+					}
 				}
 
 				event.preventDefault();
@@ -1315,12 +1339,12 @@ Vvveb.Builder = {
 	replaceRelativeLink(doc) {
 		doc.querySelectorAll('link').forEach(el => {
 			let path = el.getAttribute('href')
-			if(path) el.href = el.href;
+			if (path) el.href = el.href;
 		})
 		doc.querySelectorAll('script').forEach(el => {
 			let path = el.getAttribute('src')
 
-			if(path) el.src = el.src;
+			if (path) el.src = el.src;
 		})
 		return doc;
 	},
@@ -1491,7 +1515,7 @@ Vvveb.Gui = {
 	},
 
 	// 打包下载文件下载
-	downloadZip: function() {
+	downloadZip: function () {
 		Vvveb.domUtils.downloadZip();
 	},
 
@@ -1499,7 +1523,7 @@ Vvveb.Gui = {
 		$("#canvas").attr("class", this.dataset.view);
 	},
 
-  // 编辑器展开状态切换
+	// 编辑器展开状态切换
 	toggleEditor: function () {
 		Vvveb.MonacoEditorPlugin.toggle()
 	},
@@ -1511,14 +1535,14 @@ Vvveb.Gui = {
 	preview: function () {
 		(Vvveb.Builder.isPreview == true) ? Vvveb.Builder.isPreview = false : Vvveb.Builder.isPreview = true;
 		$("#iframe-layer").toggle();
-    $("#vvveb-builder").toggleClass("preview");
-    // 预览关闭代码编辑器弹窗
-    Vvveb.MonacoEditorPlugin.closeCodeEditor()
+		$("#vvveb-builder").toggleClass("preview");
+		// 预览关闭代码编辑器弹窗
+		Vvveb.MonacoEditorPlugin.closeCodeEditor()
 	},
 
 	fullscreen: function () {
 		launchFullScreen(document); // the whole page
-  },
+	},
 
 	componentSearch: function () {
 		searchText = this.value;

@@ -94,9 +94,9 @@ Vvveb.MonacoEditorPlugin = {
 
   // 销毁
 	destroy: function(element) {
-    this.htmlEditor.destroy();
-    this.cssEditor.destroy();
-    this.scriptEditor.destroy();
+    this.htmlEditor && this.htmlEditor.destroy();
+    this.cssEditor && this.cssEditor.destroy();
+    this.scriptEditor && this.scriptEditor.destroy();
 	},
 
   // 切换状态

@@ -17,6 +17,16 @@ Vvveb.domUtils = {
     return name.replace(/\//g, "-");
   },
 
+  getTemplateNode(el) {
+    const $el = $(el);
+
+    if($el.data("uuid")) {
+      return $el;
+    }
+
+    return $el.parents('[data-component="template"]');
+  },
+
   selectNode(uuid) {
     const selector = `[data-uuid="${uuid}"]`;
     const $frameDoc = $(this.frameDoc);
