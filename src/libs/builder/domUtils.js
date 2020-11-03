@@ -81,6 +81,8 @@ Vvveb.domUtils = {
 
       fakeIframe.style.display = "none";
 
+      fakeIframe.contentWindow.onerror = that.handleIframeErr;
+
       const fastDom = new FastDom().loadNodes(nodes);
       // 构造伪body容器
       let $fakeBody = $();
@@ -119,4 +121,8 @@ Vvveb.domUtils = {
     fakeIframe.src = src;
     document.body.appendChild(fakeIframe);
   },
+
+  // 捕获iframe错误
+  handleIframeErr(err) {
+  }
 };
