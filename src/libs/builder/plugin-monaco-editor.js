@@ -49,11 +49,6 @@ Vvveb.MonacoEditorPlugin = {
       this.setEditorLayout();
   },
 
-  // 创建文本编辑器
-  createCodeEditor: function (dom, option) {
-    return  CodeMirror.fromTextArea(dom, option);
-  },
-
   // 编辑器数据回填
   setCodeEditorValue: function () {
     const { html, css, script } = this.value;
