@@ -54,10 +54,6 @@ Vvveb.MonacoEditorPlugin = {
     this.setCodeEditorValue();
     this.setEditorLayout();
   },
-  // 创建文本编辑器
-  createCodeEditor: function createCodeEditor(dom, option) {
-    return CodeMirror.fromTextArea(dom, option);
-  },
   // 编辑器数据回填
   setCodeEditorValue: function setCodeEditorValue() {
     var _this$value = this.value,
@@ -97,9 +93,9 @@ Vvveb.MonacoEditorPlugin = {
   },
   // 销毁
   destroy: function destroy(element) {
-    this.htmlEditor.destroy();
-    this.cssEditor.destroy();
-    this.scriptEditor.destroy();
+    this.htmlEditor && this.htmlEditor.destroy();
+    this.cssEditor && this.cssEditor.destroy();
+    this.scriptEditor && this.scriptEditor.destroy();
   },
   // 切换状态
   toggle: function toggle() {

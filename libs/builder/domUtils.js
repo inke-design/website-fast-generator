@@ -12,6 +12,15 @@ Vvveb.domUtils = {
   getFilename: function getFilename(name) {
     return name.replace(/\//g, "-");
   },
+  getTemplateNode: function getTemplateNode(el) {
+    var $el = $(el);
+
+    if ($el.data("uuid")) {
+      return $el;
+    }
+
+    return $el.parents('[data-component="template"]');
+  },
   selectNode: function selectNode(uuid) {
     var selector = "[data-uuid=\"".concat(uuid, "\"]");
     var $frameDoc = $(this.frameDoc);
@@ -54,6 +63,7 @@ Vvveb.domUtils = {
       var cssFoler = zip.folder("css");
       zip.file("README.txt", "\n        \u6B64\u7F51\u7AD9\u7531\u7F51\u7AD9\u5FEB\u901F\u642D\u5EFA\u5E73\u53F0\u751F\u6210\u3002\n        github\u5730\u5740\uFF1Ahttps://github.com/inke-design/website-fast-generator\n      ");
       fakeIframe.style.display = "none";
+      fakeIframe.contentWindow.onerror = that.handleIframeErr;
       var fastDom = new FastDom().loadNodes(nodes); // 构造伪body容器
 
       var $fakeBody = $();
@@ -84,5 +94,7 @@ Vvveb.domUtils = {
     });
     fakeIframe.src = src;
     document.body.appendChild(fakeIframe);
-  }
+  },
+  // 捕获iframe错误
+  handleIframeErr: function handleIframeErr(err) {}
 };

@@ -371,7 +371,7 @@ Vvveb.Components = {
       componentsPanelSections[sectionName] = $(this);
     });
 
-    if (!uuid) {
+    if (!nodeData) {
       // 如果不是组件 卸载代码编辑器
       Object.keys(componentsPanelSections).forEach(function (sectionName) {
         componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
@@ -675,6 +675,7 @@ Vvveb.Builder = {
     Vvveb.Components.renderCodeEditor(componentType, node);
   },
   moveNodeUp: function moveNodeUp(node) {
+    if (!node) node = this.selectedEl;
     var nodeUUID = $(node).data('uuid'); // nodeUUID存在，则为我们定义模板组件
 
     if (nodeUUID) {
@@ -690,6 +691,7 @@ Vvveb.Builder = {
     }
   },
   moveNodeDown: function moveNodeDown(node) {
+    if (!node) node = this.selectedEl;
     var nodeUUID = $(node).data('uuid'); // nodeUUID存在，则为我们定义模板组件
 
     if (nodeUUID) {
@@ -823,23 +825,34 @@ Vvveb.Builder = {
 
 
         {
+          var $templateNode = Vvveb.domUtils.getTemplateNode(event.target);
+          var templateNode = $templateNode.get(0);
+          if (!templateNode) return;
+
+          var _offset = $templateNode.offset();
+
+          var _width = $templateNode.outerWidth();
+
+          var _height = $templateNode.outerHeight();
+
+          self.selectedEl = $templateNode;
           $("#highlight-box").css({
-            "top": offset.top - self.frameDoc.scrollTop(),
-            "left": offset.left - self.frameDoc.scrollLeft(),
-            "width": width,
-            "height": height,
-            "display": event.target.hasAttribute('contenteditable') ? "none" : "block",
+            "top": _offset.top - self.frameDoc.scrollTop(),
+            "left": _offset.left - self.frameDoc.scrollLeft(),
+            "width": _width,
+            "height": _height,
+            "display": templateNode.hasAttribute('contenteditable') ? "none" : "block",
             "border": self.isDragging ? "1px dashed aqua" : "" //when dragging highlight parent with green
 
           });
 
-          if (height < 50) {
+          if (_height < 50) {
             $("#section-actions").addClass("outside");
           } else {
             $("#section-actions").removeClass("outside");
           }
 
-          $("#highlight-name").html(self._getElementType(event.target));
+          $("#highlight-name").html(self._getElementType(templateNode));
           if (self.isDragging) $("#highlight-name").hide();else $("#highlight-name").show(); //hide tag name when dragging
         }
       }
@@ -859,6 +872,7 @@ Vvveb.Builder = {
                 payload: self.component
               }).then(function () {
                 Vvveb.domUtils.setFrameDocument(window.FrameDocument).selectNode(self.activeUUID);
+                self.selectedEl = $("#".concat(self.activeUUID));
               });
             }
 
@@ -888,10 +902,18 @@ Vvveb.Builder = {
       if (Vvveb.Builder.isPreview == false) {
         if (event.target) {
           //if component properties is loaded in left panel tab instead of right panel show tab
-          if ($(".component-properties-tab").is(":visible")) //if properites tab is enabled/visible 
+          if ($(".component-properties-tab").is(":visible")) {
             $('.component-properties-tab a').show().tab('show');
-          self.selectNode(event.target);
-          self.loadNodeComponent(event.target);
+          }
+
+          var $templateNode = Vvveb.domUtils.getTemplateNode(event.target);
+
+          if ($templateNode.get(0)) {
+            var uuid = $templateNode.data("uuid");
+            Vvveb.domUtils.selectNode(uuid);
+            self.selectedEl = $templateNode;
+            self.loadNodeComponent($templateNode.get(0));
+          }
         }
 
         event.preventDefault();
