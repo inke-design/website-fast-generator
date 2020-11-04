@@ -78,6 +78,10 @@ Vvveb.MonacoEditorPlugin = {
 
   // 设置value初始值
 	setValue: function(value) {
+    if(value.html) {
+      value.html = this.wrapCode('html', value.html);
+    }
+
     this.value = { ...value }
     
     return this;
@@ -148,6 +152,13 @@ Vvveb.MonacoEditorPlugin = {
 
   wrapCode(type, code) {
     switch(type) {
+      case 'html': {
+        const $html = $(code)
+        if($html.length > 1) {
+          return $("<section></section>").append($html).get(0).outerHTML;
+        }
+        return code;
+      }
       case 'css': {
         return `<style type="text/css">\n${code}\n</style>`;
       }
