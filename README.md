@@ -68,11 +68,11 @@ What did we do & What will we do
 - [x] 数据驱动设计
 - [x] 生成更好的网页结构
 - [ ] 自定义模板，一键保存
-  - [ ] 支持导入html、css、script
+  - [x] 支持导入html、css、script
   - [ ] 接入compile
 - [x] 网页编辑器支持语法提示，自动补全([monaco-editor](https://github.com/microsoft/monaco-editor))
 - [x] 网页可以拆分html、css、script独立文件导出([jsZip](https://github.com/Stuk/jszip))
-- [ ] 更容易的选中编辑模版
+- [x] 更容易的选中编辑模版
 - [ ] 组件适配移动端
 - [x] 编辑器显示区域扩大
 - [ ] 更多的模板
