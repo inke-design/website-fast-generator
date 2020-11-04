@@ -85,6 +85,10 @@ Vvveb.MonacoEditorPlugin = {
   },
   // 设置value初始值
   setValue: function setValue(value) {
+    if (value.html) {
+      value.html = this.wrapCode('html', value.html);
+    }
+
     this.value = _objectSpread({}, value);
     return this;
   },
@@ -152,6 +156,17 @@ Vvveb.MonacoEditorPlugin = {
   },
   wrapCode: function wrapCode(type, code) {
     switch (type) {
+      case 'html':
+        {
+          var $html = $(code);
+
+          if ($html.length > 1) {
+            return $("<section></section>").append($html).get(0).outerHTML;
+          }
+
+          return code;
+        }
+
       case 'css':
         {
           return "<style type=\"text/css\">\n".concat(code, "\n</style>");
