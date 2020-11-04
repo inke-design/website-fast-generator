@@ -3,6 +3,8 @@ Vvveb.domUtils = {
   iframe: $("#iframe-wrapper > iframe"),
   frameDoc: window.FrameDocument,
   $selectedEl: null,
+  // 保存模版到本地的key
+  templateStoreKey: '__CUSTOME_TEMPLATES__',
 
   setIframe(iframe) {
     this.iframe = iframe;
@@ -124,5 +126,45 @@ Vvveb.domUtils = {
 
   // 捕获iframe错误
   handleIframeErr(err) {
+  },
+
+  /**
+   * 保存模版
+   * 
+   * data.name 模版名字
+   * data.html html
+   * data.css css
+   * data.script script
+   */
+  saveTemplate(data)  {
+    const templateStoreKey = this.templateStoreKey;
+
+    const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
+  
+    const key = `custome/${Math.random().toString(36).substr(2)}`;
+
+    const localTemplates = JSON.parse(localStorage.getItem(templateStoreKey)) || {};
+
+    const saveData = {
+      key,
+      image: TEST_IMAGE,
+      dragHtml: `<img src="${TEST_IMAGE}">`,
+      ...data,
+      __addTime: new Date().getTime(),
+    }
+
+    delete saveData.uuid;
+
+    localTemplates[key] = saveData;
+
+    localStorage.setItem(templateStoreKey, JSON.stringify(localTemplates));
+  },
+
+  getTemplates() {
+    const templateStoreKey = this.templateStoreKey;
+   
+    const localTemplates = JSON.parse(localStorage.getItem(templateStoreKey)) || {};
+    
+    return Object.values(localTemplates).sort((t1, t2) => t1.__addTime - t2.__addTime);
   }
 };

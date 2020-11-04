@@ -79,11 +79,21 @@ $input-height: default;
 #component-properties-code-editor {
 	.codeEditor {
 		.section {
+			height: 100%;
+			opacity: 1;
 		}
 	}
 }
 
 #vvveb-builder {
+	#save-template-btn {
+		display: none;
+	}
+	&.design {
+		#save-template-btn {
+			display: block;
+		}
+	}
 	.code-tabs {
 		.nav-item {
 			.nav-link {
@@ -116,4 +126,8 @@ $input-height: default;
   position: fixed;
   z-index: 9;
   display: none;
+}
+
+#save-template-btn {
+	margin-left: 10px;
 }

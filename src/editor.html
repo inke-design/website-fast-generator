@@ -57,8 +57,12 @@
 
 					  <button class="btn btn-light" title="预览" id="preview-btn" type="button" data-toggle="button" aria-pressed="false" data-vvveb-action="preview">
 						  <i class="la la-eye"></i>
-					  </button>
+						</button>
 
+						<button class="btn btn-light" title="创作模版" id="design-btn" type="button" data-toggle="button" aria-pressed="false" data-vvveb-action="design">
+							<i class="la la-edit"></i>
+						</button>
+						
 					  <button class="btn btn-light" title="全屏 (F11)" id="fullscreen-btn" data-toggle="button" aria-pressed="false" data-vvveb-action="fullscreen">
 						  <i class="la la-arrows"></i>
 					  </button>
@@ -73,6 +77,10 @@
 					<div class="btn-group mr-3 float-right" role="group">
 					  <button class="btn btn-primary btn-icon" title="导出快捷键 (Ctrl + E)" id="save-btn" data-vvveb-action="save" data-vvveb-url="/admin/?module=editor/editor&action=save" data-v-vvveb-shortcut="ctrl+e">
 						  <i class="la la-save"></i> <span data-v-gettext>复制代码</span>
+						</button>
+						
+						<button class="btn btn-primary btn-icon" title="保存为模版" id="save-template-btn" data-vvveb-action="saveTemplate" data-vvveb-url="/admin/?module=editor/editor&action=save">
+						  <i class="la la-save"></i> <span data-v-gettext>保存为模版</span>
 					  </button>
 					</div>	
 
@@ -825,6 +833,11 @@
 		<input class="header_check" type="checkbox" {% if (typeof expanded !== 'undefined' && expanded == false) { %} {% } else { %}checked="true"{% } %} id="header_{%=key%}"> 
 		<div class="section" data-section="{%=key%}"></div>		
 	
+</script>
+
+<!-- 编辑器 -->
+<script id="vvveb-editor-section" type="text/html">
+	<div class="section" data-section="{%=key%}"></div>		
 </script>
 
 

@@ -200,8 +200,13 @@ Vvveb.Components = {
 
 	matchNode: function (node) {
 		var component = {};
-
+		
 		if (!node || !node.tagName) return false;
+		const dataset = $(node).data();
+		
+		if(dataset.component) {
+			return { ...dataset, type: dataset.component };
+		}
 
 		if (node.attributes && node.attributes.length) {
 			//search for attributes
@@ -411,46 +416,52 @@ Vvveb.Components = {
 		if (component.init) component.init(Vvveb.Builder.selectedEl.get(0));
 	},
 
-	// 渲染代码编辑器
-	renderCodeEditor: function (type, data) {
-		const uuid = $(data).data('uuid');
+	/**
+	 * 渲染编辑
+	 * 
+	 * type: template 模板编辑器 design 创作模式编辑器
+	 * el: 节点
+	 * 
+	 */
+	renderCodeEditor: function (type, el) {
+		const uuid = $(el).data('uuid');
 
-		if (!uuid) return;
-
-		const nodeData = Vvveb.Model2.getter(({ nodes }) => nodes.find(v => v.uuid === uuid));
-
-		var component = this._components[type];
 		var componentsPanelSections = {};
-		const propertiesElement = "#component-properties-code-editor"
+		const propertiesElement = "#component-properties-code-editor";
+
 		$(propertiesElement + " .tab-pane").each(function () {
 			var sectionName = this.dataset.section;
 			componentsPanelSections[sectionName] = $(this);
 		});
-		if (!nodeData) {
-			// 如果不是组件 卸载代码编辑器
-			Object.keys(componentsPanelSections).forEach(sectionName => {
-				componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
-			})
-			Vvveb.MonacoEditorPlugin.destroy()
-			return false
-		}
-		// 如果组件 加载载代码编辑器 并进行数据回填
-		const { html, css, script } = nodeData
-		Vvveb.MonacoEditorPlugin.setValue({ uuid, html, css, script })
-
+		
 		Object.keys(componentsPanelSections).forEach(sectionName => {
-			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
+			componentsPanelSections[sectionName].html('').append(tmpl("vvveb-editor-section", { key: "default" }));
+
 			const section = componentsPanelSections[sectionName].find(".section")
-			componentsPanelSections[sectionName].find('[data-header="default"] span').html(`${name} Code`);
-			componentsPanelSections[sectionName].find('[data-header="default"]').css('display', "none")
+			const id = `vvveb-code-editor-${sectionName}`
 
 			section.html('')
-			const id = `vvveb-code-editor-${sectionName}`
 			section.append(`<div style="width: 100%" id=${id} class="component-code-eidtor"></div>`)
 		})
 
-		Vvveb.MonacoEditorPlugin.init()
-		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
+		// 初始化编辑器
+		Vvveb.MonacoEditorPlugin.init({ mode: type })
+
+		if(type === 'template' && uuid) {
+			// 模板编辑
+
+			// 如果组件 加载载代码编辑器 并进行数据回填
+			const nodeData = Vvveb.Model2.getter(({ nodes }) => nodes.find(v => v.uuid === uuid));
+			const { html, css, script } = nodeData
+
+			Vvveb.MonacoEditorPlugin
+				.setValue({ uuid, html, css, script })
+				.setCodeEditorValue();
+
+		} else if(type === 'design') {
+			// 模板创作模式
+
+		}
 	}
 };
 
@@ -1482,6 +1493,21 @@ Vvveb.Gui = {
 		$('#textarea-modal').modal();
 	},
 
+	saveTemplate: function() {
+		const templateName = window.prompt("请给模版取个名字");
+
+		if(templateName) {
+			const nodeData = Vvveb.Model2.getter(({nodes}) => nodes.find(v => v.uuid === 'new-template'));
+
+			if(!nodeData) return alert("暂无可保存模版");
+
+			Vvveb.domUtils.saveTemplate({
+				name: templateName,
+				...nodeData
+			})
+		}
+	},
+
 	//post html content through ajax to save to filesystem/db
 	saveAjax: function () {
 
@@ -1542,6 +1568,47 @@ Vvveb.Gui = {
 
 	fullscreen: function () {
 		launchFullScreen(document); // the whole page
+	},
+
+	design: function() {
+		const nodes = Vvveb.Model2.getter(({ nodes}) => nodes);
+
+		if(nodes && nodes.length) {
+			const result = window.confirm("进入模版创作模式将重置页面，请先保存页面。确定进入吗？");
+
+			if(!result) return false;
+
+			Vvveb.Model2.dispatch({type: 'RESET'})
+		}
+
+		(Vvveb.Builder.isDesign == true) ? Vvveb.Builder.isDesign = false : Vvveb.Builder.isDesign = true;
+
+		Vvveb.Components.renderCodeEditor('design');
+		$("#iframe-layer").toggle();
+		$("#vvveb-builder").toggleClass("design");
+		
+		if(Vvveb.Builder.isDesign) {
+			$("#vvveb-builder").addClass("bottom-panel-expand");
+			$("#vvveb-builder #bottom-panel").css({
+				width: "100%",
+				left: 0,
+			})
+
+			Vvveb.MonacoEditorPlugin
+				.setActive(true)
+				.resetValue()
+				.setValue({ uuid: 'new-template'})
+				.setCodeEditorValue();
+		} else {
+			$("#vvveb-builder").removeClass("bottom-panel-expand");
+
+			Vvveb.MonacoEditorPlugin
+				.setActive(false)
+				.resetValue()
+				.setCodeEditorValue();
+		}
+		
+		console.log("进入设计模式");
 	},
 
 	componentSearch: function () {

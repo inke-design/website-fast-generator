@@ -4,13 +4,22 @@ Vvveb.MonacoEditorPlugin = {
   codemirriorHTML: null,
   codemirriorCss: null,
   codemirriorScript: null,
+  // 编辑器模式
+  // * mode: template 模板编辑器 design 创作模式编辑器
+  mode: 'template',
   value: {
     html: '',
     css: '',
     script: ''
   },
 	
-	init: function() {
+	init: function(options = {}) {
+      // if(this.htmlEditor && this.cssEditor && this.scriptEditor) {
+      //   this.resetValue().setCodeEditorValue();
+      //   return this;
+      // }      
+      this.mode = options.mode;
+
       // 生成编辑器实例
       const htmlEl = document.querySelector("#vvveb-code-editor-content");
       const cssEl = document.querySelector("#vvveb-code-editor-style");
@@ -51,22 +60,33 @@ Vvveb.MonacoEditorPlugin = {
 
   // 编辑器数据回填
   setCodeEditorValue: function () {
-    const { html, css, script } = this.value;
+    const { html = '', css = '', script = '' } = this.value;
+
     this.htmlEditor && this.htmlEditor.setValue(html)
     this.cssEditor && this.cssEditor.setValue(this.replaceTag(css))
-    this.scriptEditor && this.scriptEditor.setValue(this.replaceTag(script))
+    this.scriptEditor && this.scriptEditor.setValue(this.replaceTag(script));
+
+    return this;
   },
 
   // 编辑器刷新
   refresh: function () {
-    this.codemirriorHTML && this.codemirriorHTML.refresh()
-    this.codemirriorCss && this.codemirriorCss.refresh()
-    this.codemirriorScript && this.codemirriorScript.refresh()
+    this.codemirriorHTML && this.codemirriorHTML.refresh();
+    this.codemirriorCss && this.codemirriorCss.refresh();
+    this.codemirriorScript && this.codemirriorScript.refresh();
   },
 
   // 设置value初始值
 	setValue: function(value) {
-		this.value = { ...value }
+    this.value = { ...value }
+    
+    return this;
+  },
+
+  resetValue() {
+    this.value = { }
+    
+    return this;
   },
   
   // 更新节点
@@ -74,17 +94,28 @@ Vvveb.MonacoEditorPlugin = {
     const { uuid } = this.value
     const oldValue = this.value[field]
     const newValue = params[field]
+
     if(oldValue === newValue) return
 
     Object.keys(params).forEach(key => {
       params[key] = this.wrapCode(field, params[key])
     });
 
-    Vvveb.Model2.dispatch({
-      type: 'EDIT',
-      uuid,
-      node: params,
-    })
+		const nodeData = Vvveb.Model2.getter(({ nodes }) => nodes.find(v => v.uuid === uuid));
+
+
+    if(!nodeData && this.mode === 'design') {
+      Vvveb.Model2.dispatch({
+        type: 'ADD',
+        payload: { ...params, uuid: uuid },
+      })
+    } else {
+      Vvveb.Model2.dispatch({
+        type: 'EDIT',
+        uuid,
+        node: params,
+      })
+    }
   },
 
   // 销毁
@@ -149,5 +180,17 @@ Vvveb.MonacoEditorPlugin = {
         height,
       });
     }
+
+    return this;
+  },
+
+  setActive(isActive) {
+    this.isActive = isActive;
+
+    if(this.isActive) {
+      this.setEditorLayout();
+    }
+
+    return this;
   }
 }

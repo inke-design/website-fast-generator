@@ -13,6 +13,8 @@ export const ACTION_TYPES = {
   CLONE: "CLONE",
   // 修改节点
   EDIT: "EDIT",
+  // 重置
+  RESET: 'RESET',
 };
 
 export const actions = [
@@ -94,6 +96,14 @@ export const actions = [
       const newNodes = ArrayUtils.swap(state.nodes, idx, idx + 1);
 
       state.nodes = newNodes;
+      return state;
+    },
+  },
+  {
+    type: ACTION_TYPES.RESET,
+    reducer: (state, action) => {
+      state.nodes = [];
+      
       return state;
     },
   },
