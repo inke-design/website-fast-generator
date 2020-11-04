@@ -41,6 +41,7 @@ class MonacoEditor {
       value: this.initValue,
       language: this.lang,
       theme: this.theme,
+      automaticLayout: true,
     });
 
     this.editor = editor;

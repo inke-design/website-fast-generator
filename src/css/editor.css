@@ -9449,6 +9449,7 @@ body {
     height: 35px;
     bottom: 0px;
     position: fixed;
+    z-index: 10;
     border-top: 1px solid #ddd;
     left: 15vw;
     left: calc($builder-left-panel-width +  $builder-canvas-margin);

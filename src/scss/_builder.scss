@@ -363,9 +363,10 @@ body
 	#bottom-panel
 	{
 		width:auto;
-		height:$builder-bottom-panel-height;
+		height:50px;
 		bottom:0px;
-		position:fixed;
+    position:fixed;
+    z-index: 10;
 		border-top:1px solid #ddd;
 		left: $builder-left-panel-width;
 		left: calc($builder-left-panel-width +  $builder-canvas-margin);

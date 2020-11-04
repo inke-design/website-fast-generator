@@ -97,8 +97,8 @@ Vvveb.MonacoEditorPlugin = {
   // 切换状态
 	toggle: function() {
     this.isActive = !this.isActive
-    $("#vvveb-builder").toggleClass("bottom-panel-expand");
-    
+    // $("#vvveb-builder").toggleClass("bottom-panel-expand");
+    $("#bottom-panel").css("height", this.isActive ? '65vh' : 50);
     this.setEditorLayout()
   },
 
@@ -106,12 +106,12 @@ Vvveb.MonacoEditorPlugin = {
   closeCodeEditor: function() {
     if(!this.isActive) return
     this.isActive = false
-    $("#vvveb-builder").removeClass("bottom-panel-expand");
+    $("#bottom-panel").css("height", 50);
+    this.setEditorLayout()
   },
 
   replaceTag(str) {
     if(!str) return '';
-
     return str.replace(/(<script.*>)|(<\/script>)|(<s.*>)|(<\/style>)/g, '');;
   },
 
