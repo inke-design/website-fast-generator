@@ -99,15 +99,17 @@ Vvveb.MonacoEditorPlugin = {
   },
   // 切换状态
   toggle: function toggle() {
-    this.isActive = !this.isActive;
-    $("#vvveb-builder").toggleClass("bottom-panel-expand");
+    this.isActive = !this.isActive; // $("#vvveb-builder").toggleClass("bottom-panel-expand");
+
+    $("#bottom-panel").css("height", this.isActive ? '65vh' : 50);
     this.setEditorLayout();
   },
   // 关闭编辑器弹窗
   closeCodeEditor: function closeCodeEditor() {
     if (!this.isActive) return;
     this.isActive = false;
-    $("#vvveb-builder").removeClass("bottom-panel-expand");
+    $("#bottom-panel").css("height", 50);
+    this.setEditorLayout();
   },
   replaceTag: function replaceTag(str) {
     if (!str) return '';
