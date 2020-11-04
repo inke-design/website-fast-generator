@@ -1,3 +1,9 @@
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*
@@ -163,6 +169,13 @@ Vvveb.Components = {
   matchNode: function matchNode(node) {
     var component = {};
     if (!node || !node.tagName) return false;
+    var dataset = $(node).data();
+
+    if (dataset.component) {
+      return _objectSpread(_objectSpread({}, dataset), {}, {
+        type: dataset.component
+      });
+    }
 
     if (node.attributes && node.attributes.length) {
       //search for attributes
@@ -353,57 +366,56 @@ Vvveb.Components = {
 
     if (component.init) component.init(Vvveb.Builder.selectedEl.get(0));
   },
-  // 渲染代码编辑器
-  renderCodeEditor: function renderCodeEditor(type, data) {
-    var uuid = $(data).data('uuid');
-    if (!uuid) return;
-    var nodeData = Vvveb.Model2.getter(function (_ref) {
-      var nodes = _ref.nodes;
-      return nodes.find(function (v) {
-        return v.uuid === uuid;
-      });
-    });
-    var component = this._components[type];
+
+  /**
+   * 渲染编辑
+   * 
+   * type: template 模板编辑器 design 创作模式编辑器
+   * el: 节点
+   * 
+   */
+  renderCodeEditor: function renderCodeEditor(type, el) {
+    var uuid = $(el).data('uuid');
     var componentsPanelSections = {};
     var propertiesElement = "#component-properties-code-editor";
     $(propertiesElement + " .tab-pane").each(function () {
       var sectionName = this.dataset.section;
       componentsPanelSections[sectionName] = $(this);
     });
-
-    if (!nodeData) {
-      // 如果不是组件 卸载代码编辑器
-      Object.keys(componentsPanelSections).forEach(function (sectionName) {
-        componentsPanelSections[sectionName].html('').append('<div class="mt-4 text-center">点击一个组件容器编辑HTML</div>');
-      });
-      Vvveb.MonacoEditorPlugin.destroy();
-      return false;
-    } // 如果组件 加载载代码编辑器 并进行数据回填
-
-
-    var html = nodeData.html,
-        css = nodeData.css,
-        script = nodeData.script;
-    Vvveb.MonacoEditorPlugin.setValue({
-      uuid: uuid,
-      html: html,
-      css: css,
-      script: script
-    });
     Object.keys(componentsPanelSections).forEach(function (sectionName) {
-      componentsPanelSections[sectionName].html('').append(tmpl("vvveb-input-sectioninput", {
-        key: "default",
-        header: component.name
+      componentsPanelSections[sectionName].html('').append(tmpl("vvveb-editor-section", {
+        key: "default"
       }));
       var section = componentsPanelSections[sectionName].find(".section");
-      componentsPanelSections[sectionName].find('[data-header="default"] span').html("".concat(name, " Code"));
-      componentsPanelSections[sectionName].find('[data-header="default"]').css('display', "none");
-      section.html('');
       var id = "vvveb-code-editor-".concat(sectionName);
+      section.html('');
       section.append("<div style=\"width: 100%\" id=".concat(id, " class=\"component-code-eidtor\"></div>"));
+    }); // 初始化编辑器
+
+    Vvveb.MonacoEditorPlugin.init({
+      mode: type
     });
-    Vvveb.MonacoEditorPlugin.init();
-    if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
+
+    if (type === 'template' && uuid) {
+      // 模板编辑
+      // 如果组件 加载载代码编辑器 并进行数据回填
+      var nodeData = Vvveb.Model2.getter(function (_ref) {
+        var nodes = _ref.nodes;
+        return nodes.find(function (v) {
+          return v.uuid === uuid;
+        });
+      });
+      var _html = nodeData.html,
+          css = nodeData.css,
+          script = nodeData.script;
+      Vvveb.MonacoEditorPlugin.setValue({
+        uuid: uuid,
+        html: _html,
+        css: css,
+        script: script
+      }).setCodeEditorValue();
+    } else if (type === 'design') {// 模板创作模式
+    }
   }
 };
 Vvveb.Blocks = {
@@ -1252,6 +1264,22 @@ Vvveb.Gui = {
     $('#textarea-modal textarea').val(Vvveb.Builder.getHtml());
     $('#textarea-modal').modal();
   },
+  saveTemplate: function saveTemplate() {
+    var templateName = window.prompt("请给模版取个名字");
+
+    if (templateName) {
+      var nodeData = Vvveb.Model2.getter(function (_ref2) {
+        var nodes = _ref2.nodes;
+        return nodes.find(function (v) {
+          return v.uuid === 'new-template';
+        });
+      });
+      if (!nodeData) return alert("暂无可保存模版");
+      Vvveb.domUtils.saveTemplate(_objectSpread({
+        name: templateName
+      }, nodeData));
+    }
+  },
   //post html content through ajax to save to filesystem/db
   saveAjax: function saveAjax() {
     var saveUrl = this.dataset.vvvebUrl;
@@ -1301,6 +1329,42 @@ Vvveb.Gui = {
   },
   fullscreen: function fullscreen() {
     launchFullScreen(document); // the whole page
+  },
+  design: function design() {
+    var nodes = Vvveb.Model2.getter(function (_ref3) {
+      var nodes = _ref3.nodes;
+      return nodes;
+    });
+
+    if (nodes && nodes.length) {
+      var _result = window.confirm("进入模版创作模式将重置页面，请先保存页面。确定进入吗？");
+
+      if (!_result) return false;
+      Vvveb.Model2.dispatch({
+        type: 'RESET'
+      });
+    }
+
+    Vvveb.Builder.isDesign == true ? Vvveb.Builder.isDesign = false : Vvveb.Builder.isDesign = true;
+    Vvveb.Components.renderCodeEditor('design');
+    $("#iframe-layer").toggle();
+    $("#vvveb-builder").toggleClass("design");
+
+    if (Vvveb.Builder.isDesign) {
+      $("#vvveb-builder").addClass("bottom-panel-expand");
+      $("#vvveb-builder #bottom-panel").css({
+        width: "100%",
+        left: 0
+      });
+      Vvveb.MonacoEditorPlugin.setActive(true).resetValue().setValue({
+        uuid: 'new-template'
+      }).setCodeEditorValue();
+    } else {
+      $("#vvveb-builder").removeClass("bottom-panel-expand");
+      Vvveb.MonacoEditorPlugin.setActive(false).resetValue().setCodeEditorValue();
+    }
+
+    console.log("进入设计模式");
   },
   componentSearch: function componentSearch() {
     searchText = this.value;

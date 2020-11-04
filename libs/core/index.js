@@ -129,7 +129,9 @@ var ACTION_TYPES = {
   // 拷贝节点
   CLONE: "CLONE",
   // 修改节点
-  EDIT: "EDIT"
+  EDIT: "EDIT",
+  // 重置
+  RESET: 'RESET'
 };
 var actions = [{
   type: ACTION_TYPES.ADD,
@@ -223,6 +225,12 @@ var actions = [{
 
     var newNodes = _utils__WEBPACK_IMPORTED_MODULE_0__["ArrayUtils"].swap(state.nodes, idx, idx + 1);
     state.nodes = newNodes;
+    return state;
+  }
+}, {
+  type: ACTION_TYPES.RESET,
+  reducer: function reducer(state, action) {
+    state.nodes = [];
     return state;
   }
 }];

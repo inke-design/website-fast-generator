@@ -740,6 +740,19 @@ var templateConfig = {
     }]
   }
 };
+
+function addLocalTemplates() {
+  var localTemplates = Vvveb.domUtils.getTemplates();
+
+  if (localTemplates && localTemplates.length) {
+    templateConfig['__custome__'] = {
+      groupName: '自定义模版',
+      list: localTemplates
+    };
+  }
+}
+
+addLocalTemplates();
 /* harmony default export */ __webpack_exports__["default"] = (templateConfig);
 
 /***/ }),

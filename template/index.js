@@ -240,4 +240,20 @@ const templateConfig = {
   }
 };
 
+
+
+function addLocalTemplates() {
+  const localTemplates = Vvveb.domUtils.getTemplates();
+
+  if(localTemplates && localTemplates.length) {
+    templateConfig['__custome__'] = {
+      groupName: '自定义模版',
+      list: localTemplates,
+    }
+  }
+}
+
+addLocalTemplates();
+
+
 export default templateConfig;

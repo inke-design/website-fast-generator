@@ -29,7 +29,9 @@ export var ACTION_TYPES = {
   // 拷贝节点
   CLONE: "CLONE",
   // 修改节点
-  EDIT: "EDIT"
+  EDIT: "EDIT",
+  // 重置
+  RESET: 'RESET'
 };
 export var actions = [{
   type: ACTION_TYPES.ADD,
@@ -123,6 +125,12 @@ export var actions = [{
 
     var newNodes = ArrayUtils.swap(state.nodes, idx, idx + 1);
     state.nodes = newNodes;
+    return state;
+  }
+}, {
+  type: ACTION_TYPES.RESET,
+  reducer: function reducer(state, action) {
+    state.nodes = [];
     return state;
   }
 }];
