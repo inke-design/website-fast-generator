@@ -18,6 +18,25 @@ self.MonacoEnvironment = {
 	}
 };
 
+// 注册css格式化
+monaco.languages.registerDocumentFormattingEditProvider('css', {
+  async provideDocumentFormattingEdits(model, options, token) {
+    const prettier = await import('prettier/standalone');
+    const cssParser = await import('prettier/parser-postcss');
+    const text = prettier.format(model.getValue(), {
+      parser: 'css',
+      plugins: [cssParser],
+    });
+
+    return [
+      {
+        range: model.getFullModelRange(),
+        text,
+      },
+    ];
+  },
+});
+
 class MonacoEditor {
   constructor(config) {
     const { el, initValue, lang = 'javascript', onChange, onBlur, theme = 'vs' } = config;
