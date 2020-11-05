@@ -23,6 +23,14 @@ function getFilePath(path) {
   return path.replace(/^(\.\/)|(\.\w+)$/gi, '');
 }
 
+function getEnv() {
+  return process.env.NODE_ENV;
+}
+
+function isDevelopment() {
+  return getEnv() === 'development';
+}
+
 function compileSass() {
   return gulp
     .src("src/scss/**/*.scss")
@@ -61,7 +69,7 @@ function compileEsWithWebpack() {
           'html.worker': 'monaco-editor/esm/vs/language/html/html.worker',
           'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker'
         },
-        mode: "development",
+        mode: isDevelopment() ? 'development' : "production",
         devtool: "none",
         module: {
           rules: [
