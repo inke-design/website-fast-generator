@@ -193,7 +193,7 @@ const css = `
   width: 178px;
   height: 178px;
   padding: 3px;
-  background: url(//www.inke.cn/images/download_code.png) 0 0/100% no-repeat #fff;
+  background: url(https://www.inke.cn/images/download_code.png) 0 0/100% no-repeat #fff;
   border-radius: 10px;
   background-clip: padding-box;
   box-shadow: 0 0 20px #ccc
