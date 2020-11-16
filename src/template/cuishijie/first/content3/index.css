@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.jkb66:hover {
+  background-color: #0ed1f0;
+  border: #0ed1f0 solid 1px;
+  color: #fff;
+}
+.jkb66 {
+  color: rgb(255, 255, 255);
+  text-decoration: none !important;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.3s ease-in-out 0s;
+  outline: none !important;
+  font-size: 16px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 9px 0px;
+  max-width: 171px;
+  width: 171px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 30px;
+  float: right;
+  margin-top: 53px;
+}
+.jkb9 {
+  opacity: 0;
+}
+.jkb23 {
+  opacity: 0;
+}
+.jkb68 {
+  color: rgb(102, 102, 102);
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  white-space: normal;
+  word-spacing: 0px;
+  background-color: rgb(255, 255, 255);
+  display: inline !important;
+  float: none;
+}
+.jkb69 {
+  background: rgb(22, 22, 22);
+  margin-top: 90px;
+  color: rgb(102, 102, 102);
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  white-space: normal;
+  word-spacing: 0px;
+  text-decoration-color: initial;
+}
+.jkb5 {
+  position: relative;
+  width: 380px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 50%;
+  max-width: 50%;
+  margin-bottom: 20px;
+}
+.jkb5:hover .jkb23 {
+  opacity: 1!important;
+}
+.jkb3 {
+  position: relative;
+  width: 760px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 66.6667%;
+  max-width: 66.6667%;
+}
+.jkb11 {
+  font-weight: 500;
+  line-height: normal;
+  color: rgb(255, 255, 255);
+  font-size: 26px;
+  letter-spacing: 0px;
+  position: relative;
+  padding: 0px;
+}
+.jkb47 {
+  position: relative;
+  width: 380px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.jkb61 {
+  position: relative;
+  width: 380px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+}
+.jkb64 {
+  font-weight: normal;
+  line-height: 85px;
+  color: rgb(0, 0, 0);
+  font-size: 70px;
+  letter-spacing: 0px;
+  position: relative;
+  padding: 0px;
+}
+.jkb72 {
+  position: relative;
+  width: 1140px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.jkb75 {
+  position: relative;
+  width: 707px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.jkb1 {
+  width: 1140px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1140px;
+}
+.jkb2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+}
+.jkb8 {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+  width: 350px;
+}
+.jkb13 {
+  color: rgb(34, 34, 34);
+  text-decoration: none !important;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out 0s;
+  outline: none !important;
+}
+.jkb65 {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 35px;
+  text-align: right;
+  color: rgb(24, 23, 22);
+}
+.jkb4 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.jkb32 {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+}
+.jkb73 {
+  max-width: 677px;
+  margin: 0px auto;
+  text-align: center;
+  padding: 40px 0px 50px;
+}
+.jkb0 {
+  background: rgb(236, 236, 236);
+  padding: 110px 0px;
+  margin-top: 90px;
+}
+.jkb12 {
+  padding: 10px 3px;
+  list-style: none;
+  display: inline-block;
+}
+.jkb7 {
+  display: block;
+  margin: 0px;
+}
+.jkb10 {
+  list-style: none;
+  text-align: center;
+}
+.jkb63 {
+  text-align: right;
+  padding-bottom: 20px;
+}
+.jkb76 {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.jkb6 {
+  position: relative;
+}
+.jkb62 {
+  box-sizing: border-box;
+}
+.jkbN0 {
+  background: rgba(14, 209, 240, 0.75);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  width: 351.5px;
+  float: left;
+  height: 245.156px;
+  align-items: center;
+  transition: all 0.5s ease-in 0s;
+}

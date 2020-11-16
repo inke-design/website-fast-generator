@@ -12,6 +12,7 @@ import InkeNavbar from "./navbar/inke-navbar";
 import NavbarOne from "./navbar/navbar-one";
 import NavbarTwo from "./navbar/navbar-two";
 import NavbarThree from "./navbar/navbar-three";
+import NavbarFour from "./navbar/navbar-four";
 
 // banner模版
 import BannerOne from "./banner/banner-one";
@@ -23,6 +24,9 @@ import BackVideoContent from "./content/background-videdo-content";
 import VideoCardCotent from "./content/video-card-content";
 import AboutUs from "./content/about-us";
 import MoreIcon from "./content/more-icon";
+
+import ContentFour from "./content/content-four";
+import ContentFive from "./content/content-five";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
@@ -128,6 +132,15 @@ const templateConfig = {
         css: NavbarThree.css,
         script: NavbarThree.script,
       },
+      {
+        key: "navbar/navbar-four",
+        name: "Navbar模板四",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzM2MDAwNTQ4OSM2NzcjanBn.jpg',
+        html: NavbarFour.html,
+        css: NavbarFour.css,
+        script: NavbarFour.script,
+      },
     ]
   },
   banner: {
@@ -203,6 +216,24 @@ const templateConfig = {
         html: MoreIcon.html,
         css: MoreIcon.css,
         script: MoreIcon.script,
+      },
+      {
+        key: "content/four",
+        name: "ContentFour",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg',
+        html: ContentFour.html,
+        css: ContentFour.css,
+        script: ContentFour.script,
+      },
+      {
+        key: "content/five",
+        name: "ContentFive",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzYzODE1NTM2NSMzOTgjanBn.jpg',
+        html: ContentFive.html,
+        css: ContentFive.css,
+        script: ContentFive.script,
       },
     ]
   },

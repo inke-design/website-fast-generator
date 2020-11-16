@@ -1,0 +1,44 @@
+.navbar-four{
+  width: 100%;
+  padding: 15px 0;
+  background: #000;
+}
+.navbar-four .middle{
+  width: 940px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-four .middle .logo{
+  width: 144px;
+}
+.navbar-four .middle .logo img{
+  width: 100%;
+}
+.nav-list .nav-ul{
+  display: flex;
+  list-style: none;
+}
+.nav-list .nav-ul li img {
+  width: 29px;
+  height: 29px;
+}
+.nav-list .nav-ul li a {
+  padding: 11px 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 16px;
+  display: block;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in;
+  text-decoration: none;
+}
+
+.nav-list .nav-ul li a:hover {
+  color: #fff;
+  background: #0ed1f0;
+  border-radius: 17px;
+  transition: all 0.3s ease-in;
+}

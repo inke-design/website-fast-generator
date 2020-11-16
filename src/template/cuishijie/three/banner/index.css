@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.content {
+  background: url("https://img.ikstatic.cn/MTYwNTUxNzIxMjk3OCMyNDkjanBn.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 160px 0;
+}
+.content .middle {
+  width: 1140px;
+  margin: 0 auto;
+}
+.content .middle h1{
+  font-size: 55px;
+    line-height: 65px;
+    color: #fff;
+  text-transform: uppercase;
+}
+.content .middle h2{
+  padding-top: 20px;
+  font-size: 55px;
+    line-height: 65px;
+    color: #fff;
+  padding-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.content .middle p{
+  font-size: 17px;
+  display: block;
+  color: #fff;
+  line-height: 30px;
+  padding-bottom: 50px;
+  font-weight: 400;
+  width: 45%;
+}
+.content .middle .buttons span{
+  border: 2px solid #f2a51a;
+  background: #f2a51a;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: 400;
+  text-decoration: none;
+  outline: none;
+  transition: ease all 0.5s;
+}
+.content .middle .buttons span:hover{
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+}

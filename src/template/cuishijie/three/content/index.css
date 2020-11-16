@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.middle {
+  width: 1140px;
+  margin: 30px auto;
+  display: flex;
+}
+.mxd0 {
+  position: relative;
+  width: 590px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 50%;
+  max-width: 50%;
+  color: rgb(33, 37, 41);
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  white-space: normal;
+  word-spacing: 0px;
+  background-color: rgb(255, 255, 255);
+  text-decoration-color: initial;
+}
+.mxd10 {
+  color: var(--sub-header-white);
+  text-decoration: none;
+  background-color: transparent;
+  font-family: Poppins, sans-serif;
+  border-radius: 4px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 30px;
+}
+.mxd8 {
+  background: url("https://img.ikstatic.cn/MTYwNTUxNzQ4ODg0MSM3MzIjanBn.jpg")
+    center center / cover no-repeat;
+    color: #fff;
+}
+.mxd8::before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 10px;
+  right: 0px;
+  background: #00000075;
+  z-index: -1;
+}
+
+.mxd12 {
+  background: url("https://img.ikstatic.cn/MTYwNTUxNzQ4ODg0MSM3MzIjanBn.jpg")
+    center center / cover no-repeat;
+    color: #fff;
+}
+.mxd12::before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 10px;
+  right: 0px;
+  background: #00000075;
+  z-index: -1;
+}
+.mxd3 {
+  margin: 0px 0px 20px;
+  font-weight: 500;
+  line-height: 50px;
+  font-size: 40px;
+  font-family: Poppins, sans-serif;
+  color: var(--header-title-color);
+}
+.mxd1 {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  border-radius: 10px;
+}
+.mxd6 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--para-color);
+}
+.mxd7 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 30px;
+}
+.mxd9 {
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1rem;
+  font-family: Poppins, sans-serif;
+}
+.mxd11 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--para-white);
+}
+.mxd5 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: rgb(242, 165, 26);
+}
+.mxdN0 {
+  border-radius: 10px;
+  position: relative;
+  display: grid;
+  align-items: center;
+  z-index: 1;
+  padding: 20px;
+  height: 170px;
+}

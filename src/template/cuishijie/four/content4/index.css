@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.middle {
+  width: 1140px;
+  margin: 0 auto;
+  /* padding: 40px 0; */
+}
+.slq27 {
+  background-color: rgb(243, 242, 242);
+  padding: 90px 0px;
+}
+.slq13 {
+  font-weight: 501;
+  line-height: 25px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  letter-spacing: 0px;
+  position: relative;
+  padding: 20px 20px 0px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.slq3 {
+  position: relative;
+  width: 1140px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.slq6 {
+  font-weight: bold;
+  line-height: 55px;
+  color: rgb(18, 21, 60);
+  font-size: 55px;
+  letter-spacing: 0px;
+  position: relative;
+  padding: 0px 0px 20px;
+}
+.slq9 {
+  position: relative;
+  width: 380px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+}
+.slq30 {
+  position: relative;
+  width: 570px;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.slq1 {
+  width: 1140px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1140px;
+}
+.slq26 {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 28px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px 25px;
+}
+.slq12 {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+  width: 350px;
+}
+.slq29 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+}
+.slq2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.slq7 {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 28px;
+  color: rgb(35, 35, 36);
+}
+.slq5 {
+  color: rgb(216, 189, 8);
+  font-weight: 500;
+  font-size: 20px;
+}
+.slq4 {
+  text-align: center;
+  padding-bottom: 60px;
+}
+.slq10 {
+  background: rgb(18, 21, 60);
+  min-height: 453px;
+}
+.slq11 {
+  display: block;
+  margin: 0px;
+}
+.slq31 {
+  box-sizing: border-box;
+}
+.slqN0 {
+  padding-bottom: 30px;
+  margin-top: 90px;
+  color: rgb(102, 102, 102);
+  font-family: Raleway, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  white-space: normal;
+  word-spacing: 0px;
+  text-decoration-color: initial;
+}
