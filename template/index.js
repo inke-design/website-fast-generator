@@ -12,6 +12,7 @@ import InkeNavbar from "./navbar/inke-navbar";
 import NavbarOne from "./navbar/navbar-one";
 import NavbarTwo from "./navbar/navbar-two";
 import NavbarThree from "./navbar/navbar-three";
+import TemplateNavbarOne from "./wang/template-one/template-navbar-one";
 
 // banner模版
 import BannerOne from "./banner/banner-one";
@@ -23,12 +24,15 @@ import BackVideoContent from "./content/background-videdo-content";
 import VideoCardCotent from "./content/video-card-content";
 import AboutUs from "./content/about-us";
 import MoreIcon from "./content/more-icon";
+import TemplateContentOneServe from "./wang/template-one/template-content-one-serve";
+import TemplateContentOneCase from "./wang/template-one/template-content-one-case";
+import TemplateContentOneAdvantage from "./wang/template-one/template-content-one-advantage";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
 import WithGroupFooter from "./footer/with-group-footer";
 import ICPFooter from "./footer/icp-footer";
-
+import TemplateFooterOne from "./wang/template-one/template-footer-one";
 
 const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
 
@@ -128,6 +132,15 @@ const templateConfig = {
         css: NavbarThree.css,
         script: NavbarThree.script,
       },
+      {
+        key: "navbar/navbar-four",
+        name: "Navbar模板四",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg',
+        html: TemplateNavbarOne.html,
+        css: TemplateNavbarOne.css,
+        script: TemplateNavbarOne.script,
+      },
     ]
   },
   banner: {
@@ -204,6 +217,33 @@ const templateConfig = {
         css: MoreIcon.css,
         script: MoreIcon.script,
       },
+      {
+        key: "content/template-content-one-serve",
+        name: "模版一内容-服务",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxODc5MTQxOCMzMDgjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxODc5MTQxOCMzMDgjanBn.jpg',
+        html: TemplateContentOneServe.html,
+        css: TemplateContentOneServe.css,
+        script: TemplateContentOneServe.script,
+      },
+      {
+        key: "navbar/template-content-one-case",
+        name: "模版一内容-案例",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg',
+        html: TemplateContentOneCase.html,
+        css: TemplateContentOneCase.css,
+        script: TemplateContentOneCase.script,
+      },
+      {
+        key: "navbar/template-content-one-advantage",
+        name: "模版一内容-优势",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg',
+        html: TemplateContentOneAdvantage.html,
+        css: TemplateContentOneAdvantage.css,
+        script: TemplateContentOneAdvantage.script,
+      },
     ]
   },
   footer: {
@@ -228,13 +268,13 @@ const templateConfig = {
         script: WithGroupFooter.script,
       },
       {
-        key: "footer/icp-footer",
-        name: "带备案信息Footer",
+        key: "footer/template-footer-one",
+        name: "模版一底部",
         dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
         image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
-        html: ICPFooter.html,
-        css: ICPFooter.css,
-        script: ICPFooter.script,
+        html: TemplateFooterOne.html,
+        css: TemplateFooterOne.css,
+        script: TemplateFooterOne.script,
       },
     ],
   }
