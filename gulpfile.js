@@ -4,9 +4,11 @@ const babel = require("gulp-babel");
 const { watch, series, task } = require("gulp");
 const spawn = require("child_process").spawn;
 const path = require("path");
+const fs = require('fs');
 const named = require("vinyl-named");
 const webpack = require("webpack-stream");
-var rename = require("gulp-rename");
+const rename = require("gulp-rename");
+const {resolveTemplates} = require('./resolveTemplate.js');
 
 const IMPORT_FILES = [
   "./src/libs/builder/blocks-bootstrap4.js", 
@@ -142,8 +144,20 @@ task("clean", function () {
   return spawn("rm", ["-rf", path.join(__dirname, "dist")]);
 });
 
-task("default", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
-task("build", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
+task("resolveTemplates", function (done) {
+  resolveTemplates('dist/template');
+  done()
+});
+
+task("resolveTemplates2", function (done) {
+  resolveTemplates('src/template');
+  done()
+});
+
+task("default", series("clean", copy, "resolveTemplates", compileEs, compileEsWithWebpack, compileSass));
+task("build", series("clean", copy, "resolveTemplates", compileEs, compileEsWithWebpack, compileSass));
 task("dev", function() {
-  watch(['src*/**/*.*', '!src*/**/*.md'], series(copy, compileEs, compileEsWithWebpack, compileSass))
+  watch(['src*/**/*.*', '!src*/**/*.md'], series(copy, "resolveTemplates", compileEs, compileEsWithWebpack, compileSass))
 })
+
+task("build:template", series(["resolveTemplates2"]))
