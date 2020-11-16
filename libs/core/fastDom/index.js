@@ -209,7 +209,6 @@ FastDom.prototype.render = function (node) {
       if (sniptKey === "html") {
         $dom.attr("data-uuid", vnode.uuid);
         $dom.attr("data-component", "template");
-        $dom.attr("id", vnode.uuid);
         ["type", "name"].forEach(function (key) {
           $dom.attr("data-".concat(key), vnode.node[key]);
         });
