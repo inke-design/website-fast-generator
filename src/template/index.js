@@ -19,6 +19,7 @@ import TemplateFourNavbar from "./wang/template-four/template-four-navbar";
 import Site1Navbar from "./site/site1/navbar";
 import Site2Navbar from "./site/site2/navbar";
 import Site3Navbar from "./site/site3/navbar";
+import Site4Navbar from "./site/site4/navbar";
 
 // banner模版
 import BannerOne from "./banner/banner-one";
@@ -51,6 +52,8 @@ import TemplateFourNews from "./wang/template-four/template-four-news";
 import Site1Content from "./site/site1/content";
 import Site2Content from "./site/site2/content";
 import Site3Content from "./site/site3/content";
+import Site4Content1 from "./site/site4/content";
+import Site4Content2 from "./site/site4/content2";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
@@ -223,6 +226,16 @@ const templateConfig = {
         css: Site3Navbar.css,
         script: Site3Navbar.script,
         exportModule: Site3Navbar.exportModule || {},
+      },
+      {
+        key: "navbar/navbar-8",
+        name: "Navbar模板八",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site4Navbar.html,
+        css: Site4Navbar.css,
+        script: Site4Navbar.script,
+        exportModule: Site4Navbar.exportModule || {},
       }
     ]
   },
@@ -384,6 +397,26 @@ const templateConfig = {
         css: Site3Content.css,
         script: Site3Content.script,
         exportModule: Site3Content.exportModule || {},
+      },
+      {
+        key: "content/content-bootrap1",
+        name: "content模板",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site4Content1.html,
+        css: Site4Content1.css,
+        script: Site4Content1.script,
+        exportModule: Site4Content1.exportModule || {},
+      },
+      {
+        key: "content/content-bootrap1",
+        name: "content模板",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site4Content2.html,
+        css: Site4Content2.css,
+        script: Site4Content2.script,
+        exportModule: Site4Content2.exportModule || {},
       }
     ]
   },
