@@ -6,6 +6,7 @@ const KEY_MAP = {
   css: 'css',
   js: 'script',
   html: 'html',
+  json: "exportModule",
 }
 
 function filterTemplateFolder(dir, cb) {
@@ -66,6 +67,9 @@ function resolveContent(type, content) {
       const html = $("<div></div>").append(firstChild).html();
 
       return `const html = \`${html}\`\r\n\r\n`;
+    }
+    case "json": {
+      return `const exportModule = ${content}\r\n\r\n`;
     }
 
     default: {

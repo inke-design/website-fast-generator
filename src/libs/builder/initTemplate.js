@@ -18,8 +18,9 @@ function initTempate(templateConfig) {
       return templateItem.key;
     });
 
-    filterGroupList.forEach((templateItem) => {
+    filterGroupList.forEach((templateItem, idx) => {
       const { key, ...rest } = templateItem;
+      rest.name = `${idx + 1}. ${rest.name}`
       Vvveb.Blocks.add(templateItem.key, rest);
     });
   });
