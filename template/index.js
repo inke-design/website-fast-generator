@@ -13,12 +13,18 @@ import NavbarOne from "./navbar/navbar-one";
 import NavbarTwo from "./navbar/navbar-two";
 import NavbarThree from "./navbar/navbar-three";
 import TemplateNavbarOne from "./wang/template-one/template-navbar-one";
+import TemplateTwoNavbar from "./wang/template-two/template-two-navbar";
+import TemplateThreeNavbar from "./wang/template-three/template-three-navbar";
+import TemplateFourNavbar from "./wang/template-four/template-four-navbar";
 import Site1Navbar from "./site/site1/navbar";
 
 // banner模版
 import BannerOne from "./banner/banner-one";
 import BannerTwo from "./banner/banner-two";
 import BannerThree from "./banner/banner-three";
+import TemplateTwoBanner from "./wang/template-two/template-two-banner";
+import TemplateThreeBanner from "./wang/template-three/template-three-banner";
+import TemplateFourBanner from "./wang/template-four/template-four-banner";
 
 // Content
 import BackVideoContent from "./content/background-videdo-content";
@@ -28,6 +34,18 @@ import MoreIcon from "./content/more-icon";
 import TemplateContentOneServe from "./wang/template-one/template-content-one-serve";
 import TemplateContentOneCase from "./wang/template-one/template-content-one-case";
 import TemplateContentOneAdvantage from "./wang/template-one/template-content-one-advantage";
+import TemplateTwoDesc from "./wang/template-two/template-two-desc";
+import TemplateThreeDesc from "./wang/template-three/template-three-desc";
+import TemplateFourDesc from "./wang/template-four/template-four-desc";
+import TemplateTwoShow from "./wang/template-two/template-two-show";
+import TemplateThreeShow from "./wang/template-three/template-three-show";
+import TemplateFourShow from "./wang/template-four/template-four-show";
+import TemplateTwoServer from "./wang/template-two/template-two-server";
+import TemplateTwoNumber from "./wang/template-two/template-two-number";
+import TemplateTwoTeam from "./wang/template-two/template-two-team";
+import TemplateThreeStory from "./wang/template-three/template-three-story";
+import TemplateFourServer from "./wang/template-four/template-four-server";
+import TemplateFourNews from "./wang/template-four/template-four-news";
 import Site1Content from "./site/site1/content";
 import Site2Content from "./site/site2/content";
 
@@ -36,6 +54,9 @@ import LiteFooter from "./footer/lite/index";
 import WithGroupFooter from "./footer/with-group-footer";
 import ICPFooter from "./footer/icp-footer";
 import TemplateFooterOne from "./wang/template-one/template-footer-one";
+import TemplateTwoFooter from "./wang/template-two/template-two-footer";
+import TemplateThreeFooter from "./wang/template-three/template-three-footer";
+import TemplateFourFooter from "./wang/template-four/template-four-footer";
 import Site1Footer from "./site/site1/footer";
 
 const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
@@ -147,6 +168,31 @@ const templateConfig = {
         script: TemplateNavbarOne.script,
       },
       {
+        key: "navbar/template-navbar-two",
+        name: "模版二Navbar",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg',
+        html: TemplateTwoNavbar.html,
+        css: TemplateTwoNavbar.css,
+        script: TemplateTwoNavbar.script,
+      },{
+        key: "navbar/template-navbar-three",
+        name: "模版三Navbar",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg',
+        html: TemplateThreeNavbar.html,
+        css: TemplateThreeNavbar.css,
+        script: TemplateThreeNavbar.script,
+      },{
+        key: "navbar/template-navbar-four",
+        name: "模版四Navbar",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwNTUxNjI0OTM0MiM1MTIjanBn.jpg',
+        html: TemplateFourNavbar.html,
+        css: TemplateFourNavbar.css,
+        script: TemplateFourNavbar.script,
+      },
+      {
         key: "navbar/navbar-5",
         name: "Navbar模板六",
         dragHtml: TEST_DRAG_HTML,
@@ -189,6 +235,36 @@ const templateConfig = {
         css: BannerThree.css,
         script: BannerThree.script,
         exportModule: BannerOne.exportModule,
+      },
+      {
+        key: "banner/template-banner-two",
+        name: "模板二banner",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg',
+        html: TemplateTwoBanner.html,
+        css: TemplateTwoBanner.css,
+        script: TemplateTwoBanner.script,
+        exportModule: TemplateTwoBanner.exportModule,
+      },
+      {
+        key: "banner/template-banner-three",
+        name: "模板三banner",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg',
+        html: TemplateThreeBanner.html,
+        css: TemplateThreeBanner.css,
+        script: TemplateThreeBanner.script,
+        exportModule: TemplateThreeBanner.exportModule,
+      },
+      {
+        key: "banner/template-banner-four",
+        name: "模板四banner",
+        dragHtml: '<img src="https://img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg">',
+        image: '//img.ikstatic.cn/MTYwMzQ0Mjc2NDI5OSM1NTIjanBn.jpg',
+        html: TemplateFourBanner.html,
+        css: TemplateFourBanner.css,
+        script: TemplateFourBanner.script,
+        exportModule: TemplateFourBanner.exportModule,
       },
     ]
   },
@@ -316,6 +392,33 @@ const templateConfig = {
         html: TemplateFooterOne.html,
         css: TemplateFooterOne.css,
         script: TemplateFooterOne.script,
+      },
+      {
+        key: "footer/template-footer-two",
+        name: "模版二底部",
+        dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
+        image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
+        html: TemplateTwoFooter.html,
+        css: TemplateTwoFooter.css,
+        script: TemplateTwoFooter.script,
+      },
+      {
+        key: "footer/template-footer-three",
+        name: "模版三底部",
+        dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
+        image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
+        html: TemplateThreeFooter.html,
+        css: TemplateThreeFooter.css,
+        script: TemplateThreeFooter.script,
+      },
+      {
+        key: "footer/template-footer-four",
+        name: "模版四底部",
+        dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
+        image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
+        html: TemplateFourFooter.html,
+        css: TemplateFourFooter.css,
+        script: TemplateFourFooter.script,
       },
       {
         key: "footer/nike-footer-1",
