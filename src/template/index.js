@@ -28,6 +28,7 @@ import MoreIcon from "./content/more-icon";
 import TemplateContentOneServe from "./wang/template-one/template-content-one-serve";
 import TemplateContentOneCase from "./wang/template-one/template-content-one-case";
 import TemplateContentOneAdvantage from "./wang/template-one/template-content-one-advantage";
+import Site1Content from "./site/site1/content";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
@@ -254,6 +255,15 @@ const templateConfig = {
         html: TemplateContentOneAdvantage.html,
         css: TemplateContentOneAdvantage.css,
         script: TemplateContentOneAdvantage.script,
+      },
+      {
+        key: "content/nike-content-1",
+        name: "耐克-商品-宫格",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site1Content.html,
+        css: Site1Content.css,
+        script: Site1Content.script,
       },
     ]
   },
