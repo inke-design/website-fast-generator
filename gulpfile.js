@@ -144,20 +144,16 @@ task("clean", function () {
   return spawn("rm", ["-rf", path.join(__dirname, "dist")]);
 });
 
-task("resolveTemplates", function (done) {
-  resolveTemplates('dist/template');
-  done()
-});
 
-task("resolveTemplates2", function (done) {
+task("resolveTemplates", function (done) {
   resolveTemplates('src/template');
   done()
 });
 
-task("default", series("clean", copy, "resolveTemplates", compileEs, compileEsWithWebpack, compileSass));
-task("build", series("clean", copy, "resolveTemplates", compileEs, compileEsWithWebpack, compileSass));
+task("default", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
+task("build", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
 task("dev", function() {
-  watch(['src*/**/*.*', '!src*/**/*.md'], series(copy, "resolveTemplates", compileEs, compileEsWithWebpack, compileSass))
+  watch(['src*/**/*.*', '!src*/**/*.md'], series(copy, compileEs, compileEsWithWebpack, compileSass))
 })
 
-task("build:template", series(["resolveTemplates2"]))
+task("build:template", series(["resolveTemplates"]))

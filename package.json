@@ -17,7 +17,7 @@
     "prettier": "^2.1.2"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production gulp build",
+    "build": "cross-env NODE_ENV=production gulp build:template & gulp build",
     "build:template": "cross-env NODE_ENV=development gulp build:template",
     "dev": "cross-env NODE_ENV=development gulp build & gulp dev"
   },
