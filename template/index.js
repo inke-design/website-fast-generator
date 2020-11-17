@@ -29,12 +29,14 @@ import TemplateContentOneServe from "./wang/template-one/template-content-one-se
 import TemplateContentOneCase from "./wang/template-one/template-content-one-case";
 import TemplateContentOneAdvantage from "./wang/template-one/template-content-one-advantage";
 import Site1Content from "./site/site1/content";
+import Site2Content from "./site/site2/content";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
 import WithGroupFooter from "./footer/with-group-footer";
 import ICPFooter from "./footer/icp-footer";
 import TemplateFooterOne from "./wang/template-one/template-footer-one";
+import Site1Footer from "./site/site1/footer";
 
 const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
 const TEST_DRAG_HTML = `<img src="${TEST_IMAGE}">`
@@ -265,6 +267,15 @@ const templateConfig = {
         css: Site1Content.css,
         script: Site1Content.script,
       },
+      {
+        key: "content/site2-content",
+        name: "关于我们区快",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site2Content.html,
+        css: Site2Content.css,
+        script: Site2Content.script,
+      },
     ]
   },
   footer: {
@@ -305,6 +316,15 @@ const templateConfig = {
         html: TemplateFooterOne.html,
         css: TemplateFooterOne.css,
         script: TemplateFooterOne.script,
+      },
+      {
+        key: "footer/nike-footer-1",
+        name: "耐克-商品-footer",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site1Footer.html,
+        css: Site1Footer.css,
+        script: Site1Footer.script,
       },
     ],
   }
