@@ -268,6 +268,15 @@ const templateConfig = {
         script: WithGroupFooter.script,
       },
       {
+        key: "footer/icp-footer",
+        name: "到icpFooter",
+        dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
+        image: '//img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png',
+        html: ICPFooter.html,
+        css: ICPFooter.css,
+        script: ICPFooter.script,
+      },
+      {
         key: "footer/template-footer-one",
         name: "模版一底部",
         dragHtml: `<img src="https://img.ikstatic.cn/MTYwMzMzMzYyNzY2MiM3MDIjcG5n.png">`,
