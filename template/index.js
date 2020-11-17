@@ -17,6 +17,8 @@ import TemplateTwoNavbar from "./wang/template-two/template-two-navbar";
 import TemplateThreeNavbar from "./wang/template-three/template-three-navbar";
 import TemplateFourNavbar from "./wang/template-four/template-four-navbar";
 import Site1Navbar from "./site/site1/navbar";
+import Site2Navbar from "./site/site2/navbar";
+import Site3Navbar from "./site/site3/navbar";
 
 // banner模版
 import BannerOne from "./banner/banner-one";
@@ -48,6 +50,7 @@ import TemplateFourServer from "./wang/template-four/template-four-server";
 import TemplateFourNews from "./wang/template-four/template-four-news";
 import Site1Content from "./site/site1/content";
 import Site2Content from "./site/site2/content";
+import Site3Content from "./site/site3/content";
 
 // Footer
 import LiteFooter from "./footer/lite/index";
@@ -58,6 +61,7 @@ import TemplateTwoFooter from "./wang/template-two/template-two-footer";
 import TemplateThreeFooter from "./wang/template-three/template-three-footer";
 import TemplateFourFooter from "./wang/template-four/template-four-footer";
 import Site1Footer from "./site/site1/footer";
+import Site3Footer from "./site/site3/footer";
 
 const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
 const TEST_DRAG_HTML = `<img src="${TEST_IMAGE}">`
@@ -194,12 +198,31 @@ const templateConfig = {
       },
       {
         key: "navbar/navbar-5",
-        name: "Navbar模板六",
+        name: "Navbar模板五",
         dragHtml: TEST_DRAG_HTML,
         image: TEST_IMAGE,
         html: Site1Navbar.html,
         css: Site1Navbar.css,
         script: Site1Navbar.script,
+      },
+      {
+        key: "navbar/navbar-6",
+        name: "Navbar模板六",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site2Navbar.html,
+        css: Site2Navbar.css,
+        script: Site2Navbar.script,
+      },
+      {
+        key: "navbar/navbar-7",
+        name: "Navbar模板七",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site3Navbar.html,
+        css: Site3Navbar.css,
+        script: Site3Navbar.script,
+        exportModule: Site3Navbar.exportModule || {},
       }
     ]
   },
@@ -352,6 +375,16 @@ const templateConfig = {
         css: Site2Content.css,
         script: Site2Content.script,
       },
+      {
+        key: "content/navbar-7",
+        name: "content模板",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site3Content.html,
+        css: Site3Content.css,
+        script: Site3Content.script,
+        exportModule: Site3Content.exportModule || {},
+      }
     ]
   },
   footer: {
@@ -428,6 +461,16 @@ const templateConfig = {
         html: Site1Footer.html,
         css: Site1Footer.css,
         script: Site1Footer.script,
+      },
+      {
+        key: "footer/site3-footer",
+        name: "简洁footer",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site3Footer.html,
+        css: Site3Footer.css,
+        script: Site3Footer.script,
+        exportModule: Site3Footer.exportModule || {},
       },
     ],
   }
