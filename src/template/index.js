@@ -13,6 +13,7 @@ import NavbarOne from "./navbar/navbar-one";
 import NavbarTwo from "./navbar/navbar-two";
 import NavbarThree from "./navbar/navbar-three";
 import TemplateNavbarOne from "./wang/template-one/template-navbar-one";
+import Site1Navbar from "./site/site1/navbar";
 
 // banner模版
 import BannerOne from "./banner/banner-one";
@@ -35,6 +36,7 @@ import ICPFooter from "./footer/icp-footer";
 import TemplateFooterOne from "./wang/template-one/template-footer-one";
 
 const TEST_IMAGE = "https://img.ikstatic.cn/MTYwMjgxMzEyMzMwOSMzMTUjcG5n.png";
+const TEST_DRAG_HTML = `<img src="${TEST_IMAGE}">`
 
 const templateConfig = {
   bootstrap4: {
@@ -141,6 +143,15 @@ const templateConfig = {
         css: TemplateNavbarOne.css,
         script: TemplateNavbarOne.script,
       },
+      {
+        key: "navbar/navbar-5",
+        name: "Navbar模板六",
+        dragHtml: TEST_DRAG_HTML,
+        image: TEST_IMAGE,
+        html: Site1Navbar.html,
+        css: Site1Navbar.css,
+        script: Site1Navbar.script,
+      }
     ]
   },
   banner: {
