@@ -74,6 +74,7 @@ const css = `
         background-color: #fff;
         min-height: 30px;
         margin: 0 auto 0px auto;
+        padding: 100px 0;
         position: relative;
       }
       .template-four-server-header {

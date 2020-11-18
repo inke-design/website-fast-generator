@@ -47,9 +47,10 @@ const css = `
 <style>
       a:hover { text-decoration:none; }
       .template-four-news {
-        height: 450px;
+        height: 550px;
         margin-bottom: 0;
         clear: both;
+        padding: 50px 0;
         background-color: #fff;
         min-height: 30px;
         margin: 0 auto 0px auto;
