@@ -59,6 +59,10 @@ const html = `
 
 const css = `
 <style>
+.template-four-desc {
+  position: relative;
+  height: 500px;
+}
 .krh2 {
   margin: 0px auto;
   border-right: none;

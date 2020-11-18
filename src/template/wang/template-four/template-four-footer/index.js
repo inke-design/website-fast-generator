@@ -228,6 +228,9 @@ const html = `
 
 const css = `
 <style>
+      .template-four-footer {
+        position: relative;
+      }
       .qxu11 {
         margin: 0px auto;
         border-right: none;

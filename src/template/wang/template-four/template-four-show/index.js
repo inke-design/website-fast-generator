@@ -112,6 +112,8 @@ const css = `
       }
       .template-four-show {
         background-color: #fff;
+        position: relative;
+        padding: 100px 0;
       }
       .template-four-show a {
         color: #333;
