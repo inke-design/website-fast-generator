@@ -593,7 +593,8 @@ Vvveb.Builder = {
 		$(".drag-elements .nav-tabs").each((i, node) => {
 			navHeight += $(node).height()
 		})
-		const h = $("#left-panel").height() - $("#filemanager").height() - navHeight;
+		// const h = $("#left-panel").height() - $("#filemanager").height() - navHeight;
+		const h = $("#left-panel").height() - navHeight;
 
 		$("#left-panel .drag-elements-sidepane").height(h);
 		return h;
