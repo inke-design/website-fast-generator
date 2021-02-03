@@ -34,7 +34,6 @@ Vvveb.domUtils = {
     const $frameDoc = $(this.frameDoc);
     this.$selectedEl = $frameDoc.find(selector);
     const el = this.$selectedEl.get(0);
-
     if (!el) {
       $("#select-box").hide();
       return;

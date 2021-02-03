@@ -12,11 +12,6 @@
     
     <link href="css/editor.css" rel="stylesheet">
 		<link href="css/line-awesome.css" rel="stylesheet">
-		<style>
-			#canvas{
-				height: 100vh;
-			}
-		</style>
   </head>
 <body>
 
@@ -30,7 +25,7 @@
 					</div>
 					
 					
-					<div class="btn-group float-left" role="group">
+					<div class="btn-group float-left" role="group" style="display: none;">
 					  <button class="btn btn-light" title="Toggle file manager" id="toggle-file-manager-btn" data-vvveb-action="toggleFileManager" data-toggle="button" aria-pressed="false">
 						  <img src="libs/builder/icons/file-manager-layout.svg" width="20px" height="20px">
 					  </button>
@@ -390,7 +385,7 @@
 					
 				</div>
 
-				<div id="right-panel">
+				<div id="right-panel" style="display: none;">
 					<div class="component-properties">
 						
 						<ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist">

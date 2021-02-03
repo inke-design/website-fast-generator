@@ -693,7 +693,6 @@ Vvveb.Builder = {
 
 	/* iframe */
 	_loadIframe: function (url) {
-
 		var self = this;
 		self.iframe = this.documentFrame.get(0);
 		self.iframe.src = url;
@@ -1024,7 +1023,7 @@ Vvveb.Builder = {
 						}).then(() => {
 							Vvveb.domUtils
 								.setFrameDocument(window.FrameDocument)
-								.selectNode(self.activeUUID);
+								// .selectNode(self.activeUUID);
 
 							self.selectedEl = $(`#${self.activeUUID}`);
 						})
@@ -1225,6 +1224,14 @@ Vvveb.Builder = {
 			addSectionComponent(component, ($("[name='add-section-insert-mode']:checked").val() == "after"));
 
 			addSectionBox.hide();
+		});
+
+		$("#top-panel").on("click", function (event) {
+			if (self.texteditEl) {
+				Vvveb.WysiwygEditor.destroy(self.texteditEl);
+				$("#select-box").removeClass("text-edit").find("#select-actions").show();
+				self.texteditEl = null;
+			}
 		});
 
 	},
