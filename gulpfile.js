@@ -1,4 +1,5 @@
 const gulp = require("gulp");
+const connect = require('gulp-connect');
 const sass = require("gulp-sass");
 const babel = require("gulp-babel");
 const { watch, series, task } = require("gulp");
@@ -129,7 +130,7 @@ function copy() {
         "src/libs*/**/*.png",
         "src/libs*/**/*.jpg",
         "src/libs*/**/*.gif",
-        "src/editor.html",
+        "src/index.html",
       ]
       // { base: "" }
     )
@@ -144,6 +145,15 @@ task("clean", function () {
   return spawn("rm", ["-rf", path.join(__dirname, "dist")]);
 });
 
+task("webserver", function() {
+  connect.server({
+    livereload: true,
+    directoryListing: {
+      path: './dist',
+      enable: true
+    }
+  });
+});
 
 task("resolveTemplates", function (done) {
   resolveTemplates('src/template');
@@ -151,9 +161,11 @@ task("resolveTemplates", function (done) {
 });
 
 task("default", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
-task("build", series("clean", copy, compileEs, compileEsWithWebpack, compileSass));
+task("build", series("clean", copy, compileEs, compileEsWithWebpack, compileSass, "webserver"));
 task("dev", function() {
   watch(['src*/**/*.*', '!src*/**/*.md'], series(copy, compileEs, compileEsWithWebpack, compileSass))
 })
 
 task("build:template", series(["resolveTemplates"]))
+
+
