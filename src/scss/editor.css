@@ -9286,7 +9286,7 @@ body {
   --builder-filemanager-height: 250px;
   --builder-canvas-margin: 0px;
   --builder-header-top-height: 40px;
-  --builder-bottom-panel-height: 35px;
+  --builder-bottom-panel-height: 0;
   --drag-items-tabs-height: 90px;
   scrollbar-color: rgba(0, 0, 0, 0.1) #fff;
   scrollbar-width: thin; }
@@ -9645,14 +9645,18 @@ body {
   height: calc( 100vh - 75px);
   top: 40px;
   width: calc( 100vw - (var(--builder-left-panel-width) + var(--builder-right-panel-width) + var(--builder-canvas-margin)));
-  height: calc( 100vh - (var(--builder-header-top-height) + var(--builder-bottom-panel-height)));
+  height: calc( 100vh - (var(--builder-header-top-height)));
   top: var(--builder-header-top-height);
   position: fixed;
   transition: width 0.35s, left 0.35s; }
+  #iframe-wrapper {
+    overflow: hidden;
+  }
   #vvveb-builder #canvas #iframe-wrapper, #vvveb-builder #canvas iframe, #vvveb-builder #canvas iframe body {
     width: 100%;
     height: 100%;
-    border: none; }
+    border: none;
+  }
   #vvveb-builder #canvas.tablet {
     width: 768px !important;
     left: calc(50% - 399vw);

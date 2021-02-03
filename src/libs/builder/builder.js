@@ -1149,7 +1149,7 @@ Vvveb.Builder = {
 
 		$("#delete-btn").on("click", function (event) {
 			$("#select-box").hide();
-
+			$("#highlight-box").hide();
 			node = self.selectedEl.get(0);
 			const nodeUUID = $(node).data('uuid');
 

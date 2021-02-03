@@ -138,7 +138,7 @@ body
 	--builder-canvas-margin: #{$builder-canvas-margin};
 	
 	--builder-header-top-height:#{$builder-header-top-height};
-	--builder-bottom-panel-height:#{$builder-bottom-panel-height};
+	--builder-bottom-panel-height: 0;
 	--drag-items-tabs-height:#{$drag-items-tabs-height};
 	
 	
@@ -698,17 +698,22 @@ body
 		height: calc( 100vh - #{$canvas-height-substract});
 		top:$builder-header-top-height;
 		width: calc( 100vw - (var(--builder-left-panel-width) + var(--builder-right-panel-width) + var(--builder-canvas-margin)));
-		height: calc( 100vh - (var(--builder-header-top-height) + var(--builder-bottom-panel-height)));
+		height: calc( 100vh - (var(--builder-header-top-height)));
 		top:var(--builder-header-top-height);
 		position:fixed;
 		transition:width 0.35s, left 0.35s;
-		//border-top: 1px solid $builder-border-color;	
+		//border-top: 1px solid $builder-border-color;
+		
+		#iframe-wrapper, iframe, iframe  html
+		{
+			overflow-x: hidden;
+		}
 	
 		#iframe-wrapper, iframe, iframe  body
 		{
 			width:100%;
 			height:100%;
-			border:none;
+			border: none;
 		}
 		
 		&.tablet
